@@ -1,0 +1,8 @@
+How to view the sqllite database
+
+1. Download http://sqlitebrowser.org/ 
+you can use the portable version if you want
+
+2.Once you run it, open the sqllite file mymoneyappdb.db file in the root of the project directory
+
+Now everytime you run our mymoneyapp code, and you do some model changes, re open the file here, and it should show the changes

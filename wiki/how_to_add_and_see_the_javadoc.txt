@@ -1,0 +1,9 @@
+How to generate the javadoc
+Inside eclipse go to project -> generate javadoc
+
+How to see the javadoc
+
+open index.html file located inside the /doc folder
+
+
+

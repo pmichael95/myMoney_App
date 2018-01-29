@@ -1,0 +1,175 @@
+How to create a new use case/controller
+
+
+1. Create a new controller class
+for example, lets say we want the user to see their details like name,birthday, height, etc..
+create a class like UserDetailController.java in the controllers package
+
+UserDetailController class should implement the Controller interface
+implement the unimplemented methods, but leave them blank for now or copy the ExampleController.java methods
+Add the UserDetailController constructor, and call initView() and initModel() inside it
+
+The controller is also going to need its corresponding view and model/models and dao. These will follow in the next steps
+
+2. Create the view class, call it something like UserDetailView and place in the view package.
+Make the UserDetailView extend the View class. Implement the unimplemented methods, but leave them blank for now or copy the ExampleView.java methods
+
+3. Create the view's data container nested class inside the View class. Lets call it something like UserDetailViewData
+See ExampleView.ExampleViewData for a more detailed explanation. 
+Basically, this class acts as a data container to pass messages around the controller and view.
+Add any necessary data fields you want to pass back and forth between the controller and view.
+For the user details data, we could have something like 
+
+public static class UserDetailsViewData {
+	public String firstName;
+	public String lastName;
+	public String birthdate; // or special date object
+	public float height; 
+}
+
+4. Create any necessary models that need to work with our controller. Lets say we create a UserDetail.java Model. Place it inside the models package.
+5. Implement the getDao() method inside the model. The dao allows for us to execute the creation/updating/deletion of our models into the database
+your dao code should basically look the same as the one below, but change the UserDetail to whatever you name your model,
+the getDao must be static, and return a Dao<ModelClassName, INTEGER>
+
+Example code
+@DatabaseTable(tableName = "user_details")
+// "user_details" is the actual name of the table in the database, you can call it whatever you want
+public class UserDetail {
+	@DatabaseField(generatedId = true)
+	public int id;
+
+	 @DatabaseField
+	public string firstName;
+	 @DatabaseField
+	public string lastName;
+	 @DatabaseField
+	public string birthdate;
+	 @DatabaseField
+	public float height;
+
+	 public static Dao<UserDetail , Integer> getDao() {
+		try {
+			JdbcConnectionSource instance = DatabaseConnectionSource.getConnection();
+			Dao<UserDetail , Integer> dao = DaoManager.createDao(instance, UserDetail.class);
+			TableUtils.createTableIfNotExists(instance, UserDetail.class);
+			return dao;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+}
+
+6. Go to back to UserDetailController.java, we need to finish the rest of the class
+
+- add the view field
+- add the model field
+- add the model's dao field
+
+it should look something similar to this
+
+public class UserDetailController implements Controller {
+	private UserDetailView view;
+	private UserDetail model;
+	private Dao<UserDetail, Integer> dao;
+}
+
+implement the initView() inside the UserDetailController.java
+initView, should create the view object, and attach the controller as an observer to it
+
+public void initView() {
+	view = new UserDetailsView();
+	view.addObserver(this);
+}
+
+implement the initModel() inside the UserDetailController.java
+
+public void initModel() {
+	dao = UserDetail.getDao();
+	model = new UserDetail();
+}
+
+implement the updateView() inside the UserDetailController.java
+
+	public void updateView() {
+
+		UserDetailsView.UserDetailsViewData  data = new UserDetailsView.UserDetailsViewData();
+
+		data.firstName = model.firstName;
+		data.lastName = model.lastName;
+		data.birthdate = model.birthdate;
+		data.height = model.height;
+
+		view.updateUI(data);
+	}
+	
+
+implement the update(Object data) inside the UserDetailController.java
+public void update(Object data) {
+		// Cast our data into the UserDetailsViewData
+		UserDetailsView.UserDetailsViewData viewData  = ((UserDetailsView.UserDetailsViewData)data);
+		// Update the model's data from the view's data
+		model.firstName = data.firstName;
+		model.lastName = data.lastName;
+		model.birthdate = data.birthdate;
+		model.height = data.height;
+		
+		try {
+			dao.createOrUpdate(model);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		// Since our model has changed now, we need to tell the view to update its ui
+		updateView();
+	}
+
+
+
+Now after this you should have 3 new files
+
+UserDetailController.java
+userDetailView.java
+UserDetail.java 
+
+
+Now to understand the flow control when some ui event happens
+
+example, the UserDetailsView has a submit button, and it's event code could look something like this
+
+submitButton.OnButtonClick should look something like this
+	private void OnButtonClick() {
+
+		UserDetailsViewData data = new UserDetailsViewData();
+		// here you can do error handling or any input validation
+		data.firstName = firstNameInputField.getText();
+		data.lastName = lastNameInputField.getText();
+		data.birthdate = birthdayInputField.getText();
+		data.height  = heightInputField.getText();
+		notifyObservers(data);
+	}
+	
+
+
+Now the flow of control goes 
+1. user clicks the submit button -> fires the submit button's event handler OnButtonClick();
+2. OnButtonClick() calls notifyObserver(data);
+3. notifyObserver(data) calls the UserDetailController.update(data);
+4. UserDetailController.update(data) updates the model with the new data
+5. UserDetailController.update(data) calls updateView() at the end of the method
+6. updateView() creates a new message (UserDetailsViewData) object, sets the values
+7. updateView() calls view.updateUi(data).
+8. updateUi(data) extracts the message by casting the object to (UserDetailsViewData), extracts the data and updates any ui elements with the new data
+
+
+So the call stack would look something like this
+
+UserDetailsView.OnButtonClick() -> UserDetailsView.notifyObservers(data) -> UserDetailController.update(data) -> UserDetailController.updateView() -> view.updateUI(data)
+
+
+
+
+
+
+
