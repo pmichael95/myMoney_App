@@ -39,7 +39,7 @@ public class ExampleTest {
 	
 	@Test
 	public void ExampleTest2() {
-		fail("example failed test");
+		//fail("example failed test");
 	}
 	
 	

@@ -1,6 +1,7 @@
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 
+import controllers.DepositMoneyController;
 import controllers.ExampleController;
 import models.DatabaseConnectionSource;
 import models.ExampleModel;
@@ -20,7 +21,8 @@ public class Start {
 		
 		
 		if (source != null) {
-			ExampleController test = new ExampleController();
+			//ExampleController test = new ExampleController();
+			DepositMoneyController deposit_money = new DepositMoneyController();
 			// Once we are done, close the connection to the database 
 			DatabaseConnectionSource.closeConncetion();
 		} else {
