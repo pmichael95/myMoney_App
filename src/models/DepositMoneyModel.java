@@ -19,15 +19,17 @@ public class DepositMoneyModel {
 	// therefore, every time we create a new model, we don't have to know what the next id to set is
 	@DatabaseField(generatedId = true)
 	public int id;
+	
 	// Creates a column in the database table as an int, named add_amount
 	//add_amount:  the amount to be deposit.
-	 @DatabaseField 
+	@DatabaseField 
 	public float add_amount;
-	 // Creates a column in the database table as a string, named account
-	 //account: Selected account that.
-	 @DatabaseField //Accounts should already be choosen...
-	public String account;
-	 // ... any other fields
+	
+	// Creates a column in the database table as a string, named account
+	//account: Selected account that.
+	//@DatabaseField //Accounts should already be choosen...
+	//public String account;
+	
 	 
 	public static Dao<DepositMoneyModel, Integer> getDao()
 	{

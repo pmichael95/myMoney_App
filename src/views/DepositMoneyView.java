@@ -32,7 +32,7 @@ public class DepositMoneyView extends View {
 		dataView.amount = amt;
 		notifyObservers(dataView);
 	}
-	
+/*	
 	public void addAccount()
 	{
 		System.out.println("\nWhich account are you depositing into?");
@@ -45,7 +45,7 @@ public class DepositMoneyView extends View {
 		dataView.account = act;
 		notifyObservers(dataView);
 	}
-	
+*/	
 
 	
 	@Override

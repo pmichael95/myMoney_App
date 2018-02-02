@@ -18,7 +18,7 @@ public class DepositMoneyController implements Controller{
 	{
 		initView();
 		initModel();
-		view.addAccount();
+			//view.addAccount();
 		view.DepositEvent();		
 	}
 	
@@ -30,7 +30,7 @@ public class DepositMoneyController implements Controller{
 		
 		// Set the view data's with the new updated information from our model
 		data.amount = model.add_amount;
-		data.account = model.account;
+			//data.account = model.account;
 		
 		// Tell the view to update its ui using the data we just built
 		view.updateUI(data);
@@ -59,7 +59,7 @@ public class DepositMoneyController implements Controller{
 		
 		// Update the model's data from the view's data
 		model.add_amount = viewData.amount;
-		model.account = viewData.account;
+			//model.account = viewData.account;
 		
 		try 
 		{
