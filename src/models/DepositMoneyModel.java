@@ -9,6 +9,17 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.table.DatabaseTable;
 import com.j256.ormlite.table.TableUtils;
 
+/**
+ * 
+ * Following the skeleton code created by Steven, I have created the DepositMoneyModel.
+ * I have temporarily commented out the account Database Field.
+ * 
+ * @author Sabrina
+ * @created 2/1/2018
+ * @updated 2/2/2018
+ *
+ */
+
 
 // This sets the model's/table's name
 @DatabaseTable(tableName = "deposit_money")
@@ -25,11 +36,11 @@ public class DepositMoneyModel {
 	@DatabaseField 
 	public float add_amount;
 	
-	// Creates a column in the database table as a string, named account
-	//account: Selected account that.
-	//@DatabaseField //Accounts should already be choosen...
+	//This attribute has been commented out (account attribute) 
+	/*
+	//@DatabaseField 
 	//public String account;
-	
+	*/
 	 
 	public static Dao<DepositMoneyModel, Integer> getDao()
 	{

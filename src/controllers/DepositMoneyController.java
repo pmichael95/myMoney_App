@@ -7,6 +7,17 @@ import com.j256.ormlite.dao.Dao;
 import models.DepositMoneyModel;
 import views.DepositMoneyView;
 
+/**
+ * 
+ * Following the skeleton code created by Steven, I have created the DepositMoneyController.
+ * Currently I have commented out the account attributes, because I have commented out from the 
+ * DepositMoneyView the addAccount methods.
+ * 
+ * @author Sabrina
+ * @created 2/1/2018
+ * @updated 2/2/2018
+ *
+ */
 public class DepositMoneyController implements Controller{
 
 	private DepositMoneyView view;
