@@ -37,7 +37,7 @@ public class DepositMoneyView extends View {
 	{
 		System.out.println("\nWhich account are you depositing into?");
 		String user_account = keyboard.nextLine();
-		//onAddAccountEvent(user_account);
+		onAddAccountEvent(user_account);
 	}
 	public void onAddAccountEvent(String act)
 	{
