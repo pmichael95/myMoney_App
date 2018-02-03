@@ -98,8 +98,8 @@ Transaction & Ever activiny that sudent performs (spending or depositing money) 
 
 \section{System overview}
 
-
-myMoney application is a simple, personal founds management system. It tracks user's deposits and expenses across different banks and and account within these banks. System is maintained by the user and is not connected to any bank account. 
+\paragraph{h}
+myMoney application is a simple, personal founds management system. It tracks user's deposits and expenses across different banks and and a
 
 \begin{figure}[h!]
 \centering
