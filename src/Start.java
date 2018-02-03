@@ -1,9 +1,10 @@
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 
+import controllers.DisplayBalanceController;
 import controllers.ExampleController;
 import models.DatabaseConnectionSource;
-import models.ExampleModel;
+import models.DisplayBalanceModel;
 
 /**
  * Start is the main entry point to the software
@@ -21,7 +22,7 @@ public class Start {
 		
 		if (source != null) {
 			ExampleController test = new ExampleController();
-			// Once we are done, close the connection to the database 
+			DisplayBalanceController dispaly_balance = new DisplayBalanceController();
 			DatabaseConnectionSource.closeConncetion();
 		} else {
 			System.out.println("Could not make a connection to the database");
