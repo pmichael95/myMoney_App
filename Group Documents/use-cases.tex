@@ -40,13 +40,13 @@ Name & ID Number \\
 \hline\hline
 Alissa Bellerose & 27377320 \\
 Sabrina D'Mello & 27739486 \\
-Melanie Damilig & \\
+Melanie Damilig & 40032420 \\
 Tobi Decary-Larocque & 27407645 \\
 Zain Farookhi & 26390684 \\
 Giulia Gaudio & 27191766 \\
 Jason Kalec & 40009464 \\
 Damian Kazior & 40016168 \\
-Johnny Mak & \\
+Johnny Mak & 40002140 \\
 Philip Michael & 40004861 \\
 Ramez Nicolas Nahas & 26718108 \\
 Steven Tucci & 40006014 \\
@@ -61,17 +61,45 @@ Shunyu Wang & 40043915 \\
 \section{System}
 
 \subsection{Purpose}
+The purpose of this document is to outline the requirements for the myMoney application. It provides direction and background to anyone involved in developing, testing and maintaining the system.
 
-\subsection{Context}
+The intended audience of this document is decribed in table~\ref{tab:intended_audience}.
+
+\begin{table}[htbp]
+\caption{Intended audience}
+\label{tab:intended_audience}
+\begin{center}
+  \begin{tabular}{|l|p{10cm}|}
+      \hline
+      Reader & Reason\\
+      \hline\hline
+      Users/Customers & Give feedback\\
+      \hline
+      System Developers & Understand the functionality and properties the application contains\\
+      \hline
+      Testers & Test the system\\
+      \hline
+      User Manual Writers & Source material for manuals\\
+      \hline
+      Project Team & Keep track of status of project\\
+      \hline
+  \end{tabular}
+\end{center}
+\end{table}
 
 \subsection{Business Goals}
+Our customers are money-conscious people who would benefit from a system that makes it easier to track how their money moves.
+
+There currently is no efficient way for people to keep on top of their finances. To do it, they must rely on bank statements and receipts, and must learn to navigate through a variety of interfaces to keep track of different accounts. 
+
+Our system makes it easier for people to control their finances, by allowing them for example to record cash deposits/withdrawals and track income/expenses across various accounts, all in one place.
 
 \section{Domain Concepts}
 
 \begin{figure}[h]
 \centering
 \caption{Domain model}
-\includegraphics[width=160mm]{model.jpg}
+\includegraphics[width=160mm,natwidth=821,natheight=441]{model.jpg}
 \label{fig:model}
 \end{figure}
  
@@ -99,23 +127,158 @@ Transaction & Ever activiny that sudent performs (spending or depositing money) 
 \section{System overview}
 
 
-myMoney application is a simple, personal founds management system. It tracks user's deposits and expenses across different banks and and account within these banks. System is maintained by the user and is not connected to any bank account. 
-
-\begin{figure}[h!]
-\centering
-\includegraphics[width=110mm]{use_case_diagram.jpg}
-\caption{Use Case Diagram}
-\label{fig:use_case_diagram}
-\end{figure}
-
+myMoney application is a simple, personal founds management system. It tracks user's deposits and expenses across different banks and and account within these banks. System is maintained by the user and is not connected to any bank account.
 
 \section{Actors}
-TODO
+
+\begin{table}[H]
+  \caption{User groups}
+  \begin{center}
+    \begin{tabular}{|l|p{8cm}|c|}
+      \hline
+      User Group & Description & Number of Users\\
+      \hline\hline
+      Young adults & Student or adult at an early stage of their career & 1\\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\section{Functional Requirements}
+\begin{table}[H]
+\caption{Functionalities}
+  \begin{center}
+    \begin{tabular}{|l|p{10cm}|}
+      \hline
+      Field & Description\\
+      \hline\hline
+      \bf ID & \bf {F1}\\
+      \hline
+      Ver & 1\\
+      \hline
+      Feature & Transaction\\
+      \hline
+      Requirement & The system must be able to make a transaction from an account\\
+      \hline
+      Source & Team Brainstorm\\
+      \hline
+      Rationale & For a user to keep track of their budget, they must be able to record changes made within an account by adding transactions to said account\\
+      \hline
+      Priority & Must\\
+      \hline
+      Status & Proposed\\
+      \hline
+      Traces to use cases & Withdrawal \& Deposit Amount\\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+\begin{table}
+  \begin{center}
+    \begin{tabular}{|l|p{10cm}|}
+      \hline
+      \bf ID & \bf {F2}\\
+      \hline
+      Ver & 1\\
+      \hline
+      Feature & Transaction\\
+      \hline
+      Requirement & The user may only enter a numeric entry as input for the amount to deposit or withdraw\\
+      \hline
+      Source & User\\
+      \hline
+      Rationale & Monetary value is numerical, therefore we must ensure that input is valid, for system to accept the input\\
+      \hline
+      Priority & Must\\
+      \hline
+      Status & Proposed\\
+      \hline
+      Traces to use cases & Withdrawal \& Deposit Amount\\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+\begin{table}
+  \begin{center}
+    \begin{tabular}{|l|p{10cm}|}
+      \hline
+      \bf ID & \bf {F3}\\
+      \hline
+      Ver & 1\\
+      \hline
+      Feature & Transaction\\
+      \hline
+      Requirement & Transaction should require confirmation before being processed\\
+      \hline
+      Source & Team Brainstorm\\
+      \hline
+      Rationale & To ensure transaction is properly entered, system will prompt the user to confirm the transaction after inputting an amount\\
+      \hline
+      Priority & Must\\
+      \hline
+      Status & Proposed\\
+      \hline
+      Traces to use cases & Withdrawal \& Deposit Amount\\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\section{Non-functional Requirements}
+
+\begin{table}[H]
+  \caption{Non-functional requirements}
+  \begin{center}
+    \begin{tabular}{|l|p{10cm}|}
+      \hline
+      Field & Description\\
+      \hline\hline
+      \bf ID & \bf {D1}\\
+      \hline
+      Ver & 1\\
+      \hline
+      Requirement &All documentation will be found within the source code in the repository\\
+      \hline
+      Source & Team Brainstorm\\
+      \hline
+      Rationale & All documents should be centrally located and accessible by all team members\\
+      \hline
+      Priority & Want\\
+      \hline
+      Status & Implemented\\
+      \hline
+      Traces to use cases & -\\
+      \hline\hline
+      \bf ID & \bf {S1}\\
+      \hline
+      Ver & 1\\
+      \hline
+      Requirement & User's financial information needs to be encrypted in database\\
+      \hline
+      Source & Organizer\\
+      \hline
+      Rationale & System will be handling sensitive information about the user's finances. Data such as account numbers will need to be encrypted for protection\\
+      \hline
+      Priority & Must\\
+      \hline
+      Status & Proposed\\
+      \hline
+      Traces to use cases & -\\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
 \section{Use Cases}
-TODO
+
 \subsection{Overview}
 
-
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=110mm,natwidth=565,natheight=466]{use_case_diagram.jpg}
+  \caption{Use Case Diagram}
+  \label{fig:use_case_diagram}
+\end{figure}
 
 \subsubsection{Use Case 1} \label{uc:1}
 
@@ -157,11 +320,11 @@ User is the owner of the account.
 \noindent
     {\bf Exceptions}\\
     \vspace*{-0.2in}
-\begin{enumerate}
-    \item Account does not exist.
-    \item Account has an empty of negative balance.
-    \item Account contains insufficient funds.
-\end{enumerate}
+\begin{itemize}
+    \item[2a)] Account does not exist.
+    \item[5a)] Account has an empty of negative balance.
+    \item[5b)] Account contains insufficient funds.
+\end{itemize}
     
 
 \noindent
@@ -179,8 +342,8 @@ Add when test cases done.
 \subsubsection{Use Case 2} \label{uc:2}
 
 \noindent
-    {\bf ID}\\
-    UC - MDA - 002
+{\bf ID}\\
+UC - MDA - 002
 
 \noindent
 {\bf Name}\\
@@ -202,20 +365,21 @@ User is owner of the account.
 {\bf Main Scenario}\\
 \vspace*{-0.2in}
 \begin{enumerate}
-\item Primary actor indicates to deposit an amount to a selected account.
-\item System verifies that the account exists.
-\item System prompts user to enter amount to deposit.
-\item System adds amount of money deposited to selected account and confirms.
-\item Use case ends succesfully.
+  \item Primary actor indicates to deposit an amount to a selected account.
+  \item System verifies that the account exists.
+  \item System prompts user to enter amount to deposit.
+  \item System verifies amount is valid.
+  \item System adds amount of money deposited to selected account and confirms.
+  \item Use case ends succesfully.
 \end{enumerate}
 
 \noindent
     {\bf Exceptions}\\
     \vspace{-0.2in}
-    \begin{enumerate}
-    \item Account does not exist.
-    \item Amount is zero or negative.
-    \end{enumerate}
+    \begin{itemize}
+    \item[2a)] Account does not exist.
+    \item[4a)] Amount is zero or negative.
+    \end{itemize}
 
 \noindent
 {\bf Postcondition}\\
@@ -256,16 +420,17 @@ Account exists.
 \vspace*{-0.2in}
 \begin{enumerate}
 \item Primary Actor selects account to be displayed.
+  \item System retrieves account information from database.
 \item System displays balance.
 \end{enumerate}
 
 \noindent
 {\bf Exceptions}\\
 \vspace*{-0.2in}
-\begin{enumerate}
-\item Account does not exist.
-\item System cannot retrieve data for chosen account.
-\end{enumerate}
+\begin{itemize}
+\item[1a)] Account does not exist.
+\item[2a)] System cannot retrieve data for chosen account.
+\end{itemize}
 
 \noindent
 {\bf Postcondition}\\
@@ -279,11 +444,74 @@ Critical.
 {\bf Traces to Test Cases}\\
 Add when test cases done.
 
-\section{Non-Functional Constraints}
+\section{Constraints}
+\begin{table}[H]
+\caption{System Constraints}
+  \begin{center}
+    \begin{tabular}{|l|p{10cm}|}
+      \hline
+      Field & Description\\
+      \hline\hline
+      ID & C1\\
+      \hline
+      Ver & 1\\
+      \hline
+      Constraint & The application must run on any well-known desktop operating system including Apple OS \& Windows\\
+      \hline
+      Source & Team Brainstorm\\
+      \hline
+      Rationale & Serve all users across different operating systems\\
+      \hline
+      Priority & Must\\
+      \hline
+      Status & Proposed\\
+      \hline
+      Traces to use cases & All use cases with a desktop interface\\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
 
-\section{Data Dictionary}
+\section{Solution ideas}
+\begin{table}[H]
+\caption{Solution Idea I}
+  \begin{center}
+    \begin{tabular}{|l|p{10cm}|}
+      \hline
+      Field & Description\\
+      \hline\hline
+      ID & SI1\\
+      \hline
+      Ver & 1\\
+      \hline
+      Solution idea & Total amount of withdrawals \& deposits could be displayed using charts\\
+      \hline
+      Source & Team Brainstorm\\
+      \hline
+      Rationale & When evaluating interesting budgeting applications, use of charts offers quick and clear overview of the user's financial situation\\
+      \hline
+      Traces to use cases & Display balance\\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\section{Acronyms and Abbreviations}
+\begin{table}[H]
+  \begin{tabular}{l l}
+    \bf{C} x & Constraint x\\
+    \bf{ChAc} & Chequing Account\\
+    \bf{DBA} & Display Balance\\
+    \bf{F} x & Functionality x\\
+    \bf{MDA} & Money Deposit\\
+    \bf{MWA} & Money Withdrawal\\
+    \bf{SavAc} & Savings Account\\
+    \bf{SI} x & Solution Idea x\\
+  \end{tabular}
+\end{table}
 
 \section{References}
+We obtained an example User Requirements Document from the website http://www.soberit.hut.fi/T-76.115/05-06/ohjeet/template/requirements.html .
 
 \appendix
 
