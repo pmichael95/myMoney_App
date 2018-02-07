@@ -72,6 +72,7 @@ public class WithdrawMoneyController implements Controller {
 		WithdrawMoneyView.WithdrawMoneyViewData data = new WithdrawMoneyView.WithdrawMoneyViewData();
 		// Set the view data's with the new updated information from our model
 		data.amount = model.withdrawAmount;
+		data.type   = model.withdrawType;
 		// Tell the view to update its ui using the data we just built
 		view.updateUI(data);
 	}
@@ -85,6 +86,7 @@ public class WithdrawMoneyController implements Controller {
 		WithdrawMoneyView.WithdrawMoneyViewData viewData  = ((WithdrawMoneyView.WithdrawMoneyViewData)data);
 		// Update the model's data from the view's data
 		model.withdrawAmount = viewData.amount;
+		model.withdrawType   = viewData.type;
 		
 		try {
 			// Tell the dao to create or update the model with our new data

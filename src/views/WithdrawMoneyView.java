@@ -19,6 +19,7 @@ public class WithdrawMoneyView extends View {
 		//Data to be passed to controller
 		
 		public float amount;
+		public String type;
 	}
 	
 	/**
@@ -31,18 +32,22 @@ public class WithdrawMoneyView extends View {
 	public void WithdrawEvent() {
 		// You wouldn't have this in your implementation
 		// this was just here to cause an event to trigger. the cause of an event might be a button press, or ui event
-		System.out.println("Please Enter Withdraw Amount");
+		System.out.println("Please Enter Withdraw Amount: ");
 		float withdrawAmount = keyboard.nextFloat();
+		
+		System.out.println("Please Enter Withdraw Type: ");
+		String withdrawType = keyboard.next();
 		// Fire an event
-		OnWithdrawEvent(withdrawAmount);
+		OnWithdrawEvent(withdrawAmount, withdrawType);
 	}
 	
-	private void OnWithdrawEvent(float withdrawAmount) {
+	private void OnWithdrawEvent(float withdrawAmount, String withdrawType) {
 		// Create a new data container holding state about our view currently
 		WithdrawMoneyViewData data = new WithdrawMoneyViewData();
 		// get the input data from the textfields or anything other ui data
 		// and add it to the data container
 		data.amount = withdrawAmount;
+		data.type   = withdrawType;
 		// once the data container has all the necessary data for the controller to handle
 		// notify the observer of the data change
 		notifyObservers(data);

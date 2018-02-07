@@ -30,6 +30,9 @@ public class WithdrawMoneyModel {
 	 @DatabaseField
 	public float withdrawAmount;
 	 
+	 @DatabaseField
+	public String withdrawType;
+	 
 	//Create more fields such as account balance following withdraw and from which account it was withdrawn
 	 //@DatabaseField
 	//public float newAccountBalance;
