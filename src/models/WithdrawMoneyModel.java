@@ -37,10 +37,10 @@ public class WithdrawMoneyModel {
 	public int id;
 	// Creates a column in the database table as an int, named field1
 	 @DatabaseField
-	public int field1;
+	public float withdrawAmount;
 	 // Creates a column in the database table as a string, named field2
-	 @DatabaseField
-	public String field2;
+	 //@DatabaseField
+	//public String field2;
 	 // ... any other fields
 	 
 

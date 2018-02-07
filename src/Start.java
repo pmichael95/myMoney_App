@@ -22,7 +22,7 @@ public class Start {
 		
 		
 		if (source != null) {
-			ExampleController test = new ExampleController();
+			//ExampleController test = new ExampleController();
 			WithdrawMoneyController withdrawController = new WithdrawMoneyController();
 			// Once we are done, close the connection to the database 
 			DatabaseConnectionSource.closeConncetion();

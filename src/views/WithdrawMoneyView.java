@@ -50,7 +50,7 @@ public class WithdrawMoneyView extends View {
 		// The passed object is never used again
 		
 		// A simple data field
-		public int aField;
+		public float amount;
 		// ... Any data fields you want to pass to the controller
 		// These could be primitives,strings, or other objects
 	}
@@ -68,26 +68,29 @@ public class WithdrawMoneyView extends View {
 	 * Then, your button should implement some sort of event listener. When the event is fired you may want to take all the inputs and send it to the controller.
 	 * In order to do that then perform something similar to what this example code is doing below
 	 */
-	private void OnEvent(int i) {
+	
+	public void WithdrawEvent() {
+		// You wouldn't have this in your implementation
+		// this was just here to cause an event to trigger. the cause of an event might be a button press, or ui event
+		System.out.println("Please Enter Withdraw Amount");
+		float withdrawAmount = keyboard.nextFloat();
+		// Fire an event
+		OnWithdrawEvent(withdrawAmount);
+	}
+	
+	private void OnWithdrawEvent(float withdrawAmount) {
 		// Create a new data container holding state about our view currently
 		WithdrawMoneyViewData data = new WithdrawMoneyViewData();
 		// get the input data from the textfields or anything other ui data
 		// and add it to the data container
-		data.aField = i;
+		data.amount = withdrawAmount;
 		// once the data container has all the necessary data for the controller to handle
 		// notify the observer of the data change
 		notifyObservers(data);
 	}
 	
 
-	public void causeEvent() {
-		// You wouldn't have this in your implementation
-		// this was just here to cause an event to trigger. the cause of an event might be a button press, or ui event
-		System.out.println("enter an integer");
-		int myint = keyboard.nextInt();
-		// Fire an event
-		OnEvent(myint);
-	}
+	
 
 	/**
 	 * Update this view with the new data 
@@ -101,7 +104,7 @@ public class WithdrawMoneyView extends View {
 		WithdrawMoneyViewData viewData = (WithdrawMoneyViewData) data;
 		// Extract all the data out of the container and update the ui with new data
 		// In the case of this example, since we are using the console, we are just printing out the new data
-		System.out.println("Test " + viewData.aField);
+		System.out.println("(Test)Amount Withdrawn " + viewData.amount);
 		
 	}
 	
