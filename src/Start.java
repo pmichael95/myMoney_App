@@ -23,6 +23,7 @@ public class Start {
 		if (source != null) {
 			//ExampleController test = new ExampleController();
 			DepositMoneyController deposit_money = new DepositMoneyController(); //added by Sabrina
+			
 			// Once we are done, close the connection to the database 
 			DatabaseConnectionSource.closeConncetion();
 		} else {

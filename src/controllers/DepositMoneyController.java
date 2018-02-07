@@ -13,9 +13,11 @@ import views.DepositMoneyView;
  * Currently I have commented out the account attributes, because I have commented out from the 
  * DepositMoneyView the addAccount methods.
  * 
- * @author Sabrina
+ * Added an extra field (Deposit Type) essential to our Database
+ * 
+ * @author Sabrina, Johnny
  * @created 2/1/2018
- * @updated 2/2/2018
+ * @updated 2/7/2018
  *
  */
 public class DepositMoneyController implements Controller{
@@ -29,7 +31,7 @@ public class DepositMoneyController implements Controller{
 	{
 		initView();
 		initModel();
-			//view.addAccount();
+		//view.addAccount();
 		view.DepositEvent();		
 	}
 	
@@ -41,7 +43,8 @@ public class DepositMoneyController implements Controller{
 		
 		// Set the view data's with the new updated information from our model
 		data.amount = model.add_amount;
-			//data.account = model.account;
+		//data.account = model.account;
+		data.type = model.add_type;
 		
 		// Tell the view to update its ui using the data we just built
 		view.updateUI(data);
@@ -70,7 +73,8 @@ public class DepositMoneyController implements Controller{
 		
 		// Update the model's data from the view's data
 		model.add_amount = viewData.amount;
-			//model.account = viewData.account;
+		//model.account  = viewData.account;
+		model.add_type   = viewData.type;
 		
 		try 
 		{
