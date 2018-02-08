@@ -3,8 +3,10 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
 
 import controllers.DepositMoneyController;
 import controllers.ExampleController;
+import controllers.WithdrawMoneyController;
 import models.DatabaseConnectionSource;
 import models.ExampleModel;
+import models.WithdrawMoneyModel;
 
 /**
  * Start is the main entry point to the software
@@ -22,8 +24,12 @@ public class Start {
 		
 		if (source != null) {
 			//ExampleController test = new ExampleController();
+
+			WithdrawMoneyController withdrawController = new WithdrawMoneyController();
+
 			DepositMoneyController deposit_money = new DepositMoneyController(); //added by Sabrina
 			
+
 			// Once we are done, close the connection to the database 
 			DatabaseConnectionSource.closeConncetion();
 		} else {
