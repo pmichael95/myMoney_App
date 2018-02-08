@@ -2,9 +2,19 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 
 import controllers.DisplayBalanceController;
-import controllers.ExampleController;
+import controllers.DepositMoneyController;
+import controllers.WithdrawMoneyController;
+
+// import controllers.ExampleController;
+
 import models.DatabaseConnectionSource;
 import models.DisplayBalanceModel;
+import models.WithdrawMoneyModel;
+import models.DepositMoneyModel;
+
+// import models.ExampleModel;
+
+
 
 /**
  * Start is the main entry point to the software
@@ -21,8 +31,15 @@ public class Start {
 		
 		
 		if (source != null) {
-			ExampleController test = new ExampleController();
+			//ExampleController test = new ExampleController();
+
+			WithdrawMoneyController withdrawController = new WithdrawMoneyController();
+
+			DepositMoneyController deposit_money = new DepositMoneyController(); //added by Sabrina
+			
 			DisplayBalanceController dispaly_balance = new DisplayBalanceController();
+			
+			// Once we are done, close the connection to the database 
 			DatabaseConnectionSource.closeConncetion();
 		} else {
 			System.out.println("Could not make a connection to the database");

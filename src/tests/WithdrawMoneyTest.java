@@ -19,7 +19,7 @@ import junit.framework.Assert;
  * And every unit test, tests one method/function/operation. It should not test multiple things at the same time
  * 
  */
-public class ExampleTest {
+public class WithdrawMoneyTest {
 
 	@Test
 	public void ExampleTest1() {
@@ -38,8 +38,8 @@ public class ExampleTest {
 	
 	
 	@Test
-	public void ExampleTest2() {
-		//fail("example failed test");
+	public void WithdrawTest() {
+		fail("example failed test");
 	}
 	
 	

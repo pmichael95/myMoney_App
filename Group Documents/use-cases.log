@@ -1,0 +1,126 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=latex 2017.8.22)  6 FEB 2018 18:19
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**use-cases.tex
+(./use-cases.tex
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 3 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: dvips.def on input line 95.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvips.def
+File: dvips.def 2015/12/30 v3.0k Driver-dependent file (DPC,SPQR)
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count87
+\float@exts=\toks15
+\float@box=\box26
+\@float@everytoks=\toks16
+\@floatcapt=\box27
+) (./use-cases.aux)
+\openout1 = `use-cases.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 37.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 37.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 37.
+
+[1
+
+]
+File: model.jpg Graphic file (type eps)
+ <model.jpg>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (52.45276pt too wide) in paragraph at lines 111--124
+ [] 
+ []
+
+[2
+
+] [3] [4] [5]
+File: use_case_diagram.jpg Graphic file (type eps)
+ <use_case_diagram.jpg>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 285--288
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 289--292
+
+ []
+
+[6] [7] [8] [9] [10]
+Overfull \hbox (59.0617pt too wide) in paragraph at lines 514--515
+\OT1/cmr/m/n/12 We ob-tained an ex-am-ple User Re-quire-ments Doc-u-ment from t
+he web-site http://www.soberit.hut.fi/T-
+ []
+
+[11] (./use-cases.aux) ) 
+Here is how much of TeX's memory you used:
+ 624 strings out of 494954
+ 7486 string characters out of 6181003
+ 66778 words of memory out of 5000000
+ 3960 multiletter control sequences out of 15000+600000
+ 7894 words of font info for 28 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 25i,9n,19p,256b,270s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on use-cases.dvi (11 pages, 19556 bytes).
