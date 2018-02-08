@@ -24,12 +24,12 @@ public class Start {
 		
 		if (source != null) {
 			//ExampleController test = new ExampleController();
-<<<<<<< HEAD
+
 			WithdrawMoneyController withdrawController = new WithdrawMoneyController();
-=======
+
 			DepositMoneyController deposit_money = new DepositMoneyController(); //added by Sabrina
 			
->>>>>>> master
+
 			// Once we are done, close the connection to the database 
 			DatabaseConnectionSource.closeConncetion();
 		} else {
