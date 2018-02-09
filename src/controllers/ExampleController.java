@@ -137,6 +137,12 @@ public class ExampleController implements Controller {
 		updateView();
 	}
 
+	@Override
+	public void updateModel(Object data) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 }

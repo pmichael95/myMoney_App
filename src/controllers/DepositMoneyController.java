@@ -32,7 +32,7 @@ public class DepositMoneyController implements Controller{
 		initView();
 		initModel();
 		//view.addAccount();
-		view.DepositEvent();		
+		//view.DepositEvent();		
 	}
 	
 	
@@ -69,6 +69,18 @@ public class DepositMoneyController implements Controller{
 	public void update(Object data) 
 	{
 		
+		updateModel(data);
+		
+		// Since our model has changed now, we need to tell the view to update its ui
+		updateView();
+		
+	}
+
+
+	@Override
+	public void updateModel(Object data) {
+		// TODO Auto-generated method stub
+		
 		DepositMoneyView.DepositMoneyViewData viewData  = ((DepositMoneyView.DepositMoneyViewData)data);
 		
 		// Update the model's data from the view's data
@@ -84,10 +96,6 @@ public class DepositMoneyController implements Controller{
 		{
 			e.printStackTrace();
 		}
-		
-		// Since our model has changed now, we need to tell the view to update its ui
-		updateView();
-		
 	}
 
 }

@@ -63,4 +63,5 @@ public interface Controller extends Observer {
 	@Override
 	void update(Object data);
 	
+	void updateModel(Object data);
 }

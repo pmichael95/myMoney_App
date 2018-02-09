@@ -35,7 +35,7 @@ public class WithdrawMoneyController implements Controller {
 		initView();
 		initModel();
 		
-		view.WithdrawEvent();
+		// view.WithdrawEvent();
 	}
 	
 	/**
@@ -82,6 +82,16 @@ public class WithdrawMoneyController implements Controller {
 	 */
 	@Override
 	public void update(Object data) {
+		updateModel(data);
+		
+		// Since our model has changed now, we need to tell the view to update its ui
+		updateView();
+	}
+	
+	@Override
+	public void updateModel(Object data) {
+		// TODO Auto-generated method stub
+		
 		// Cast our data into the WithdrawMoneyViewData
 		WithdrawMoneyView.WithdrawMoneyViewData viewData  = ((WithdrawMoneyView.WithdrawMoneyViewData)data);
 		// Update the model's data from the view's data
@@ -95,11 +105,6 @@ public class WithdrawMoneyController implements Controller {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		// Since our model has changed now, we need to tell the view to update its ui
-		updateView();
 	}
-
-	
 
 }

@@ -68,28 +68,38 @@ public class DisplayBalanceController implements Controller{
 	 */
 	@Override
 	public void update(Object data) {
-		// Cast our data into the ExampleViewData
-		DisplayBalanceView.DisplayBalanceViewData viewData  = ((DisplayBalanceView.DisplayBalanceViewData)data);
-		//the account user selected to show balance
-		String account = viewData.account;
-			
-		// iterate through all rows in display_balance table until find the matched one
-		CloseableIterator<DisplayBalanceModel> iterator = dao.closeableIterator();
-		try {
-			while (iterator.hasNext()) {
-				DisplayBalanceModel model = iterator.next();
-				if (model.account.equals(account)) {
-					this.model = model;
-				}
-			}
-		} finally {
-			try {
-				iterator.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}		
+				
+		updateModel(data);
+		
 		// Since our model has changed now, we need to tell the view to update its ui
 		updateView();
+	}
+
+
+	@Override
+	public void updateModel(Object data) {
+		// TODO Auto-generated method stub
+		
+		// Cast our data into the ExampleViewData
+				DisplayBalanceView.DisplayBalanceViewData viewData  = ((DisplayBalanceView.DisplayBalanceViewData)data);
+				//the account user selected to show balance
+				String account = viewData.account;
+					
+				// iterate through all rows in display_balance table until find the matched one
+				CloseableIterator<DisplayBalanceModel> iterator = dao.closeableIterator();
+				try {
+					while (iterator.hasNext()) {
+						DisplayBalanceModel model = iterator.next();
+						if (model.account.equals(account)) {
+							this.model = model;
+						}
+					}
+				} finally {
+					try {
+						iterator.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
 	}
 }
