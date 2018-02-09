@@ -29,7 +29,6 @@ public class Start {
 		// Get a connection to our database before we start any ui
 		JdbcConnectionSource source = DatabaseConnectionSource.getConnection();
 		
-		
 		if (source != null) {
 			//ExampleController test = new ExampleController();
 

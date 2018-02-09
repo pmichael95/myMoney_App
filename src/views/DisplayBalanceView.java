@@ -21,7 +21,12 @@ public class DisplayBalanceView extends View {
 	/**
 	 * Initialize any view logic or necessary components for this view to work. such as buttons, event listeners
 	 */
-	public DisplayBalanceView() {}
+	public DisplayBalanceView() {	}
+	
+	
+	public void DisplayEvent() {
+		onDisplayEvent("Chequing");
+	}
 	
 	
 	/**

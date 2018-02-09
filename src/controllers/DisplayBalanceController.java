@@ -31,6 +31,8 @@ public class DisplayBalanceController implements Controller{
 	public DisplayBalanceController() {
 		initView();
 		initModel();
+		
+		view.DisplayEvent();
 	}
 	
 	
