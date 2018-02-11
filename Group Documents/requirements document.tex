@@ -17,8 +17,10 @@
 \belowdisplayshortskip=2mm
 \normalbaselineskip=12pt
 \normalbaselines
+
 \usepackage{graphicx}
 \usepackage{float}
+
 \begin{document}
 
 \vspace*{0.5in}
@@ -63,7 +65,7 @@ Shunyu Wang & 40043915 \\
 \subsection{Purpose}
 The purpose of this document is to outline the requirements for the myMoney application. It provides direction and background to anyone involved in developing, testing and maintaining the system.
 
-The intended audience of this document is decribed in table~\ref{tab:intended_audience}.
+The intended audience of this document is described in table~\ref{tab:intended_audience}.
 
 \begin{table}[htbp]
 \caption{Intended audience}
@@ -97,10 +99,10 @@ Our system makes it easier for people to control their finances, by allowing the
 \section{Domain Concepts}
 
 \begin{figure}[h]
-\centering
-\caption{Domain model}
-\includegraphics[width=160mm,natwidth=821,natheight=441]{model.jpg}
-\label{fig:model}
+  \centering
+  \includegraphics[width=100mm,natwidth=471,natheight=321]{model.jpg}
+  \caption{Domain model}
+  \label{fig:model}
 \end{figure}
  
  
@@ -108,19 +110,19 @@ Our system makes it easier for people to control their finances, by allowing the
 \begin{table}[H]
 \caption{Main domain concepts}
 \begin{center}
-\begin{tabular}{|p{3cm}|p{14cm}|}
+\begin{tabular}{|p{3cm}|p{12cm}|}
 \hline
 Concept & Description \\
 \hline\hline
-Student & Main user of the system. Student manually keeps the system up to date by entering every transaction performed during his day to day activities  \\
+Student & Main user of the system. Student manually keeps the system up to date by entering every transaction performed during his day to day activities.  \\
 \hline
-Deposit & An action performed by the student. Whenever he receives money, student indicates that amount in myMoney app as a deposit \\
+Deposit & An action performed by the student. Whenever they receive money, student indicates that amount in myMoney app as a deposit. \\
 \hline
-Withdrawal & Every time student spends money, withdrawal object is created. It can be a type of credit card purchase or paying a bill \\
+Withdrawal & Every time student spends money, withdrawal object is created. It can be a type of credit card purchase or paying a bill. \\
 \hline
-Bill & Cash payment that student performs. Amount of bill paid in cash must be entered manually \\
+Bill & Cash payment that student performs. Amount of bill paid in cash must be entered manually. \\
 \hline
-Credit card & Indicate credit card purchase. Every credit card payment is manually entered into myMoney app \\
+Credit card & Indicate credit card purchase. Every credit card payment is manually entered into myMoney app. \\
 \hline
 \end{tabular}
 \end{center}
@@ -129,7 +131,7 @@ Credit card & Indicate credit card purchase. Every credit card payment is manual
 \section{System overview}
 
 
-myMoney application is a simple, personal founds management system. It tracks user's deposits and expenses across different banks and and account within these banks. System is maintained by the user and is not connected to any bank account.
+The myMoney application is a simple, personal funds management system. It tracks a user's deposits and expenses across different banks and accounts within these banks. System is maintained by the user and is not connected to any bank account.
 
 \section{Actors}
 
@@ -156,7 +158,7 @@ myMoney application is a simple, personal founds management system. It tracks us
       \hline\hline
       \bf ID & \bf {F1}\\
       \hline
-      Ver & 1\\
+      Version & 1\\
       \hline
       Feature & Transaction\\
       \hline
@@ -181,7 +183,7 @@ myMoney application is a simple, personal founds management system. It tracks us
       \hline
       \bf ID & \bf {F2}\\
       \hline
-      Ver & 1\\
+      Version & 1\\
       \hline
       Feature & Transaction\\
       \hline
@@ -206,7 +208,7 @@ myMoney application is a simple, personal founds management system. It tracks us
       \hline
       \bf ID & \bf {F3}\\
       \hline
-      Ver & 1\\
+      Version & 1\\
       \hline
       Feature & Transaction\\
       \hline
@@ -271,6 +273,7 @@ myMoney application is a simple, personal founds management system. It tracks us
   \end{center}
 \end{table}
 
+\break
 \section{Use Cases}
 
 \subsection{Overview}
@@ -324,7 +327,7 @@ User is the owner of the account.
     \vspace*{-0.2in}
 \begin{itemize}
     \item[2a)] Account does not exist.
-    \item[5a)] Account has an empty of negative balance.
+    \item[5a)] Account has an empty or negative balance.
     \item[5b)] Account contains insufficient funds.
 \end{itemize}
     
@@ -337,9 +340,9 @@ The amount is subtracted from the selected account.
 {\bf Priority}\\
 Critical.   
 
-\noindent
-{\bf Traces to Test Cases}\\
-Add when test cases done.
+%\noindent
+%{\bf Traces to Test Cases}\\
+%Add when test cases done.
 
 \subsubsection{Use Case 2} \label{uc:2}
 
@@ -391,9 +394,9 @@ The amount is added to the selected account.
 {\bf Priority}\\
 Critical.
 
-\noindent
-{\bf Traces to Test Cases}\\
-Add when test cases done.
+%\noindent
+%{\bf Traces to Test Cases}\\
+%Add when test cases done.
 
 \subsubsection{Use Case 3} \label{uc:3}
 
@@ -442,9 +445,9 @@ Account balance is displayed for user.
 {\bf Priority}\\
 Critical.
 
-\noindent
-{\bf Traces to Test Cases}\\
-Add when test cases done.
+%\noindent
+%{\bf Traces to Test Cases}\\
+%Add when test cases done.
 
 \section{Constraints}
 \begin{table}[H]
@@ -513,16 +516,16 @@ Add when test cases done.
 \end{table}
 
 \section{References}
-We obtained an example User Requirements Document from the website http://www.soberit.hut.fi/T-76.115/05-06/ohjeet/template/requirements.html .
+We obtained an example \textit{User Requirements Document} from the website http://www.soberit.hut.fi/T-76.115/05-06/ohjeet/template/requirements.html.
 
 \appendix
 
-\section{Description of File Format: Tasks}
+%\section{Description of File Format: Tasks}
 
-Describe input file format.
+%Describe input file format.
 
-\section{Description of File Format: Persons}
+%\section{Description of File Format: Persons}
 
-Describe output file format.
+%Describe output file format.
 
 \end{document}
