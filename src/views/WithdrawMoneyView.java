@@ -6,11 +6,13 @@ import java.util.Scanner;
  * 
  * This will update the system GUI with the new information following a Withdraw event 
  * 
- * @author Steven Tucci || Jason Kalec
+ * @author Jason Kalec
+ * @modifiedBy Johnny Mak
  * @created 2/6/2018
- * @updated 2/7/2018
+ * @updated 2/11/2018
  * 
  */
+
 public class WithdrawMoneyView extends View {
 	private Scanner keyboard;
 

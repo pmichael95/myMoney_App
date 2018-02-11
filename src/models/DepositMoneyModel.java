@@ -16,10 +16,10 @@ import com.j256.ormlite.table.TableUtils;
  * 
  * Added an extra field (Deposit Type) essential to our Database
  * 
- * @author Sabrina, Johnny
+ * @author Sabrina D'Mello
+ * @modifiedBy Johnny Mak
  * @created 2/1/2018
- * @updated 2/7/2018
- *
+ * @updated 2/11/2018
  */
 
 
@@ -38,25 +38,20 @@ public class DepositMoneyModel {
 	@DatabaseField 
 	public float add_amount;
 	
-	// Creates a column in the database table as a string, named add_type
-	// add_type: the deposit type (Income, Loan, Gift, etc.)
-	@DatabaseField 
-	public String add_type;
-	
 	/**
 	 * Added Extra Field to our database
 	 * Addition: Deposit Type (Income, Loan, Gift, etc.)
 	 */
 	
+	// Creates a column in the database table as a string, named add_type
+	// add_type: the deposit type (Income, Loan, Gift, etc.)
+	@DatabaseField 
+	public String add_type;
+
 	
-	
-	
-	//This attribute has been commented out (account attribute) 
-	/*
-	//@DatabaseField 
-	//public String account;
-	*/
-	 
+	/**
+	 * Function that returns DAO (Database Access Object 
+	 */
 	public static Dao<DepositMoneyModel, Integer> getDao()
 	{
 		try {

@@ -16,9 +16,10 @@ import views.DepositMoneyView.DepositMoneyViewData;
  * 
  * Created to Test the DepositMoney use cases...
  * 
- * @author Sabrina, Johnny
+ * @author Sabrina
+ * @modifiedBy Johnny Mak
  * @created 2/1/2018
- * @updated 2/2/2018
+ * @updated 2/11/2018
  *
  */
 

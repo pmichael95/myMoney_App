@@ -15,9 +15,10 @@ import views.DepositMoneyView;
  * 
  * Added an extra field (Deposit Type) essential to our Database
  * 
- * @author Sabrina, Johnny
+ * @author Sabrina D'Mello
+ * @modifiedBy Johnny Mak
  * @created 2/1/2018
- * @updated 2/7/2018
+ * @updated 2/11/2018
  *
  */
 public class DepositMoneyController implements Controller{
@@ -76,7 +77,9 @@ public class DepositMoneyController implements Controller{
 		
 	}
 
-
+	/**
+	 * Function to update the model once a change has been made 
+	 */
 	@Override
 	public void updateModel(Object data) {
 		// TODO Auto-generated method stub

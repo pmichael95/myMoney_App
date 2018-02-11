@@ -4,11 +4,13 @@ package views;
 /**
  * Display Balance View 
  * 
- * @author Steven Tucci, Shunyu Wang
+ * @author Shunyu Wang
+ * @modifiedBy Johnny Mak
  * @created 1/29/2018
- * @updated 1/29/2018
+ * @updated 2/11/2018
  * 
  */
+
 public class DisplayBalanceView extends View {
 
 	//Nested Data Class
@@ -41,7 +43,6 @@ public class DisplayBalanceView extends View {
 
 	/**
 	 * Show the balance of selected account
-	 * 
 	 * 
 	 * @param data, the new updated data passed from the controller
 	 * @see views.View#updateUI(java.lang.Object)

@@ -31,9 +31,9 @@ public class DisplayBalanceModel {
 
 	 
 
-	 /**
-	  * @return returns a dao object
-	  */
+	/**
+	 * Function that returns DAO (Database Access Object 
+	 */
 	 public static Dao<DisplayBalanceModel, Integer> getDao() {
 		try {
 			// Get a connection

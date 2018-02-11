@@ -12,9 +12,10 @@ import views.ExampleView.ExampleViewData;
  * 
  * Added an extra field essential to our Database 
  * 
- * @author Sabrina, Johnny
+ * @author Sabrina D'Mello
+ * @modifiedBy Johnny Mak
  * @created 2/1/2018
- * @updated 2/7/2018
+ * @updated 2/11/2018
  *
  */
 public class DepositMoneyView extends View {
@@ -58,24 +59,9 @@ public class DepositMoneyView extends View {
 	}
 	
 	
-	//For now I have commented this out, because I think we will have to make another use case eventually, were the user will have to 
-	//add their own accounts, and then later we can edit this use cause to allow the user to choose an account
-/*	
-	public void addAccount()
-	{
-		System.out.println("\nWhich account are you depositing into?");
-		String user_account = keyboard.nextLine();
-		onAddAccountEvent(user_account);
-	}
-	public void onAddAccountEvent(String act)
-	{
-		DepositMoneyViewData dataView = new DepositMoneyViewData();
-		dataView.account = act;
-		notifyObservers(dataView);
-	}
-*/	
-
-	
+	/**
+	 * Update this view with the new data 
+	 */
 	@Override
 	public void updateUI(Object data) {
 			// Cast the data to our example view data container

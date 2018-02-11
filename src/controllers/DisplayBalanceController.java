@@ -8,12 +8,13 @@ import com.j256.ormlite.dao.Dao;
 import models.DisplayBalanceModel;
 import views.DisplayBalanceView;
 
-/*
+/**
  * DisplayBalanceController
  * 
- * @author Steven Tucci, Shunyu Wang
+ * @author Shunyu Wang
+ * @modifiedBy Johnny Mak
  * @created 1/29/2018
- * @updated 1/29/2018
+ * @updated 2/11/2018
  */
 
 
@@ -77,7 +78,9 @@ public class DisplayBalanceController implements Controller{
 		updateView();
 	}
 
-
+	/**
+	 * Function to update the model once a change has been made 
+	 */
 	@Override
 	public void updateModel(Object data) {
 		// TODO Auto-generated method stub

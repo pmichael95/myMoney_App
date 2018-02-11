@@ -14,9 +14,10 @@ import models.DatabaseConnectionSource;
  * 
  * The controller for withdraw which will handle changes to the model as well as updating the view
  *
- * @author Steven Tucci || Jason Kalec
+ * @author Jason Kalec
+ * @modifiedBy Johnny Mak
  * @created 2/6/2018
- * @updated 2/7/2018
+ * @updated 2/11/2018
  */
 public class WithdrawMoneyController implements Controller {
 	
@@ -88,6 +89,9 @@ public class WithdrawMoneyController implements Controller {
 		updateView();
 	}
 	
+	/**
+	 * Function to update the model once a change has been made 
+	 */
 	@Override
 	public void updateModel(Object data) {
 		// TODO Auto-generated method stub

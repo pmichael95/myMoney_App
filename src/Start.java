@@ -20,8 +20,9 @@ import models.DepositMoneyModel;
  * Start is the main entry point to the software
  * 
  * @author Steven Tucci
+ * @modifiedBy Johnny Mak, Sabrina D'Mello, Shunyu Wang
  * @created 1/29/2018
- * @lastUpdated 1/29/2018 
+ * @lastUpdated 2/11/2018 
  */
 public class Start {
 	
