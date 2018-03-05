@@ -356,7 +356,7 @@ Deposit Money.
 
 \noindent
 {\bf Goal}\\
-User succesfully deposits an amount of money the selected account.
+User succesfully deposits an amount of money to the selected account.
 
 \noindent
 {\bf Actors}\\
@@ -440,6 +440,168 @@ Account exists.
 \noindent
 {\bf Postcondition}\\
 Account balance is displayed for user.
+
+\noindent
+{\bf Priority}\\
+Critical.
+
+\subsubsection{Use Case 4} \label{uc:4}
+
+\noindent
+{\bf ID}\\
+UC - DA - 004
+
+\noindent
+{\bf Name}\\
+Delete Account.
+
+\noindent
+{\bf Goal}\\
+User deletes selected account.
+
+\noindent
+{\bf Actors}\\
+Primary Actor - owner of the account.
+
+\noindent
+{\bf Precondition}\\
+User is owner of the account.
+At least one account exists.
+
+\noindent
+{\bf Main Scenario}\\
+\vspace*{-0.2in}
+\begin{enumerate}
+\item User indicates to delete the selected account.
+\item System verifies that the selected account exists
+\item System prompts the user for confirmation.
+\item User confirms.
+\item System deletes selected account.
+  \item Use case ends successfully.
+\end{enumerate}
+
+\noindent
+    {\bf Exceptions}\\
+    \vspace{-0.2in}
+    \begin{itemize}
+    \item[1a)] There is no account.
+    \end{itemize}
+
+\noindent
+{\bf Postcondition}\\
+Selected account is deleted.
+
+\noindent
+{\bf Priority}\\
+Critical.
+
+\subsubsection{Use Case 5} \label{uc:5}
+
+\noindent
+{\bf ID}\\
+UC - SRA - 002
+
+\noindent
+{\bf Name}\\
+Set Up Recurring Payment.
+
+\noindent
+{\bf Goal}\\
+User can set up recurring payments.
+
+\noindent
+{\bf Actors}\\
+Primary Actor - owner of the account.
+
+\noindent
+{\bf Precondition}\\
+User is owner of the account.
+At least one account exists.
+
+\noindent
+{\bf Main Scenario}\\
+\vspace*{-0.2in}
+\begin{enumerate}
+  \item User indicates to set up a recurring payment.
+  \item User chooses the appropriate account.
+  \item System prompts user to enter the amount of payment.
+  \item User enters amount of payment.
+  \item System verifies amount is valid.
+  \item User selects start date.
+  \item User selects payment frequency.
+  \item System prompts user for confirmation.
+  \item User confirms.
+  \item Use case ends succesfully.
+\end{enumerate}
+
+\noindent
+    {\bf Exceptions}\\
+    \vspace{-0.2in}
+    \begin{itemize}
+    \item[1a)] There is no account.
+    \item[5a)] Amount is zero or negative.
+    \item[9a)] User cancels or does not confirm.
+    \end{itemize}
+
+\noindent
+{\bf Postcondition}\\
+System records recurring payment information and initiates \underline{Money Withdrawal} accordingly.
+
+\noindent
+{\bf Priority}\\
+Critical.
+
+\subsubsection{Use Case 6} \label{uc:6}
+
+\noindent
+{\bf ID}\\
+UC - ETR - 006
+
+\noindent
+{\bf Name}\\
+Edit transaction.
+
+\noindent
+{\bf Goal}\\
+User can alter an existing transaction.
+
+\noindent
+{\bf Actors}\\
+Primary Actor - owner of the account.
+
+\noindent
+{\bf Precondition}\\
+User is owner of the account.
+At least one account exists.
+At least one transaction has been saved.
+
+\noindent
+{\bf Main Scenario}\\
+\vspace*{-0.2in}
+\begin{enumerate}
+  \item User indicates to modify a transaction.
+  \item User chooses the appropriate account.
+  \item User selects transaction to modify.
+  \item System prompts user for confirmation.
+  \item User confirms.
+  \item User enters new amount and confirms.
+  \item System prompts user for confirmation with details.
+  \item User confirms.
+  \item Use case ends succesfully.
+\end{enumerate}
+
+\noindent
+    {\bf Exceptions}\\
+    \vspace{-0.2in}
+    \begin{itemize}
+    \item[2a)] There is no account.
+    \item[3a)] There are no transactions for selected account.
+    \item[6a)] Amount is not valid.
+    \end{itemize}
+
+\noindent
+    {\bf Postcondition}\\
+    Transaction has been altered to reflect changes.
 
 \noindent
 {\bf Priority}\\
