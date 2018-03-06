@@ -1,14 +1,19 @@
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import javafx.application.*;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import controllers.DisplayBalanceController;
 import controllers.DepositMoneyController;
 import controllers.WithdrawMoneyController;
+import controllers.ExampleController;
 
 // import controllers.ExampleController;
 
@@ -16,8 +21,7 @@ import models.DatabaseConnectionSource;
 import models.DisplayBalanceModel;
 import models.WithdrawMoneyModel;
 import models.DepositMoneyModel;
-
-import views.GUIView;
+import models.ExampleModel;
 
 // import models.ExampleModel;
 
@@ -47,7 +51,6 @@ public class Start extends Application {
 			
 			DisplayBalanceController dispaly_balance = new DisplayBalanceController();
 			
-			
 			// Once we are done, close the connection to the database 
 			DatabaseConnectionSource.closeConncetion();
 		} else {
@@ -55,14 +58,19 @@ public class Start extends Application {
 		}
 	}
 
+	// Creates a 'stage' (think: window) with the given FXML file in the Parent object, using primaryStage.
 	@Override
 	public void start(Stage primaryStage) throws Exception{
-		System.out.println("start called");
-		Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("Landing_GUI.fxml"));
 		primaryStage.setTitle("MyMoney Application");
 		primaryStage.setScene(new Scene(root, 625, 400));
 		primaryStage.setResizable(false); // Prevent fullscreen and drag to resize
 		primaryStage.show();
+		/**
+		 * To add a new stage (window), do:
+		 * Stage secondStage = new Stage();
+		 * then follow with setTitle, setScene, etc., and ending with .show()
+		 */
 	}
 
 }
