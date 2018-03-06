@@ -60,7 +60,7 @@ public class Start extends Application {
 		System.out.println("start called");
 		Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
 		primaryStage.setTitle("MyMoney Application");
-		primaryStage.setScene(new Scene(root, 650, 400));
+		primaryStage.setScene(new Scene(root, 625, 400));
 		primaryStage.setResizable(false); // Prevent fullscreen and drag to resize
 		primaryStage.show();
 	}
