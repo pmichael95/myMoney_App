@@ -72,5 +72,4 @@ public class Start extends Application {
 		 * then follow with setTitle, setScene, etc., and ending with .show()
 		 */
 	}
-
 }

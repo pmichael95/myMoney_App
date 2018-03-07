@@ -5,6 +5,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
@@ -12,6 +13,7 @@
 <?import javafx.scene.text.Text?>
 
 <!-- fx:controller needs to be edited to where the controller for the button event handlers are found -->
+
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.161" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LandingGUI">
   <children>
     <MenuBar VBox.vgrow="NEVER">
@@ -49,10 +51,10 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9fcaf2" height="97.0" layoutX="468.0" layoutY="23.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="158.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9fcaf2" height="155.0" layoutX="14.0" layoutY="23.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="120.0" />
             <Button id="withdraw" fx:id="withdraw" layoutX="17.0" layoutY="70.0" mnemonicParsing="false" onAction="#withdrawButtonAction" text="Withdraw Amount" />
-            <Button id="deposit" fx:id="deposit" layoutX="17.0" layoutY="108.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" onAction="#depositButtonAction" text="Deposit Amount" />
-            <Button id="recurringPayment" fx:id="recurringPayment" layoutX="472.0" layoutY="58.0" mnemonicParsing="false" prefWidth="151.0" onAction="#recurringPaymentButtonAction" text="Setup Recurring Payment" />
-            <Button id="deleteAccount" fx:id="deleteAccount" layoutX="472.0" layoutY="88.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="151.0" onAction="#deleteAccountButtonAction" text="Delete Account" />
-            <Button id="editTransaction" fx:id="editTransaction" layoutX="17.0" layoutY="146.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" onAction="#editTransactionButtonAction" text="Edit Transaction" />
+            <Button id="deposit" fx:id="deposit" layoutX="17.0" layoutY="108.0" mnemonicParsing="false" onAction="#depositButtonAction" prefHeight="25.0" prefWidth="114.0" text="Deposit Amount" />
+            <Button id="recurringPayment" fx:id="recurringPayment" layoutX="472.0" layoutY="58.0" mnemonicParsing="false" onAction="#recurringPaymentButtonAction" prefWidth="151.0" text="Setup Recurring Payment" />
+            <Button id="deleteAccount" fx:id="deleteAccount" layoutX="472.0" layoutY="88.0" mnemonicParsing="false" onAction="#deleteAccountButtonAction" prefHeight="25.0" prefWidth="151.0" text="Delete Account" />
+            <Button id="editTransaction" fx:id="editTransaction" layoutX="17.0" layoutY="146.0" mnemonicParsing="false" onAction="#editTransactionButtonAction" prefHeight="25.0" prefWidth="114.0" text="Edit Transaction" />
             <Text layoutX="169.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Balance:">
                <font>
                   <Font name="Arial" size="16.0" />
@@ -73,6 +75,7 @@
                   <Font name="Arial" size="15.0" />
                </font>
             </Text>
+            <TextField id="inputAmount" fx:id="inputAmount" layoutX="229.0" layoutY="108.0" promptText="Enter amount..." />
       </children>
     </AnchorPane>
   </children>

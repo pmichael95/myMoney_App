@@ -3,6 +3,7 @@ package GUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 /**
@@ -31,7 +32,8 @@ public class LandingGUI {
 	private Button recurringPayment;
 	@FXML
 	private Button deleteAccount;
-	
+	@FXML
+	private TextField inputAmount;
 	
 	/**
 	 * HANDLER FUNCTIONS
