@@ -53,8 +53,8 @@
             <Button id="withdraw" fx:id="withdraw" layoutX="17.0" layoutY="70.0" mnemonicParsing="false" onAction="#withdrawButtonAction" text="Withdraw Amount" />
             <Button id="deposit" fx:id="deposit" layoutX="17.0" layoutY="108.0" mnemonicParsing="false" onAction="#depositButtonAction" prefHeight="25.0" prefWidth="114.0" text="Deposit Amount" />
             <Button id="recurringPayment" fx:id="recurringPayment" layoutX="472.0" layoutY="58.0" mnemonicParsing="false" onAction="#recurringPaymentButtonAction" prefWidth="151.0" text="Setup Recurring Payment" />
-            <Button id="deleteAccount" fx:id="deleteAccount" layoutX="472.0" layoutY="88.0" mnemonicParsing="false" onAction="#deleteAccountButtonAction" prefHeight="25.0" prefWidth="151.0" text="Delete Account" />
-            <Button id="editTransaction" fx:id="editTransaction" layoutX="17.0" layoutY="146.0" mnemonicParsing="false" onAction="#editTransactionButtonAction" prefHeight="25.0" prefWidth="114.0" text="Edit Transaction" />
+            <Button id="clearAccount" fx:id="clearAccount" layoutX="472.0" layoutY="88.0" mnemonicParsing="false" onAction="#clearAccountButtonAction" prefHeight="25.0" prefWidth="151.0" text="Clear Account" />
+            <Button id="showHistory" fx:id="showHistory" layoutX="17.0" layoutY="146.0" mnemonicParsing="false" onAction="#showHistoryButtonAction" prefHeight="25.0" prefWidth="114.0" text="Show History" />
             <Text layoutX="169.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Balance:">
                <font>
                   <Font name="Arial" size="16.0" />

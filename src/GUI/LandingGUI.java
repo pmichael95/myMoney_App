@@ -27,11 +27,11 @@ public class LandingGUI {
 	@FXML
 	private Button deposit;
 	@FXML
-	private Button editTransaction;
+	private Button showHistory;
 	@FXML
 	private Button recurringPayment;
 	@FXML
-	private Button deleteAccount;
+	private Button clearAccount;
 	@FXML
 	private TextField inputAmount;
 	
@@ -51,12 +51,12 @@ public class LandingGUI {
 	}
 	
 	@FXML
-	protected void editTransactionButtonAction(ActionEvent event) {
+	protected void showHistoryButtonAction(ActionEvent event) {
 		System.out.println("Called Edit Transaction Button Event");
 	}
 	
 	@FXML
-	protected void deleteAccountButtonAction(ActionEvent event) {
+	protected void clearAccountButtonAction(ActionEvent event) {
 		System.out.println("Called Delete Account Button Event");
 	}
 	
