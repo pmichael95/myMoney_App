@@ -17,9 +17,9 @@ import com.j256.ormlite.table.TableUtils;
  * Added an extra field (Deposit Type) essential to our Database
  * 
  * @author Sabrina D'Mello
- * @modifiedBy Johnny Mak
+ * @modifiedBy Johnny Mak, Philip Michael
  * @created 2/1/2018
- * @updated 2/11/2018
+ * @updated 3/12/2018
  */
 
 
@@ -37,11 +37,6 @@ public class DepositMoneyModel {
 	// add_amount:  the amount to be deposit.
 	@DatabaseField 
 	public float add_amount;
-	
-	/**
-	 * Added Extra Field to our database
-	 * Addition: Deposit Type (Income, Loan, Gift, etc.)
-	 */
 	
 	// Creates a column in the database table as a string, named add_type
 	// add_type: the deposit type (Income, Loan, Gift, etc.)

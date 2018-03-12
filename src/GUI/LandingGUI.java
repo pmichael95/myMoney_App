@@ -5,16 +5,29 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import models.DatabaseConnectionSource;
+import controllers.*;
+import com.j256.ormlite.jdbc.JdbcConnectionSource;
 
 /**
  * The default landing GUI where the buttons (which would open other windows) can be found as well as the balance.
  * 
  * @author Philip Michael
  * @created 3/5/2018
- * @lastUpdated 3/5/2018 
+ * @lastUpdated 3/12/2018 
  */
 
 public class LandingGUI {
+	
+	// Static GUI referencing to 'this' for use elsewhere
+	public static LandingGUI _GUI;
+	
+	/**
+	 * The controllers for our main functionalities
+	 */
+	private DisplayBalanceController displayBalance;
+	//private DepositMoneyController depositMoney;
+	//private WithdrawMoneyController withdrawMoney;
 	
 	/**
 	 * GUI ELEMENTS
@@ -36,9 +49,50 @@ public class LandingGUI {
 	private TextField inputAmount;
 	
 	/**
+	 * Initialize is called after every element/handler was fetched.
+	 * The order is: Constructor > Tie the members/handlers > initialize
+	 */
+	@FXML
+	public void initialize() {
+		// Get a connection to our database before we start any ui
+		JdbcConnectionSource source = DatabaseConnectionSource.getConnection();
+		
+		// Creates the static GUI object referencing to the current GUI shown on screen.
+		// This is used in the views.
+		if(_GUI == null) {
+			_GUI = this;
+		}
+		
+		if (source != null) {
+			DisplayBalanceController display_balance = new DisplayBalanceController();
+
+			// WithdrawMoneyController withdrawController = new WithdrawMoneyController();
+
+			// DepositMoneyController deposit_money = new DepositMoneyController();
+			
+			// Once we are done, close the connection to the database 
+			DatabaseConnectionSource.closeConncetion();
+		} else {
+			System.out.println("Could not make a connection to the database");
+		}
+	}
+	
+	/**
+	 * HELPER FUNCTIONS
+	 */
+	/**
+	 * Updates the displayed balance on the main GUI screen.
+	 * @param balance to update on the balance
+	 */
+	public void UpdateBalance(float balance) {
+		this.balance.setText("$" + balance);
+	}
+	
+	/**
 	 * HANDLER FUNCTIONS
 	 */
-	// -- These handler functions are tied to the onAction="#[namehere]" of the buttons in the GUI
+	// -- These handler functions are tied to the onAction="#[namehere]" of the buttons in the GUI.
+	// In them, use the controllers respectively to initiate the functionality of each.
 	
 	@FXML
 	protected void withdrawButtonAction(ActionEvent event) {

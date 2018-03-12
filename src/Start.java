@@ -31,31 +31,35 @@ import models.ExampleModel;
  * @author Steven Tucci
  * @modifiedBy Johnny Mak, Sabrina D'Mello, Shunyu Wang, Philip Michael
  * @created 1/29/2018
- * @lastUpdated 3/5/2018 
+ * @lastUpdated 3/12/2018 
  */
 public class Start extends Application {
 	
 	public static void main(String[] args) {
 		// Get a connection to our database before we start any ui
-		JdbcConnectionSource source = DatabaseConnectionSource.getConnection();
+		// JdbcConnectionSource source = DatabaseConnectionSource.getConnection();
 		
 		// Launches the GUI
 		launch(args);
-		
+
+		/*
 		if (source != null) {
 			//ExampleController test = new ExampleController();
+			
+			DisplayBalanceController display_balance = new DisplayBalanceController();
 
 			WithdrawMoneyController withdrawController = new WithdrawMoneyController();
 
-			DepositMoneyController deposit_money = new DepositMoneyController(); //added by Sabrina
+			DepositMoneyController deposit_money = new DepositMoneyController();
 			
-			DisplayBalanceController dispaly_balance = new DisplayBalanceController();
+			
 			
 			// Once we are done, close the connection to the database 
 			DatabaseConnectionSource.closeConncetion();
 		} else {
 			System.out.println("Could not make a connection to the database");
 		}
+		*/
 	}
 
 	// Creates a 'stage' (think: window) with the given FXML file in the Parent object, using primaryStage.

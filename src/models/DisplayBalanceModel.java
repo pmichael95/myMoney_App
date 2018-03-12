@@ -32,7 +32,7 @@ public class DisplayBalanceModel {
 	 
 
 	/**
-	 * Function that returns DAO (Database Access Object 
+	 * Function that returns DAO (Database Access Object) 
 	 */
 	 public static Dao<DisplayBalanceModel, Integer> getDao() {
 		try {

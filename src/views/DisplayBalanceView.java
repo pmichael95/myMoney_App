@@ -1,5 +1,6 @@
 package views;
 
+import GUI.LandingGUI;
 
 /**
  * Display Balance View 
@@ -50,6 +51,7 @@ public class DisplayBalanceView extends View {
 	@Override
 	public void updateUI(Object data) {
 		DisplayBalanceViewData viewData = (DisplayBalanceViewData) data;
+		LandingGUI._GUI.UpdateBalance(viewData.accountBalance);
 		System.out.println("Your balance of " + viewData.account + " is " + viewData.accountBalance);
 	}
 
