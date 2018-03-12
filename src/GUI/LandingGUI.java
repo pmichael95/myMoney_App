@@ -94,6 +94,14 @@ public class LandingGUI {
 	// -- These handler functions are tied to the onAction="#[namehere]" of the buttons in the GUI.
 	// In them, use the controllers respectively to initiate the functionality of each.
 	
+	
+	/**
+	 * For withdraw, we'd need to use the Withdraw controller to initiate the withdrawal.
+	 * For consistency's sake, we will need to also update the amount in display_balance table.
+	 * For that, we will need to also call the DisplayBalance's controller's DAO to update the amount.
+	 * Thereafter, the view is updated again for us.
+	 * @param event triggered by clicking on the button.
+	 */
 	@FXML
 	protected void withdrawButtonAction(ActionEvent event) {
 		System.out.println("Called Withdraw Button Event");
