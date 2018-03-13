@@ -13,22 +13,24 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
  * The default landing GUI where the buttons (which would open other windows) can be found as well as the balance.
  * 
  * @author Philip Michael
+ * @modifiedBy Ramez Nahas
  * @created 3/5/2018
- * @lastUpdated 3/12/2018 
+ * @lastUpdated 3/13/2018 
  */
 
 public class LandingGUI {
-	
+
 	// Static GUI referencing to 'this' for use elsewhere
 	public static LandingGUI _GUI;
-	
+
 	/**
 	 * The controllers for our main functionalities
 	 */
 	private DisplayBalanceController displayBalance;
+	private ShowHistoryController historyController;
 	//private DepositMoneyController depositMoney;
 	//private WithdrawMoneyController withdrawMoney;
-	
+
 	/**
 	 * GUI ELEMENTS
 	 */
@@ -47,7 +49,7 @@ public class LandingGUI {
 	private Button clearAccount;
 	@FXML
 	private TextField inputAmount;
-	
+
 	/**
 	 * Initialize is called after every element/handler was fetched.
 	 * The order is: Constructor > Tie the members/handlers > initialize
@@ -56,27 +58,27 @@ public class LandingGUI {
 	public void initialize() {
 		// Get a connection to our database before we start any ui
 		JdbcConnectionSource source = DatabaseConnectionSource.getConnection();
-		
+
 		// Creates the static GUI object referencing to the current GUI shown on screen.
 		// This is used in the views.
 		if(_GUI == null) {
 			_GUI = this;
 		}
-		
+
 		if (source != null) {
 			DisplayBalanceController display_balance = new DisplayBalanceController();
 
 			// WithdrawMoneyController withdrawController = new WithdrawMoneyController();
 
 			// DepositMoneyController deposit_money = new DepositMoneyController();
-			
+
 			// Once we are done, close the connection to the database 
 			DatabaseConnectionSource.closeConncetion();
 		} else {
 			System.out.println("Could not make a connection to the database");
 		}
 	}
-	
+
 	/**
 	 * HELPER FUNCTIONS
 	 */
@@ -87,14 +89,14 @@ public class LandingGUI {
 	public void UpdateBalance(float balance) {
 		this.balance.setText("$" + balance);
 	}
-	
+
 	/**
 	 * HANDLER FUNCTIONS
 	 */
 	// -- These handler functions are tied to the onAction="#[namehere]" of the buttons in the GUI.
 	// In them, use the controllers respectively to initiate the functionality of each.
-	
-	
+
+
 	/**
 	 * For withdraw, we'd need to use the Withdraw controller to initiate the withdrawal.
 	 * For consistency's sake, we will need to also update the amount in display_balance table.
@@ -106,22 +108,22 @@ public class LandingGUI {
 	protected void withdrawButtonAction(ActionEvent event) {
 		System.out.println("Called Withdraw Button Event");
 	}
-	
+
 	@FXML
 	protected void depositButtonAction(ActionEvent event) {
 		System.out.println("Called Deposit Button Event");
 	}
-	
+
 	@FXML
 	protected void showHistoryButtonAction(ActionEvent event) {
-		System.out.println("Called Edit Transaction Button Event");
+		historyController = new ShowHistoryController();
 	}
-	
+
 	@FXML
 	protected void clearAccountButtonAction(ActionEvent event) {
 		System.out.println("Called Delete Account Button Event");
 	}
-	
+
 	@FXML
 	protected void recurringPaymentButtonAction(ActionEvent event) {
 		System.out.println("Called Recurring Payment Button Event");
