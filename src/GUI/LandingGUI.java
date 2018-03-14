@@ -2,11 +2,18 @@ package GUI;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import models.DatabaseConnectionSource;
 import controllers.*;
+
+import java.io.IOException;
+
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 
 /**
@@ -27,7 +34,7 @@ public class LandingGUI {
 	 * The controllers for our main functionalities
 	 */
 	private DisplayBalanceController displayBalance;
-	private ShowHistoryController historyController;
+//	private ShowHistoryController historyController;
 	//private DepositMoneyController depositMoney;
 	//private WithdrawMoneyController withdrawMoney;
 
@@ -116,7 +123,16 @@ public class LandingGUI {
 
 	@FXML
 	protected void showHistoryButtonAction(ActionEvent event) {
-		historyController = new ShowHistoryController();
+		// Load and open the new stage.
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../ShowHistory_GUI.fxml"));
+			Stage stage = new Stage();
+			stage.setTitle("Transaction History");
+			stage.setScene(new Scene(root, 600, 700));
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
