@@ -10,9 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import models.DatabaseConnectionSource;
 import controllers.*;
-
 import java.util.Optional;
-
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 
 /**
@@ -30,13 +28,12 @@ public class LandingGUI {
 	
 	// To get confirmation from user
 	Alert alert = new Alert(AlertType.CONFIRMATION);
-	
 	/**
 	 * The controllers for our main functionalities
 	 */
 	private DisplayBalanceController displayBalance;
 	//private DepositMoneyController depositMoney;
-	//private WithdrawMoneyController withdrawMoney;
+	//private WithdrawMoneyController withdrawMoney
 	private ClearAccountController clear;
 	
 	/**
@@ -120,7 +117,6 @@ public class LandingGUI {
 	@FXML
 	protected void depositButtonAction(ActionEvent event) {
 		System.out.println("Called Deposit Button Event");
-		
 	}
 	
 	@FXML
@@ -131,8 +127,7 @@ public class LandingGUI {
 	@FXML
 	protected void clearAccountButtonAction(ActionEvent event) {
 		System.out.println("Called Delete Account Button Event");
-
-		alert.setTitle("Clear Account Confirmation");
+    alert.setTitle("Clear Account Confirmation");
 		alert.setHeaderText("This action will permanently delete your account");
 		alert.setContentText("Please click ok to confirm deletion");
 
@@ -143,7 +138,6 @@ public class LandingGUI {
 		} else {
 		    //do nothing
 		}
-
 	}
 	
 	@FXML
