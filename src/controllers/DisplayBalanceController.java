@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import com.j256.ormlite.dao.CloseableIterator;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.UpdateBuilder;
 
 import models.DisplayBalanceModel;
 import views.DisplayBalanceView;
@@ -12,7 +13,7 @@ import views.DisplayBalanceView;
  * DisplayBalanceController
  * 
  * @author Shunyu Wang
- * @modifiedBy Johnny Mak, Philip Michael
+ * @modifiedBy Johnny Mak, Philip Michael, Tobi Decary-Larocque
  * @created 1/29/2018
  * @updated 3/5/2018
  */
@@ -50,6 +51,8 @@ public class DisplayBalanceController implements Controller{
 	public void initModel() {
 		dao = DisplayBalanceModel.getDao();
 		model = new DisplayBalanceModel();
+		
+		model.account = "Chequing";
 	}
 	
 
@@ -59,11 +62,13 @@ public class DisplayBalanceController implements Controller{
 		DisplayBalanceView.DisplayBalanceViewData data = new DisplayBalanceView.DisplayBalanceViewData();
 		// Set the view data's with the new updated information from our model
 		data.account = model.account;
+		
 		data.accountBalance = model.accountBalance;
 		// Tell the view to update its ui using the data we just built
 		view.updateUI(data);
 	}
 	
+
 	/**
 	 * 
 	 * @param data, the view data that has been passed by view.notifyObserver(data)
@@ -105,5 +110,32 @@ public class DisplayBalanceController implements Controller{
 			}
 		}
 		
+	}
+
+	/**
+	 * Updates the Balance positively or negatively, depending on the type
+	 * @param type, the type of update, can either be withdraw or deposit
+	 * @param ammount, the ammount to be subtracted/added
+	 * @throws SQLException 
+	 */
+	public void updateBalance(String type, int ammount) throws SQLException {
+
+		if (type.toLowerCase().equals("withdraw") )
+		{	
+			ammount *= -1;
+		}
+		else if (type.toLowerCase().equals("deposit"))
+		{
+			//do nothing
+		}
+		else return; //if different type, it's ignored
+		
+		model.accountBalance += ammount;
+		
+		UpdateBuilder<DisplayBalanceModel, Integer> updateBuilder = dao.updateBuilder();
+		updateBuilder.updateColumnValue("accountBalance", model.accountBalance);
+		updateBuilder.update();
+		
+		updateView();
 	}
 }
