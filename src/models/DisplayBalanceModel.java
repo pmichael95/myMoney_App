@@ -48,5 +48,5 @@ public class DisplayBalanceModel {
 			return null;
 		}
 	}
-	 
+
 }
