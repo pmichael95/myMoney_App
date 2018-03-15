@@ -29,7 +29,8 @@ public class DepositMoneyController implements Controller{
 		initView();
 		initModel();
 		//view.addAccount();
-		view.DepositEvent();		
+		view.DepositEvent();
+		//ToDo after updating DepositEvent
 	}
 	
 	

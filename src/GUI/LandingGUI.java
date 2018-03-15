@@ -9,6 +9,9 @@ import models.DatabaseConnectionSource;
 import controllers.*;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 
+import models.DepositMoneyModel;
+import views.DepositMoneyView;
+
 /**
  * The default landing GUI where the buttons (which would open other windows) can be found as well as the balance.
  * 
@@ -26,7 +29,7 @@ public class LandingGUI {
 	 * The controllers for our main functionalities
 	 */
 	private DisplayBalanceController displayBalance;
-	//private DepositMoneyController depositMoney;
+	private DepositMoneyController depositMoney;
 	//private WithdrawMoneyController withdrawMoney;
 	
 	/**
@@ -64,11 +67,11 @@ public class LandingGUI {
 		}
 		
 		if (source != null) {
-			DisplayBalanceController display_balance = new DisplayBalanceController();
+			displayBalance = new DisplayBalanceController();
 
 			// WithdrawMoneyController withdrawController = new WithdrawMoneyController();
 
-			// DepositMoneyController deposit_money = new DepositMoneyController();
+			depositMoney = new DepositMoneyController();
 			
 			// Once we are done, close the connection to the database 
 			DatabaseConnectionSource.closeConncetion();
@@ -109,7 +112,18 @@ public class LandingGUI {
 	
 	@FXML
 	protected void depositButtonAction(ActionEvent event) {
-		System.out.println("Called Deposit Button Event");
+		DepositMoneyView.DepositMoneyViewData input = new DepositMoneyView.DepositMoneyViewData();
+		
+		input.amount = Float.parseFloat(this.inputAmount.getText());
+		
+		input.type = "Pay";
+		
+		depositMoney.update(input);
+		
+		displayBalance.updateView();
+		//ToDo update balance
+		
+		inputAmount.setText("");
 	}
 	
 	@FXML
