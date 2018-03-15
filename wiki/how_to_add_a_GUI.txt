@@ -1,0 +1,23 @@
+// BASIC IDEA \\
+
+1. Create the FXML file using SceneBuilder (as linked by Damian). Make sure it ends up in the default src folder.
+2. Install e(fx)clipse in your Eclipse IDE by going to Help > Install New Software > 
+	and in the 'Work with:' field select 'Oxygen - http://download.eclipse.org/releases/oxygen'
+	then filter for e(fx)clipse and install that
+3. Create a new GUI java file in the GUI package.
+4. For information on how to properly link each GUI element and handler, refer to section 'Linking Elements' below.
+5. Create member variables (private, by preference) for each of your GUI fx:id elements.
+6. Create handler functions (like in LandingGUI.java) for each of your onAction events.
+7. Add an attribute for fx:controller in your <VBox...> top-most attribute which links to GUI.YourGuiJavaFile.
+	=> Look in Landing_GUI.fxml for an example of this.
+8. Add the stage (as instructed in Start.java).
+
+
+// LINKING ELEMENTS \\
+
+Elements in the GUI need to be TAGGED.
+The fx:id field (which can be set in the inspector's 3rd drop-down option) need to be set for each button, text, etc. that you need access to.
+The onAction (starting with #) needs to be set for each button for which you want to have a callback handler.
+
+THE NAMES OF THE MEMBER VARIABLES & EVENT HANDLERS ((MUST)) MATCH THE IDs AND ONACTION NAMES PROVIDED.
+Make sure to also have @FXML above the handlers and members.
