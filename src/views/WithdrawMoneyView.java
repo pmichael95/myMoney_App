@@ -1,6 +1,7 @@
 package views;
 
 import java.util.Scanner;
+import GUI.LandingGUI;
 
 /**
  * 
@@ -65,7 +66,6 @@ public class WithdrawMoneyView extends View {
 		// Extract all the data out of the container and update the ui with new data
 		// In the case of this example, since we are using the console, we are just printing out the new data
 		System.out.println("(Test)Amount Withdrawn " + viewData.amount);
-		
 	}
 	
 
