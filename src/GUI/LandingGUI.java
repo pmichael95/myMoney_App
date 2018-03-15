@@ -2,17 +2,23 @@ package GUI;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import models.DatabaseConnectionSource;
 import models.WithdrawMoneyModel;
+import views.DepositMoneyView;
 import views.WithdrawMoneyView.WithdrawMoneyViewData;
 import controllers.*;
 import java.util.Optional;
+import java.io.IOException;
 import java.sql.SQLException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -43,7 +49,7 @@ public class LandingGUI {
 	 * The controllers for our main functionalities
 	 */
 	private DisplayBalanceController displayBalance;
-	//private DepositMoneyController depositMoney;
+	private DepositMoneyController depositMoney;
 	private ClearAccountController clear;
 	private WithdrawMoneyController withdrawMoney;
   
@@ -86,7 +92,7 @@ public class LandingGUI {
 
 			withdrawMoney = new WithdrawMoneyController();
 
-			// DepositMoneyController deposit_money = new DepositMoneyController();
+			depositMoney = new DepositMoneyController();
 			
 			// Once we are done, close the connection to the database 
 			DatabaseConnectionSource.closeConncetion();
@@ -122,34 +128,48 @@ public class LandingGUI {
 	 * @throws SQLException 
 	 */
 	@FXML
-	protected void withdrawButtonAction(ActionEvent event) {
+	protected void withdrawButtonAction(ActionEvent event) throws SQLException {
 		WithdrawMoneyViewData userInput = new WithdrawMoneyViewData();
 		userInput.amount = Float.parseFloat(this.inputAmount.getText());
 		userInput.type   = "Bill";
 		withdrawMoney.update(userInput);
-		//
-		displayBalance.updateView();
+		displayBalance.updateBalance("withdraw", userInput.amount);
 		this.inputAmount.setText("");
 	}
 	
 	@FXML
 	protected void depositButtonAction(ActionEvent event) throws SQLException {
-		System.out.println("Called Deposit Button Event");
+		DepositMoneyView.DepositMoneyViewData input = new DepositMoneyView.DepositMoneyViewData();
 		
-		//test
-		displayBalance.updateBalance("deposit", 100);
+		input.amount = Float.parseFloat(this.inputAmount.getText());
+		
+		input.type = "Pay";
+		
+		depositMoney.update(input);
+		
+		displayBalance.updateBalance("deposit", input.amount);
+		
+		inputAmount.setText("");
 
 	}
 	
 	@FXML
 	protected void showHistoryButtonAction(ActionEvent event) {
-		System.out.println("Called Edit Transaction Button Event");
+		// Load and open the new stage.
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../ShowHistory_GUI.fxml"));
+			Stage stage = new Stage();
+			stage.setTitle("Transaction History");
+			stage.setScene(new Scene(root, 600, 700));
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@FXML
 	protected void clearAccountButtonAction(ActionEvent event) {
-		System.out.println("Called Delete Account Button Event");
-    alert.setTitle("Clear Account Confirmation");
+		alert.setTitle("Clear Account Confirmation");
 		alert.setHeaderText("This action will permanently delete your account");
 		alert.setContentText("Please click ok to confirm deletion");
 
@@ -157,8 +177,6 @@ public class LandingGUI {
 		if (result.get() == ButtonType.OK){
 			clear = new ClearAccountController(); //the controller automatically calls the delete function
 			UpdateBalance(0);
-		} else {
-		    //do nothing
 		}
 	}
 	

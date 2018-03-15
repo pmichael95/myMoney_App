@@ -118,7 +118,7 @@ public class DisplayBalanceController implements Controller{
 	 * @param ammount, the ammount to be subtracted/added
 	 * @throws SQLException 
 	 */
-	public void updateBalance(String type, int ammount) throws SQLException {
+	public void updateBalance(String type, float ammount) throws SQLException {
 
 		if (type.toLowerCase().equals("withdraw") )
 		{	

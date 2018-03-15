@@ -31,35 +31,13 @@ import models.ExampleModel;
  * @author Steven Tucci
  * @modifiedBy Johnny Mak, Sabrina D'Mello, Shunyu Wang, Philip Michael
  * @created 1/29/2018
- * @lastUpdated 3/12/2018 
+ * @lastUpdated 3/15/2018 
  */
 public class Start extends Application {
 	
 	public static void main(String[] args) {
-		// Get a connection to our database before we start any ui
-		// JdbcConnectionSource source = DatabaseConnectionSource.getConnection();
-		
 		// Launches the GUI
 		launch(args);
-
-		/*
-		if (source != null) {
-			//ExampleController test = new ExampleController();
-			
-			DisplayBalanceController display_balance = new DisplayBalanceController();
-
-			WithdrawMoneyController withdrawController = new WithdrawMoneyController();
-
-			DepositMoneyController deposit_money = new DepositMoneyController();
-			
-			
-			
-			// Once we are done, close the connection to the database 
-			DatabaseConnectionSource.closeConncetion();
-		} else {
-			System.out.println("Could not make a connection to the database");
-		}
-		*/
 	}
 
 	// Creates a 'stage' (think: window) with the given FXML file in the Parent object, using primaryStage.
@@ -70,10 +48,5 @@ public class Start extends Application {
 		primaryStage.setScene(new Scene(root, 625, 400));
 		primaryStage.setResizable(false); // Prevent fullscreen and drag to resize
 		primaryStage.show();
-		/**
-		 * To add a new stage (window), do:
-		 * Stage secondStage = new Stage();
-		 * then follow with setTitle, setScene, etc., and ending with .show()
-		 */
 	}
 }
