@@ -2,9 +2,14 @@ package views;
 
 import java.util.Scanner;
 
-
-
-
+import javafx.event.*;
+import javafx.scene.text.*;
+import javafx.stage.Stage;
+import javafx.fxml.*;
+import javafx.scene.control.*;
+import javafx.application.*;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 /**
  * ExampleView shows a very simple way of how a view is made
@@ -21,9 +26,9 @@ import java.util.Scanner;
  * each view should declare a data pojo/struct/container
  * @see ExampleViewData
  * 
- * @author Steven Tucci
+ * @author Steven Tucci, Philip Michael
  * @created 1/29/2018
- * @updated 1/29/2018
+ * @updated 3/5/2018
  * 
  */
 public class ExampleView extends View {
@@ -104,6 +109,4 @@ public class ExampleView extends View {
 		System.out.println("Test " + viewData.aField);
 		
 	}
-	
-
 }
