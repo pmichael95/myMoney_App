@@ -36,7 +36,6 @@ public class WithdrawMoneyController implements Controller {
 		initView();
 		initModel();
 		
-		view.WithdrawEvent();
 	}
 	
 	/**

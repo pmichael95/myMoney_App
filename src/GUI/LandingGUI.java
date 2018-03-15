@@ -9,14 +9,25 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import models.DatabaseConnectionSource;
+import models.WithdrawMoneyModel;
+import views.WithdrawMoneyView.WithdrawMoneyViewData;
 import controllers.*;
 import java.util.Optional;
+import java.sql.SQLException;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 
 /**
  * The default landing GUI where the buttons (which would open other windows) can be found as well as the balance.
  * 
  * @author Philip Michael
+ * @modifiedBy Tobi Decary-Larocque
  * @created 3/5/2018
  * @lastUpdated 3/12/2018 
  */
@@ -33,9 +44,9 @@ public class LandingGUI {
 	 */
 	private DisplayBalanceController displayBalance;
 	//private DepositMoneyController depositMoney;
-	//private WithdrawMoneyController withdrawMoney
 	private ClearAccountController clear;
-	
+	private WithdrawMoneyController withdrawMoney;
+  
 	/**
 	 * GUI ELEMENTS
 	 */
@@ -71,9 +82,9 @@ public class LandingGUI {
 		}
 		
 		if (source != null) {
-			DisplayBalanceController display_balance = new DisplayBalanceController();
+			displayBalance = new DisplayBalanceController();
 
-			// WithdrawMoneyController withdrawController = new WithdrawMoneyController();
+			withdrawMoney = new WithdrawMoneyController();
 
 			// DepositMoneyController deposit_money = new DepositMoneyController();
 			
@@ -108,15 +119,26 @@ public class LandingGUI {
 	 * For that, we will need to also call the DisplayBalance's controller's DAO to update the amount.
 	 * Thereafter, the view is updated again for us.
 	 * @param event triggered by clicking on the button.
+	 * @throws SQLException 
 	 */
 	@FXML
 	protected void withdrawButtonAction(ActionEvent event) {
-		System.out.println("Called Withdraw Button Event");
+		WithdrawMoneyViewData userInput = new WithdrawMoneyViewData();
+		userInput.amount = Float.parseFloat(this.inputAmount.getText());
+		userInput.type   = "Bill";
+		withdrawMoney.update(userInput);
+		//
+		displayBalance.updateView();
+		this.inputAmount.setText("");
 	}
 	
 	@FXML
-	protected void depositButtonAction(ActionEvent event) {
+	protected void depositButtonAction(ActionEvent event) throws SQLException {
 		System.out.println("Called Deposit Button Event");
+		
+		//test
+		displayBalance.updateBalance("deposit", 100);
+
 	}
 	
 	@FXML
