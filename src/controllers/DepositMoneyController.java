@@ -9,16 +9,12 @@ import views.DepositMoneyView;
 
 /**
  * 
- * Following the skeleton code created by Steven, I have created the DepositMoneyController.
- * Currently I have commented out the account attributes, because I have commented out from the 
- * DepositMoneyView the addAccount methods.
- * 
- * Added an extra field (Deposit Type) essential to our Database
+ * The controller to deposit money into the account.
  * 
  * @author Sabrina D'Mello
- * @modifiedBy Johnny Mak
+ * @modifiedBy Johnny Mak, Philip Michael
  * @created 2/1/2018
- * @updated 2/11/2018
+ * @updated 3/5/2018
  *
  */
 public class DepositMoneyController implements Controller{

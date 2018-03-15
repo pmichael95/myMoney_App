@@ -2,20 +2,21 @@ package views;
 
 import java.util.Scanner;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 import views.ExampleView.ExampleViewData;
+import GUI.LandingGUI;
 
 /**
  * 
- * Following the skeleton code created by Steven, I have created the DepositMoneyView.
- * This class will take the input of the user by prompting him through the console to write the 
- * amount of money that will be deposited.
- * 
- * Added an extra field essential to our Database 
+ * The DepositMoney view for when we deposit into the deposit_money table.
  * 
  * @author Sabrina D'Mello
- * @modifiedBy Johnny Mak
+ * @modifiedBy Johnny Mak, Philip Michael
  * @created 2/1/2018
- * @updated 2/11/2018
+ * @updated 3/12/2018
  *
  */
 public class DepositMoneyView extends View {
@@ -64,11 +65,11 @@ public class DepositMoneyView extends View {
 	 */
 	@Override
 	public void updateUI(Object data) {
-			// Cast the data to our example view data container
+		// Cast the data to our example view data container
 		DepositMoneyViewData viewData = (DepositMoneyViewData) data;
-			// Extract all the data out of the container and update the ui with new data
-			// In the case of this example, since we are using the console, we are just printing out the new data
-			System.out.println("Test Deposit: " + viewData.amount + ", Test Type: " + viewData.type);	
+		// Extract all the data out of the container and update the ui with new data
+		// In the case of this example, since we are using the console, we are just printing out the new data
+		System.out.println("Test Deposit: " + viewData.amount + ", Test Type: " + viewData.type);	
 	}
 
 }
