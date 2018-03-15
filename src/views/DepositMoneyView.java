@@ -34,21 +34,19 @@ public class DepositMoneyView extends View {
 	//Constructor creating a scanner for the users input
 	public DepositMoneyView()
 	{
-		// keyboard = new Scanner(System.in);
+		keyboard = new Scanner(System.in);
 	}
 	
 	//Method will allow the user to enter the amount will to deposit
 	public void DepositEvent()
 	{
-		/* System.out.println("\nHow much money would you like to deposit in this account?");
+		System.out.println("\nHow much money would you like to deposit in this account?");
 		float user_amount = keyboard.nextFloat();
 		
 		System.out.println("\nWhat is the type of deposit?");
-		String user_type = keyboard.next(); */
+		String user_type = keyboard.next();
 		
-		//ToDo how does DepositEvent get data
-		
-		// onDepositEvent(user_amount, user_type); 
+		onDepositEvent(user_amount, user_type);
 		
 	}
 	
@@ -68,11 +66,10 @@ public class DepositMoneyView extends View {
 	@Override
 	public void updateUI(Object data) {
 		// Cast the data to our example view data container
-		// DepositMoneyViewData viewData = (DepositMoneyViewData) data;
+		DepositMoneyViewData viewData = (DepositMoneyViewData) data;
 		// Extract all the data out of the container and update the ui with new data
 		// In the case of this example, since we are using the console, we are just printing out the new data
-		// System.out.println("Test Deposit: " + viewData.amount + ", Test Type: " + viewData.type);
-		
+		System.out.println("Test Deposit: " + viewData.amount + ", Test Type: " + viewData.type);	
 	}
 
 }
