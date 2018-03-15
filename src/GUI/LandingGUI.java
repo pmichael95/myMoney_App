@@ -120,8 +120,7 @@ public class LandingGUI {
 		
 		depositMoney.update(input);
 		
-		displayBalance.updateView();
-		//ToDo update balance
+		displayBalance.updateBalance("deposit", input.amount);
 		
 		inputAmount.setText("");
 	}
