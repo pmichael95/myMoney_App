@@ -169,9 +169,9 @@ public class LandingGUI {
 	
 	@FXML
 	protected void clearAccountButtonAction(ActionEvent event) {
-		alert.setTitle("Clear Account Confirmation");
-		alert.setHeaderText("This action will permanently delete your account");
-		alert.setContentText("Please click ok to confirm deletion");
+		alert.setTitle("Clear Account - Confirmation");
+		alert.setHeaderText("This action will permanently delete your account.");
+		alert.setContentText("Are you sure you wish to proceed?");
 
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
