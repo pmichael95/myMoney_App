@@ -7,12 +7,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import models.DatabaseConnectionSource;
 import controllers.*;
+
+import java.sql.SQLException;
+
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 
 /**
  * The default landing GUI where the buttons (which would open other windows) can be found as well as the balance.
  * 
  * @author Philip Michael
+ * @modifiedBy Tobi Decary-Larocque
  * @created 3/5/2018
  * @lastUpdated 3/12/2018 
  */
@@ -64,7 +68,7 @@ public class LandingGUI {
 		}
 		
 		if (source != null) {
-			DisplayBalanceController display_balance = new DisplayBalanceController();
+			displayBalance = new DisplayBalanceController();
 
 			// WithdrawMoneyController withdrawController = new WithdrawMoneyController();
 
@@ -101,15 +105,24 @@ public class LandingGUI {
 	 * For that, we will need to also call the DisplayBalance's controller's DAO to update the amount.
 	 * Thereafter, the view is updated again for us.
 	 * @param event triggered by clicking on the button.
+	 * @throws SQLException 
 	 */
 	@FXML
-	protected void withdrawButtonAction(ActionEvent event) {
+	protected void withdrawButtonAction(ActionEvent event) throws SQLException {
 		System.out.println("Called Withdraw Button Event");
+
+		//test
+		displayBalance.updateBalance("withdraw", 100);
+
 	}
 	
 	@FXML
-	protected void depositButtonAction(ActionEvent event) {
+	protected void depositButtonAction(ActionEvent event) throws SQLException {
 		System.out.println("Called Deposit Button Event");
+		
+		//test
+		displayBalance.updateBalance("deposit", 100);
+
 	}
 	
 	@FXML
