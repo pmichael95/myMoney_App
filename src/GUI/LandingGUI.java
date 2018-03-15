@@ -6,10 +6,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import models.DatabaseConnectionSource;
+import models.WithdrawMoneyModel;
+import views.WithdrawMoneyView.WithdrawMoneyViewData;
 import controllers.*;
 
 import java.sql.SQLException;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
+import java.sql.SQLException;
+import java.util.List;
+
+import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 
 /**
@@ -31,7 +39,7 @@ public class LandingGUI {
 	 */
 	private DisplayBalanceController displayBalance;
 	//private DepositMoneyController depositMoney;
-	//private WithdrawMoneyController withdrawMoney;
+	private WithdrawMoneyController withdrawMoney;
 	
 	/**
 	 * GUI ELEMENTS
@@ -70,7 +78,7 @@ public class LandingGUI {
 		if (source != null) {
 			displayBalance = new DisplayBalanceController();
 
-			// WithdrawMoneyController withdrawController = new WithdrawMoneyController();
+			withdrawMoney = new WithdrawMoneyController();
 
 			// DepositMoneyController deposit_money = new DepositMoneyController();
 			
@@ -108,12 +116,14 @@ public class LandingGUI {
 	 * @throws SQLException 
 	 */
 	@FXML
-	protected void withdrawButtonAction(ActionEvent event) throws SQLException {
-		System.out.println("Called Withdraw Button Event");
-
-		//test
-		displayBalance.updateBalance("withdraw", 100);
-
+	protected void withdrawButtonAction(ActionEvent event) {
+		WithdrawMoneyViewData userInput = new WithdrawMoneyViewData();
+		userInput.amount = Float.parseFloat(this.inputAmount.getText());
+		userInput.type   = "Bill";
+		withdrawMoney.update(userInput);
+		//
+		displayBalance.updateView();
+		this.inputAmount.setText("");
 	}
 	
 	@FXML
