@@ -28,7 +28,7 @@ public class DisplayBalanceModel {
 	public String account;
 	// Creates a column in the database table as accountBalance, named accountBalance
 	@DatabaseField
-	public int accountBalance;
+	public float accountBalance;
 
 	 
 
