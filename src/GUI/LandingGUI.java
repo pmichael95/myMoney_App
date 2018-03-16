@@ -89,7 +89,14 @@ public class LandingGUI {
 		
 		if (source != null) {
 			displayBalance = new DisplayBalanceController();
-
+			
+			//load initial balance
+			try {
+				displayBalance.initialBalance();
+			} catch (SQLException e) {
+				System.out.println("Could not make a connection to the database");
+				e.printStackTrace();
+			}
 			withdrawMoney = new WithdrawMoneyController();
 
 			depositMoney = new DepositMoneyController();
