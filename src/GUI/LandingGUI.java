@@ -106,12 +106,22 @@ public class LandingGUI {
 	 */
 	/**
 	 * Updates the displayed balance on the main GUI screen.
-	 * @param balance to update on the balance
+	 * @param balance(float type) to update on the balance
 	 */
 	public void UpdateBalance(float balance) {
 		this.balance.setText("$" + balance);
 	}
 	
+	/**
+	 * HELPER FUNCTIONS
+	 */
+	/**
+	 * Updates the displayed balance on the main GUI screen.
+	 * @param balance(String type) to update on the balance
+	 */
+	public void UpdateBalance(String balance) {
+		this.balance.setText("$" + balance);
+	}
 	/**
 	 * HANDLER FUNCTIONS
 	 */
@@ -177,7 +187,7 @@ public class LandingGUI {
 		if (result.get() == ButtonType.OK){
 			clear = new ClearAccountController(); //the controller automatically calls the delete function
 			displayBalance.initModel();
-			UpdateBalance(0);
+			UpdateBalance("0.00");
 		}
 	}
 	
