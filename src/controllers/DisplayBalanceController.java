@@ -157,13 +157,14 @@ public class DisplayBalanceController implements Controller{
 
 		try {
 			float depositSum = 0, withdrawSum = 0;
-			// Get all the data from the deposit money table and add it to history.
+			
+			// balance of all deposit records
 			List<DepositMoneyModel> depositMoney = depositMoneyDao.queryForAll();
 			for (int i = 0; i < depositMoney.size(); i++) {
 				depositSum += depositMoney.get(i).add_amount;
 			}
 
-			// Get all the data from the withdraw money table and add it to history.
+			// balance of all withdraw records
 			List<WithdrawMoneyModel> withdrawMoney = withdrawMoneyDao.queryForAll();
 			for (int i = 0; i < withdrawMoney.size(); i++) {
 				withdrawSum += withdrawMoney.get(i).withdrawAmount;
