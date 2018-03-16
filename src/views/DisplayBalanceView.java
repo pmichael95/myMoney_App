@@ -8,9 +8,9 @@ import GUI.LandingGUI;
  * Display Balance View 
  * 
  * @author Shunyu Wang
- * @modifiedBy Johnny Mak
+ * @modifiedBy Johnny Mak, Shunyu Wang
  * @created 1/29/2018
- * @updated 2/11/2018
+ * @updated 3/15/2018
  * 
  */
 
