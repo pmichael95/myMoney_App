@@ -176,6 +176,7 @@ public class LandingGUI {
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
 			clear = new ClearAccountController(); //the controller automatically calls the delete function
+			displayBalance.initModel();
 			UpdateBalance(0);
 		}
 	}
