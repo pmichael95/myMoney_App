@@ -23,8 +23,12 @@
 \usepackage{titlesec}
 
 \setcounter{secnumdepth}{3}
+\pagenumbering{arabic}
+\pagestyle{plain}
 
 \begin{document}
+
+
 
 \vspace*{0.5in}
 \centerline{\bf\Large Design Document}
@@ -62,6 +66,8 @@ Shunyu Wang & 40043915 \\
 \end{table}
 
 \clearpage
+\tableofcontents
+\clearpage
 
 \section{Introduction}
 The primary goal of this project is to create an application which allows students to keep track of their money. The MyMoney application allows students to create an account which provides them with different options to keep track of their money and spending habits through the graphical user interface. The application allows the user to create a transaction, either deposit or withdraw. It will also allow the user an option to display balance, show transaction history and clear history. 
@@ -84,8 +90,7 @@ This document is intended to provide a basis for implementation. The architectur
 \begin{tabular}{|p{3cm}|p{12cm}|}
 \hline
 Term & Definition \\
-\hline\hline
-Model View Controller & The architecture used in the MyMoney application. It consists of 3 individual components the model, the view and the controller.  \\
+\hline\hline Model View Controller & The architecture used in the MyMoney application. It consists of 3 individual components the model, the view and the controller.  \\
 \hline
 
 \end{tabular}
@@ -147,7 +152,7 @@ The MyMoneyApp uses a simple MVC architecture with an observer pattern to notify
 \begin{figure}[h!]
   \centering
   \includegraphics[width=110mm]{class_diagram.png}
-  \caption{MVC Diagrams}
+  \caption{Class diagram}
 \end{figure}
 
 
