@@ -143,12 +143,12 @@ The MyMoneyApp uses a simple MVC architecture with an observer pattern to notify
   \caption{MVC Diagrams}
 \end{figure}
 
-% Doenst support static gif. we'll need to convert to another format
-%\begin{figure}[h!]
-%  \centering
-%  \includegraphics[width=110mm]{class_diagram.gif}
-%  \caption{MVC Diagrams}
-%\end{figure}
+%% We'll need a way to put the class diagram as the whole page
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=110mm]{class_diagram.png}
+  \caption{MVC Diagrams}
+\end{figure}
 
 
 
@@ -462,12 +462,12 @@ As explained, our software offers many functionalities that allows the user to i
 Our software gives the user basic functionality such as “Deposit Amount”, which allows them to simply enter an amount to be saved into the “Deposit” section of the account. Once stored, the data can be used by other functionalities to extend the user interactability with the system. 
 
 \subsubsection{Deposit Amount - Sequence Diagram}
-% Doenst support static gif. we'll need to convert to another format
-%\begin{figure}[h!]
-%  \centering
-%  \includegraphics[width=110mm]{deposit_sequence.gif}
-%  \caption{Deposit Sequence Diagram}
-%\end{figure}
+ Doenst support static gif. we'll need to convert to another format
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=110mm]{deposit_sequence.png}
+  \caption{Deposit Sequence Diagram}
+\end{figure}
 
 
 The Deposit Amount use case is a basic functionality that is invoked from the GUI. When the GUI is launched, it establishes a connection with the database and then waits for user inputs. Once the user entered an amount into the Deposit’s input box and confirmed their action by pressing the “Deposit Amount” button, the function depositButtonAction(ActionEvent) is called which tells the DepositMoneyController to update the Model. When updated, the DepositMoneyController will signal the GUI that the information has been successfully updated and that it needs to display the new information. The GUI will then call UpdateBalance(float) which will finally update the displayed balance to reflect the new amount.
@@ -477,12 +477,12 @@ The Deposit Amount use case is a basic functionality that is invoked from the GU
 Similar to the “Deposit Amount” use case, “Withdraw Amount” is another basic functionality that allows the user to interact with the system. It requires the user to input a withdrawal amount which is saved into the “Withdraw” section of the account. 
 
 \subsubsection{Withdraw Amount - Sequence Diagram}
-% Doenst support static gif. we'll need to convert to another format
-%\begin{figure}[h!]
-%  \centering
-%  \includegraphics[width=110mm]{withdraw_sequence.gif}
-%  \caption{Withdraw Sequence Diagram}
-%\end{figure}
+ Doenst support static gif. we'll need to convert to another format
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=110mm]{withdraw_sequence.png}
+  \caption{Withdraw Sequence Diagram}
+\end{figure}
 
 This use case functions very similarly to the “Deposit Amount” use case. It establishes a database connection when the GUI is launched and waits for user inputs. Once a withdrawal amount has been entered and confirmed by the user, it triggers the withdrawButton(ActionEvent) function which informs the WithdrwaMoneyController to update the Model. The controller will then update the model and inform the GUI that the changes has been successfully applied. The GUI will then call UpdateBalance(float) function which will update the displayed balance to reflect the new amount.
 
@@ -512,12 +512,11 @@ In the previous “Deposit Amount” and “Withdraw Amount” use cases describ
 
 The sequence diagram below shows in more detail how MVC with the Observer Pattern functions in our system.    
 
-% Doenst support static gif. we'll need to convert to another format
-%\begin{figure}[h!]
-%  \centering
-%  \includegraphics[width=110mm]{mvc_sequence.gif}
-%  \caption{MVC Sequence Diagram}
-%\end{figure}
 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=100mm]{mvc_sequence.png}
+  \caption{MVC Sequence Diagram}
+\end{figure}
 
 \end{document}
