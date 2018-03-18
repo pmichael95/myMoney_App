@@ -89,7 +89,14 @@ public class LandingGUI {
 		
 		if (source != null) {
 			displayBalance = new DisplayBalanceController();
-
+			
+			//load initial balance
+			try {
+				displayBalance.initialBalance();
+			} catch (SQLException e) {
+				System.out.println("Could not make a connection to the database");
+				e.printStackTrace();
+			}
 			withdrawMoney = new WithdrawMoneyController();
 
 			depositMoney = new DepositMoneyController();
@@ -106,12 +113,22 @@ public class LandingGUI {
 	 */
 	/**
 	 * Updates the displayed balance on the main GUI screen.
-	 * @param balance to update on the balance
+	 * @param balance(float type) to update on the balance
 	 */
 	public void UpdateBalance(float balance) {
 		this.balance.setText("$" + balance);
 	}
 	
+	/**
+	 * HELPER FUNCTIONS
+	 */
+	/**
+	 * Updates the displayed balance on the main GUI screen.
+	 * @param balance(String type) to update on the balance
+	 */
+	public void UpdateBalance(String balance) {
+		this.balance.setText("$" + balance);
+	}
 	/**
 	 * HANDLER FUNCTIONS
 	 */
@@ -176,7 +193,8 @@ public class LandingGUI {
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
 			clear = new ClearAccountController(); //the controller automatically calls the delete function
-			UpdateBalance(0);
+			displayBalance.initModel();
+			UpdateBalance("0.00");
 		}
 	}
 	

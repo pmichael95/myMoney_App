@@ -1,19 +1,23 @@
 package controllers;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.j256.ormlite.dao.CloseableIterator;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.UpdateBuilder;
 
+import GUI.ShowHistoryGUI.HistoryData;
+import models.DepositMoneyModel;
 import models.DisplayBalanceModel;
+import models.WithdrawMoneyModel;
 import views.DisplayBalanceView;
 
 /**
  * DisplayBalanceController
  * 
  * @author Shunyu Wang
- * @modifiedBy Johnny Mak, Philip Michael, Tobi Decary-Larocque
+ * @modifiedBy Johnny Mak, Philip Michael, Tobi Decary-Larocque, Shunyu Wang
  * @created 1/29/2018
  * @updated 3/5/2018
  */
@@ -137,5 +141,42 @@ public class DisplayBalanceController implements Controller{
 		updateBuilder.update();
 		
 		updateView();
+	}
+	
+	
+	/**
+	 * Call this method when starting the application to show a historical balance on account
+	 * @throws SQLException 
+	 */
+	public void initialBalance() throws SQLException {
+		DisplayBalanceView.DisplayBalanceViewData data = new DisplayBalanceView.DisplayBalanceViewData();
+		Dao<DepositMoneyModel, Integer> depositMoneyDao = DepositMoneyModel.getDao();
+		Dao<WithdrawMoneyModel, Integer> withdrawMoneyDao = WithdrawMoneyModel.getDao();
+		
+		data.account = model.account;
+
+		try {
+			float depositSum = 0, withdrawSum = 0;
+			
+			// balance of all deposit records
+			List<DepositMoneyModel> depositMoney = depositMoneyDao.queryForAll();
+			for (int i = 0; i < depositMoney.size(); i++) {
+				depositSum += depositMoney.get(i).add_amount;
+			}
+
+			// balance of all withdraw records
+			List<WithdrawMoneyModel> withdrawMoney = withdrawMoneyDao.queryForAll();
+			for (int i = 0; i < withdrawMoney.size(); i++) {
+				withdrawSum += withdrawMoney.get(i).withdrawAmount;
+			}
+			
+			data.accountBalance = depositSum - withdrawSum;
+			model.accountBalance = data.accountBalance;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		view.updateUI(data);
 	}
 }

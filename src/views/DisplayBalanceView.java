@@ -1,14 +1,16 @@
 package views;
 
+import java.text.DecimalFormat;
+
 import GUI.LandingGUI;
 
 /**
  * Display Balance View 
  * 
  * @author Shunyu Wang
- * @modifiedBy Johnny Mak
+ * @modifiedBy Johnny Mak, Shunyu Wang
  * @created 1/29/2018
- * @updated 2/11/2018
+ * @updated 3/15/2018
  * 
  */
 
@@ -51,8 +53,21 @@ public class DisplayBalanceView extends View {
 	@Override
 	public void updateUI(Object data) {
 		DisplayBalanceViewData viewData = (DisplayBalanceViewData) data;
-		LandingGUI._GUI.UpdateBalance(viewData.accountBalance);
-		System.out.println("Your balance of " + viewData.account + " is " + viewData.accountBalance);
+		
+		
+		//format the accountBalance to have only 2 decimal places, the database still store precise value
+		DecimalFormat df = new DecimalFormat("0.00");
+		df.setMaximumFractionDigits(2);
+		df.setMinimumFractionDigits(2);
+		String formattedAccountBalance = df.format(viewData.accountBalance);
+		
+		//avoiding cases such as "22.99999-23", which result a negative formatted string
+		if(formattedAccountBalance.equals("-0.00")) {
+			formattedAccountBalance = "0.00";
+		}
+		
+		LandingGUI._GUI.UpdateBalance(formattedAccountBalance);
+		System.out.println("Your balance of " + viewData.account + " is " + formattedAccountBalance);
 	}
 
 }

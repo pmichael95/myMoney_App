@@ -12,7 +12,7 @@ import views.DepositMoneyView;
  * The controller to deposit money into the account.
  * 
  * @author Sabrina D'Mello
- * @modifiedBy Johnny Mak, Philip Michael
+ * @modifiedBy Johnny Mak, Philip Michael, Shunyu Wang
  * @created 2/1/2018
  * @updated 3/5/2018
  *
@@ -87,9 +87,13 @@ public class DepositMoneyController implements Controller{
 		//model.account  = viewData.account;
 		model.add_type   = viewData.type;
 		
+		
+		
 		try 
 		{
-			dao.createOrUpdate(model);
+			// Tell the dao to create a new table row, which is a deposit transaction record
+			// This will create the query, execute it and place our new object into the database
+			dao.create(model);
 		} 
 		catch (SQLException e) 
 		{

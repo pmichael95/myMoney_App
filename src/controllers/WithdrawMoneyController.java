@@ -15,7 +15,7 @@ import models.DatabaseConnectionSource;
  * The controller for withdraw which will handle changes to the model as well as updating the view
  *
  * @author Jason Kalec
- * @modifiedBy Johnny Mak
+ * @modifiedBy Johnny Mak, Shunyu Wang
  * @created 2/6/2018
  * @updated 2/11/2018
  */
@@ -102,9 +102,9 @@ public class WithdrawMoneyController implements Controller {
 		model.withdrawType   = viewData.type;
 		
 		try {
-			// Tell the dao to create or update the model with our new data
+			// Tell the dao to create a new table row, which is a withdraw transaction record
 			// This will create the query, execute it and place our new object into the database
-			dao.createOrUpdate(model);
+			dao.create(model);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
