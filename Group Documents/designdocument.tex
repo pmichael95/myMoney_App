@@ -464,15 +464,16 @@ The current balance field at the bottom of the GUI is where the users current ba
 As explained, our software offers many functionalities that allows the user to interact with it. These functionalities were developed based on the gathered user stories. It includes: Deposit Amount, Withdraw Amount, Show Balance, Show History, Clear History, and Display GUI. 
 
 \subsection{Deposit Amount}
-Our software gives the user basic functionality such as “Deposit Amount”, which allows them to simply enter an amount to be saved into the “Deposit” section of the account. Once stored, the data can be used by other functionalities to extend the user interactability with the system. 
+Our software gives the user basic functionality such as “Deposit Amount”, which allows them to simply enter an amount to be saved into the “Deposit” section of the account. Once stored, the data can be used by other functionalities to extend the user interactability with the system.
 
 \subsubsection{Deposit Amount - Sequence Diagram}
- Doenst support static gif. we'll need to convert to another format
+
 \begin{figure}[h!]
   \centering
   \includegraphics[width=100mm]{deposit_sequence.png}
   \caption{Deposit Sequence Diagram}
 \end{figure}
+
 The Deposit Amount use case is a basic functionality that is invoked from the GUI. When the GUI is launched, it establishes a connection with the database and then waits for user inputs. Once the user entered an amount into the Deposit’s input box and confirmed their action by pressing the “Deposit Amount” button, the function depositButtonAction(ActionEvent) is called which tells the DepositMoneyController to update the Model. When updated, the DepositMoneyController will signal the GUI that the information has been successfully updated and that it needs to display the new information. The GUI will then call UpdateBalance(float) which will finally update the displayed balance to reflect the new amount.
 
 
@@ -480,7 +481,6 @@ The Deposit Amount use case is a basic functionality that is invoked from the GU
 Similar to the “Deposit Amount” use case, “Withdraw Amount” is another basic functionality that allows the user to interact with the system. It requires the user to input a withdrawal amount which is saved into the “Withdraw” section of the account. 
 
 \subsubsection{Withdraw Amount - Sequence Diagram}
- Doenst support static gif. we'll need to convert to another format
 \begin{figure}[h!]
   \centering
   \includegraphics[width=110mm]{withdraw_sequence.png}
