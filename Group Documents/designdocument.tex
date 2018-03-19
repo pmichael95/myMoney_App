@@ -21,6 +21,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{titlesec}
+\usepackage{pdflscape}
 
 \setcounter{secnumdepth}{3}
 \pagenumbering{arabic}
@@ -148,12 +149,14 @@ The MyMoneyApp uses a simple MVC architecture with an observer pattern to notify
   \caption{MVC Diagrams}
 \end{figure}
 
+\begin{landscape}
 %% We'll need a way to put the class diagram as the whole page
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=110mm]{class_diagram.png}
+  \includegraphics[width=250mm]{class_diagram.png}
   \caption{Class diagram}
 \end{figure}
+\end{landscape}
 
 
 
@@ -199,17 +202,17 @@ All the subsystems interact with a message passing interface. Each view has a cu
     \begin{tabular}{|l|p{10cm}|}
 
       \hline
-      \bf Method: & void updateUI(Object data)\\
+      \bf Method & void updateUI(Object data)\\
 		\hline
-      \bf Purpose: & To notify the view that it should update its view state with the current data message.
+      \bf Purpose & To notify the view that it should update its view state with the current data message.
 This is the controller to view interface. This is used when the controller sends a message to the view.
 )\\
 \hline
-      \bf Parameters: & Object data. The data/message that the current view should unpack/cast and update its state with.The view should cast the object to its own object type.\\
+      \bf Parameters & Object data. The data/message that the current view should unpack/cast and update its state with.The view should cast the object to its own object type.\\
 		\hline
-      \bf Valid data: &  An object of type that is known to the view and controller\\
+      \bf Valid data &  An object of type that is known to the view and controller\\
       \hline
-      \bf Invalid data: &  Null, or an unknown data message type. The view should handle invalid data in an expected manner, and should not throw any exceptions up the system interface.\\
+      \bf Invalid data &  Null, or an unknown data message type. The view should handle invalid data in an expected manner, and should not throw any exceptions up the system interface.\\
       \hline
 
     \end{tabular}
@@ -221,15 +224,15 @@ This is the controller to view interface. This is used when the controller sends
   \begin{center}
     \begin{tabular}{|l|p{10cm}|}
       \hline
-      \bf Method: & void notifyObservers(Object data)\\
+      \bf Method & void notifyObservers(Object data)\\
 		\hline
-      \bf Purpose: &  Notify all dependent observers/controllers with a new message/data. This is the view to controller interface. This is used when the view wants to send a message to the controller.\\
+      \bf Purpose &  Notify all dependent observers/controllers with a new message/data. This is the view to controller interface. This is used when the view wants to send a message to the controller.\\
 		\hline
-      \bf Parameters: & Object data. The data/message that the current view sends to its controller when the view wants to notify the controller of a view event or change.\\
+      \bf Parameters & Object data. The data/message that the current view sends to its controller when the view wants to notify the controller of a view event or change.\\
 		\hline
-      \bf Valid data: &  An object of type that is known to the view and controller\\
+      \bf Valid data &  An object of type that is known to the view and controller\\
       \hline
-      \bf Invalid data: & Null, or an unknown data message type. The view should handle invalid data in an expected manner, and should not throw any exceptions up the system interface.\\
+      \bf Invalid data & Null, or an unknown data message type. The view should handle invalid data in an expected manner, and should not throw any exceptions up the system interface.\\
       \hline
 
     \end{tabular}
@@ -241,15 +244,15 @@ This is the controller to view interface. This is used when the controller sends
   \begin{center}
     \begin{tabular}{|l|p{10cm}|}
       \hline
-      \bf Method: & void addObserver(Observer observer)\\
+      \bf Method & void addObserver(Observer observer)\\
 		\hline
-      \bf Purpose: & Add an observer/controller to the current subject/view.\\
+      \bf Purpose & Add an observer/controller to the current subject/view.\\
 		\hline
-      \bf Parameters: & Observer observer. The controller that subscribes to the view/subject’s events or changes.\\
+      \bf Parameters & Observer observer. The controller that subscribes to the view/subject’s events or changes.\\
 		\hline
-      \bf Valid data: & An observer object that should be expected to handle the view’s messages.\\
+      \bf Valid data & An observer object that should be expected to handle the view’s messages.\\
       \hline
-      \bf Invalid data: &Null, or an unknown controller type that would not know how to handle the view’s messages.\\
+      \bf Invalid data &Null, or an unknown controller type that would not know how to handle the view’s messages.\\
       \hline
 
     \end{tabular}
@@ -263,11 +266,11 @@ This is the controller to view interface. This is used when the controller sends
   \begin{center}
     \begin{tabular}{|l|p{10cm}|}
       \hline
-      \bf Method: & void initModel()\\
+      \bf Method & void initModel()\\
 		\hline
-      \bf Purpose: & Initialize any model or models that the controller needs to update or create.\\
+      \bf Purpose & Initialize any model or models that the controller needs to update or create.\\
 		\hline
-      \bf Parameters: & None.\\
+      \bf Parameters & None.\\
 		\hline
     \end{tabular}
   \end{center}
@@ -278,11 +281,11 @@ This is the controller to view interface. This is used when the controller sends
   \begin{center}
     \begin{tabular}{|l|p{10cm}|}
       \hline
-      \bf Method: & void initView()\\
+      \bf Method & void initView()\\
 		\hline
-      \bf Purpose: &  Initialize the view and setup any needed view logic.\\
+      \bf Purpose &  Initialize the view and setup any needed view logic.\\
 		\hline
-      \bf Parameters: & None.\\
+      \bf Parameters & None.\\
 		\hline
     \end{tabular}
   \end{center}
@@ -293,11 +296,11 @@ This is the controller to view interface. This is used when the controller sends
   \begin{center}
     \begin{tabular}{|l|p{10cm}|}
       \hline
-      \bf Method: & void updateView()\\
+      \bf Method & void updateView()\\
 		\hline
-      \bf Purpose: & Tells the controller's attached view to update its ui. This method is called after any model changes have happened, and the view needs to reflect these changes.\\
+      \bf Purpose & Tells the controller's attached view to update its ui. This method is called after any model changes have happened, and the view needs to reflect these changes.\\
 		\hline
-      \bf Parameters: & None.\\
+      \bf Parameters & None.\\
 		\hline
     \end{tabular}
   \end{center}
@@ -308,15 +311,15 @@ This is the controller to view interface. This is used when the controller sends
   \begin{center}
     \begin{tabular}{|l|p{10cm}|}
       \hline
-      \bf Method: & void update(Object data)\\
+      \bf Method & void update(Object data)\\
 		\hline
-      \bf Purpose: & Update the controller/observer data/state. Update the model with the new changes from the view’s data/message.\\
+      \bf Purpose & Update the controller/observer data/state. Update the model with the new changes from the view’s data/message.\\
 		\hline
-      \bf Parameters: & Object - data, this is the corresponding data message passed from the view's notifyObserver(Object data) call the object is usually going to be type casted to the specified data type depending on the what the view's data is. the data reflects the state of the view\\
+      \bf Parameters & Object - data, this is the corresponding data message passed from the view's notifyObserver(Object data) call the object is usually going to be type casted to the specified data type depending on the what the view's data is. the data reflects the state of the view\\
 		\hline
-      \bf Valid data: & An object of type that is known to the view and controller\\
+      \bf Valid data & An object of type that is known to the view and controller\\
       \hline
-      \bf Invalid data: &  Null, or an unknown data message type. The controller should handle invalid data in an expected manner, and should not throw any exceptions up the system interface.\\
+      \bf Invalid data &  Null, or an unknown data message type. The controller should handle invalid data in an expected manner, and should not throw any exceptions up the system interface.\\
       \hline
 
     \end{tabular}
@@ -332,14 +335,18 @@ The MyMoneyApp is to be used by a single user and ran on a single computer. Ther
 
 
 \section{Detailed Design}
-The primary User Interface used in the system design, was created using Java FX, which is quite similar to Java Swing. This GUI gives users the ability to interact with the core necessary aspects of the system in order to obtain a satisfactory user experience.
+The primary User Interface used in the system design, was created using Java FX, which is quite similar to Java Swing. This GUI gives users the ability to interact with the core necessary aspects of the system in order to obtain a satisfactory user experience.\\
 
-User interactions:\\
-User can enter an amount and then press “withdraw amount” to deduct from the current balance\\
-User can enter an amount and then press “deposit amount” to increase the current balance\\
-User can press edit transaction to change various elements of the current transaction\\
-The user can delete their current account\\
-The user can press “Set Up recurring payment” to have money deducted at specified intervals or at specific times.\\
+
+\textbf{User interactions:}\\
+\vspace*{-0.2in}
+\begin{enumerate}
+  \item User can enter an amount and then press “withdraw amount” to deduct from the current balance
+  \item User can enter an amount and then press “deposit amount” to increase the current balance
+  \item User can press edit transaction to change various elements of the current transaction
+  \item The user can delete their current account
+
+\end{enumerate}
 
 
 \subsection{View Subsystem}
@@ -379,7 +386,9 @@ The basic options subsection of the GUI is displayed as such all functionality t
 \end{figure}
 
 \subsubsection{Advanced Options}
-The advanced options subsection of the GUI is displayed as such all functionality that is not frequented often such as setup recurring payment and clear account will be available here.
+
+The advanced options subsection of the GUI is displayed as such all functionality that is not frequented often such as setup recurring payment and clear account will be available here. Currently, the “Setup Recurring Payment” button is non-functional and may be developed in the near future. 
+
 % Advanced Options Image
 \begin{figure}[h!]
   \centering
@@ -418,15 +427,7 @@ The show history button of the basic options subsection when clicked upon will s
   \caption{Show History Button}
 \end{figure}
 
-\subsubsection{Setup Recurring Payment Button}
-The setup recurring payment button of the advanced options subsection will set up a system where a certain amount will be automatically deducted or incremented from current balance for a specific time interval, such as the first of every month, or every week.
-
-% Setup Recurring Payment Button Image
-\begin{figure}[h!]
-  \centering
-  \includegraphics[]{setup_recurring_payment_button.png}
-  \caption{Setup Recurring Payment Button}
-\end{figure}
+\clearpage
 
 \subsubsection{Clear Account Button}
 The clear account button of the advanced options subsection will delete the current account and reset the application back to the clear default state.
@@ -469,11 +470,9 @@ Our software gives the user basic functionality such as “Deposit Amount”, wh
  Doenst support static gif. we'll need to convert to another format
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=110mm]{deposit_sequence.png}
+  \includegraphics[width=100mm]{deposit_sequence.png}
   \caption{Deposit Sequence Diagram}
 \end{figure}
-
-
 The Deposit Amount use case is a basic functionality that is invoked from the GUI. When the GUI is launched, it establishes a connection with the database and then waits for user inputs. Once the user entered an amount into the Deposit’s input box and confirmed their action by pressing the “Deposit Amount” button, the function depositButtonAction(ActionEvent) is called which tells the DepositMoneyController to update the Model. When updated, the DepositMoneyController will signal the GUI that the information has been successfully updated and that it needs to display the new information. The GUI will then call UpdateBalance(float) which will finally update the displayed balance to reflect the new amount.
 
 
@@ -487,6 +486,7 @@ Similar to the “Deposit Amount” use case, “Withdraw Amount” is another b
   \includegraphics[width=110mm]{withdraw_sequence.png}
   \caption{Withdraw Sequence Diagram}
 \end{figure}
+\clearpage
 
 This use case functions very similarly to the “Deposit Amount” use case. It establishes a database connection when the GUI is launched and waits for user inputs. Once a withdrawal amount has been entered and confirmed by the user, it triggers the withdrawButton(ActionEvent) function which informs the WithdrwaMoneyController to update the Model. The controller will then update the model and inform the GUI that the changes has been successfully applied. The GUI will then call UpdateBalance(float) function which will update the displayed balance to reflect the new amount.
 
@@ -519,8 +519,19 @@ The sequence diagram below shows in more detail how MVC with the Observer Patter
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=100mm]{mvc_sequence.png}
+  \includegraphics[height=200mm]{mvc_sequence.png}
   \caption{MVC Sequence Diagram}
 \end{figure}
+\vspace*{-0.5in}
+\clearpage
+
+\section{Conclusion}
+The MyMoneyApp was created for users to be able to manage their personal financials. The App allows them to constantly keep track of their money that has been deposited and withdrawn. The user can also view their history of their transactions as well as view their balance. Another feature of this application is that it allows the user to clear their history of transactions. This document was to analysis the design of the application.
+
+The design architecture of the MyMoneyApp was heavily based of the MVC design pattern. The MVC variation that the team has chosen allows the view to not be updated as soon as the model changes. Instead the view must pull the data from the model allowing the view to change and the model is then updated automatically. This allowed the application a clean and extensible of interchanging the model arocess different domains of the application.
+
+The primary user interface of the MyMoneyApp was created with Java FX. The GUI allows easy and quick access for the user to deposit, withdraw, view balance, view history and clear transactions. 
+
+The MyMoneyApp design documentation was created to express the major design implementation that was used in creating this money management application for an average everyday user.
 
 \end{document}
