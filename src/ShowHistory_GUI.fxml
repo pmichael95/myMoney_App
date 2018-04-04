@@ -14,17 +14,18 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxWidth="-1.0" prefHeight="400.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="GUI.ShowHistoryGUI">
+<VBox maxWidth="-1.0" prefHeight="400.0" prefWidth="950.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="GUI.ShowHistoryGUI">
   <children>
     <GridPane VBox.vgrow="ALWAYS">
       <children>
         <TableView fx:id="table" prefWidth="686.0">
           <columns>
-            <TableColumn id="transactionType" minWidth="150.0" prefWidth="150.0" text="Transaction Type" fx:id="transactionType" />
-            <TableColumn id="withdrawalType" minWidth="150.0" prefWidth="150.0" text="Type of Withdrawal" fx:id="withdrawalType" />
-            <TableColumn id="depositType" minWidth="150.0" prefWidth="150.0" text="Type of Deposit" fx:id="depositType" />
-            <TableColumn id="amount" minWidth="150.0" prefWidth="150.0" text="Amount" fx:id="amount" />
-            <TableColumn id="transactionReason" minWidth="150.0" prefWidth="150.0" text="Transaction Reason" fx:id="transactionReason" />
+            <TableColumn id="date" minWidth="200.0" prefWidth="200.0" text="DATE" fx:id="date" />
+            <TableColumn id="transactionType" minWidth="150.0" prefWidth="150.0" text="TRANSACTION TYPE" fx:id="transactionType" />
+            <TableColumn id="transactionReason" minWidth="150.0" prefWidth="150.0" text="DESCRIPTION" fx:id="transactionReason" />
+            <TableColumn id="amount" minWidth="150.0" prefWidth="150.0" text="AMOUNT" fx:id="amount" />
+            <TableColumn id="withdrawalType" minWidth="150.0" prefWidth="150.0" text="TYPE OF WITHDRAWAL" fx:id="withdrawalType" />
+            <TableColumn id="depositType" minWidth="150.0" prefWidth="150.0" text="TYPE OF DEPOSIT" fx:id="depositType" />
           </columns>
         </TableView>
       </children>
