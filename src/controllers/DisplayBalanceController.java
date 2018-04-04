@@ -122,11 +122,11 @@ public class DisplayBalanceController implements Controller{
 	 * @param ammount, the ammount to be subtracted/added
 	 * @throws SQLException 
 	 */
-	public void updateBalance(String type, float ammount) throws SQLException {
+	public void updateBalance(String type, float amount) throws SQLException {
 
 		if (type.toLowerCase().equals("withdraw") )
 		{	
-			ammount *= -1;
+			amount *= -1;
 		}
 		else if (type.toLowerCase().equals("deposit"))
 		{
@@ -134,7 +134,7 @@ public class DisplayBalanceController implements Controller{
 		}
 		else return; //if different type, it's ignored
 		
-		model.accountBalance += ammount;
+		model.accountBalance += amount;
 		
 		UpdateBuilder<DisplayBalanceModel, Integer> updateBuilder = dao.updateBuilder();
 		updateBuilder.updateColumnValue("accountBalance", model.accountBalance);
