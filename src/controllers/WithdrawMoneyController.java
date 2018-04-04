@@ -35,7 +35,6 @@ public class WithdrawMoneyController implements Controller {
 	public WithdrawMoneyController() {
 		initView();
 		initModel();
-		
 	}
 	
 	/**
@@ -47,7 +46,7 @@ public class WithdrawMoneyController implements Controller {
 		// Create the example view
 		view = new WithdrawMoneyView();
 		// Add the controller as an observer to the view
-		view.addObserver(this);
+//		view.addObserver(this);
 	}
 	
 	/**
@@ -68,14 +67,14 @@ public class WithdrawMoneyController implements Controller {
 	 */
 	@Override
 	public void updateView() {
-		// Create the data object to pass back to the view to update it's ui with
-		WithdrawMoneyView.WithdrawMoneyViewData data = new WithdrawMoneyView.WithdrawMoneyViewData();
-		// Set the view data's with the new updated information from our model
-		data.amount = model.withdrawAmount;
-		data.type   = model.withdrawType;
-		data.transactionReason = model.transactionReason;
-		// Tell the view to update its ui using the data we just built
-		view.updateUI(data);
+//		// Create the data object to pass back to the view to update it's ui with
+//		WithdrawMoneyView.WithdrawMoneyViewData data = new WithdrawMoneyView.WithdrawMoneyViewData();
+//		// Set the view data's with the new updated information from our model
+//		data.amount = model.withdrawAmount;
+//		data.type   = model.withdrawType;
+//		data.transactionReason = model.transactionReason;
+//		// Tell the view to update its ui using the data we just built
+//		view.updateUI(data);
 	}
 	
 	/**
@@ -86,7 +85,7 @@ public class WithdrawMoneyController implements Controller {
 		updateModel(data);
 		
 		// Since our model has changed now, we need to tell the view to update its ui
-		updateView();
+//		updateView();
 	}
 	
 	/**
@@ -102,6 +101,7 @@ public class WithdrawMoneyController implements Controller {
 		model.withdrawAmount = viewData.amount;
 		model.withdrawType   = viewData.type;
 		model.transactionReason = viewData.transactionReason;
+		model.date = viewData.date.toString();
 		
 		try {
 			// Tell the dao to create a new table row, which is a withdraw transaction record

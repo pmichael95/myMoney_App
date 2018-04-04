@@ -1,7 +1,8 @@
 package views;
 
-import java.util.Scanner;
-import GUI.LandingGUI;
+import java.util.Date;
+//import java.util.Scanner;
+//import GUI.LandingGUI;
 
 /**
  * 
@@ -15,7 +16,7 @@ import GUI.LandingGUI;
  */
 
 public class WithdrawMoneyView extends View {
-	private Scanner keyboard;
+//	private Scanner keyboard;
 
 	
 	public static class WithdrawMoneyViewData {
@@ -24,15 +25,16 @@ public class WithdrawMoneyView extends View {
 		public float amount;
 		public String type;
 		public String transactionReason;
+		public Date date;
 	}
 	
 	/**
 	 * Initialize any view logic or necessary components for this view to work. such as buttons, event listeners
 	 */
 	public WithdrawMoneyView() {
-		keyboard = new Scanner(System.in);
+//		keyboard = new Scanner(System.in);
 	}
-	
+/*	
 	public void WithdrawEvent() {
 		// You wouldn't have this in your implementation
 		// this was just here to cause an event to trigger. the cause of an event might be a button press, or ui event
@@ -57,18 +59,17 @@ public class WithdrawMoneyView extends View {
 		// notify the observer of the data change
 		notifyObservers(data);
 	}
-	
+*/	
+
 	/**
 	 * Update this view with the new data 
 	 */
 	@Override
 	public void updateUI(Object data) {
-		// Cast the data to our example view data container
-		WithdrawMoneyViewData viewData = (WithdrawMoneyViewData) data;
-		// Extract all the data out of the container and update the ui with new data
-		// In the case of this example, since we are using the console, we are just printing out the new data
-		System.out.println("(Test)Amount Withdrawn " + viewData.amount);
+//		// Cast the data to our example view data container
+//		WithdrawMoneyViewData viewData = (WithdrawMoneyViewData) data;
+//		// Extract all the data out of the container and update the ui with new data
+//		// In the case of this example, since we are using the console, we are just printing out the new data
+//		System.out.println("(Test)Amount Withdrawn " + viewData.amount);
 	}
-	
-
 }

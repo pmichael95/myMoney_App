@@ -29,32 +29,31 @@ public class DepositMoneyController implements Controller{
 		initView();
 		initModel();
 		//view.addAccount();
-		view.DepositEvent();		
+//		view.DepositEvent();		
 	}
 	
 	
 	@Override
 	public void updateView() 
 	{		
-		DepositMoneyView.DepositMoneyViewData data = new DepositMoneyView.DepositMoneyViewData();
-		
-		// Set the view data's with the new updated information from our model
-		data.amount = model.add_amount;
-		//data.account = model.account;
-		data.type = model.add_type;
-		
-		data.transactionReason = model.transactionReason;
-		
-		// Tell the view to update its ui using the data we just built
-		view.updateUI(data);
-		
+//		DepositMoneyView.DepositMoneyViewData data = new DepositMoneyView.DepositMoneyViewData();
+//		
+//		// Set the view data's with the new updated information from our model
+//		data.amount = model.add_amount;
+//		//data.account = model.account;
+//		data.type = model.add_type;
+//		
+//		data.transactionReason = model.transactionReason;
+//		
+//		// Tell the view to update its ui using the data we just built
+//		view.updateUI(data);
 	}
 
 	@Override
 	public void initView() 
 	{	
 		view = new DepositMoneyView();
-		view.addObserver(this);
+//		view.addObserver(this);
 	}
 
 	@Override
@@ -71,7 +70,7 @@ public class DepositMoneyController implements Controller{
 		updateModel(data);
 		
 		// Since our model has changed now, we need to tell the view to update its ui
-		updateView();
+//		updateView();
 		
 	}
 
@@ -90,8 +89,7 @@ public class DepositMoneyController implements Controller{
 		model.add_type   = viewData.type;
 		
 		model.transactionReason = viewData.transactionReason;
-		
-		
+		model.date = viewData.date.toString();
 		
 		try 
 		{

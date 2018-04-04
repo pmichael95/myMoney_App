@@ -45,6 +45,9 @@ public class DepositMoneyModel {
 	
 	@DatabaseField
 	public String transactionReason;
+	
+	@DatabaseField
+	public String date;
 
 	
 	/**

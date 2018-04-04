@@ -21,25 +21,28 @@ import com.j256.ormlite.table.TableUtils;
 // This sets the model's/table's name
 @DatabaseTable(tableName = "WithdrawMoney_model")
 public class WithdrawMoneyModel {
-	
+
 	//primary key
 	// generatedId automatically creates the primary ids
 	// therefore, every time we create a new model, we don't have to know what the next id to set is
-	 @DatabaseField(generatedId = true)
+	@DatabaseField(generatedId = true)
 	public int id;
-	
+
 	// Field following the id, the amount of money that was taken from account
-	 @DatabaseField
+	@DatabaseField
 	public float withdrawAmount;
-	 
+
 	// Type of the withdrawal   
-	 @DatabaseField
+	@DatabaseField
 	public String withdrawType;
-	 
-	 @DatabaseField 
-	 public String transactionReason;
-	 
-	 /**
+
+	@DatabaseField 
+	public String transactionReason;
+
+	@DatabaseField
+	public String date;
+
+	/**
 	 * Function that returns DAO (Database Access Object 
 	 */
 	public static Dao<WithdrawMoneyModel, Integer> getDao() {

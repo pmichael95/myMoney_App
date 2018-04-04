@@ -1,13 +1,14 @@
 package views;
 
-import java.util.Scanner;
-
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.text.Text;
-import views.ExampleView.ExampleViewData;
-import GUI.LandingGUI;
+import java.util.Date;
+//import java.util.Scanner;
+//
+//import javafx.event.ActionEvent;
+//import javafx.fxml.FXML;
+//import javafx.scene.control.Button;
+//import javafx.scene.text.Text;
+//import views.ExampleView.ExampleViewData;
+//import GUI.LandingGUI;
 
 /**
  * 
@@ -21,15 +22,16 @@ import GUI.LandingGUI;
  */
 public class DepositMoneyView extends View {
 
-	private Scanner keyboard; //for the scanner
+//	private Scanner keyboard; //for the scanner
 	
 	//Nested Data Class	
 	public static class DepositMoneyViewData 
 	{
 		public float amount;
 		public String type;
-		public String account;
+//		public String account;
 		public String transactionReason;
+		public Date date;
 	}
 	
 	//Constructor creating a scanner for the users input
@@ -37,15 +39,15 @@ public class DepositMoneyView extends View {
 	{
 		// keyboard = new Scanner(System.in);
 	}
-	
+/*	
 	//Method will allow the user to enter the amount will to deposit
 	public void DepositEvent()
 	{
-		/* System.out.println("\nHow much money would you like to deposit in this account?");
+		System.out.println("\nHow much money would you like to deposit in this account?");
 		float user_amount = keyboard.nextFloat();
 		
 		System.out.println("\nWhat is the type of deposit?");
-		String user_type = keyboard.next(); */
+		String user_type = keyboard.next(); 
 		
 		//ToDo how does DepositEvent get data
 		
@@ -62,7 +64,7 @@ public class DepositMoneyView extends View {
 		dataView.transactionReason = reason;
 		notifyObservers(dataView);
 	}
-	
+*/
 	
 	/**
 	 * Update this view with the new data 
