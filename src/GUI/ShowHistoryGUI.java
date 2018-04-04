@@ -33,19 +33,20 @@ public class ShowHistoryGUI {
 	 * @modified 04/04/2018
 	 */
 	public static class HistoryData {
-		//private Date date;
 		private String transactionType;
 		private String withdrawalType;
 		private String depositType;
 		private float amount;
 		private String transactionReason;
+		private String date;
 
-		public HistoryData(String transactionType, String withdrawalType, String depositType, float amount, String reason) {
+		public HistoryData(String transactionType, String withdrawalType, String depositType, float amount, String reason, String date) {
 			this.transactionType = transactionType;
 			this.withdrawalType = withdrawalType;
 			this.depositType = depositType;
 			this.amount = amount;
 			this.transactionReason = reason;
+			this.date = date;
 		}
 
 		public String getTransactionType() {
@@ -78,6 +79,12 @@ public class ShowHistoryGUI {
 		public void setTransactionReason(String reason) {
 			this.transactionReason = reason;
 		}
+		public String getDate() {
+			return date;
+		}
+		public void setDate(String date) {
+			this.date = date;
+		}
 	}
 	
 
@@ -97,6 +104,8 @@ public class ShowHistoryGUI {
 	private TableColumn<HistoryData, Float> amount;
 	@FXML
 	private TableColumn<HistoryData, String> transactionReason;
+	@FXML
+	private TableColumn<HistoryData, String> date;
 
 	public void initialize() {
 		// Creates the static GUI object referencing to the current GUI shown on screen.
@@ -115,9 +124,12 @@ public class ShowHistoryGUI {
 		depositType.setCellValueFactory(new PropertyValueFactory<HistoryData, String>("depositType"));
 		amount.setCellValueFactory(new PropertyValueFactory<HistoryData, Float>("amount"));
 		transactionReason.setCellValueFactory(new PropertyValueFactory<HistoryData, String>("transactionReason"));
+		date.setCellValueFactory(new PropertyValueFactory<HistoryData, String>("date"));
 		
 		// Add data to the table.
 		table.setItems(history);
+		// Show history sorted by date of transaction.
+		table.getSortOrder().add(date);
 	}
 
 	/**
@@ -134,7 +146,8 @@ public class ShowHistoryGUI {
 				String depositType = depositMoney.get(i).add_type;
 				float amount = depositMoney.get(i).add_amount;
 				String reason = depositMoney.get(i).transactionReason;
-				history.add(new HistoryData("Deposit", "", depositType, amount, reason));
+				String date = depositMoney.get(i).date;
+				history.add(new HistoryData("Deposit", "", depositType, amount, reason, date));
 				System.out.println(reason);
 			}
 
@@ -144,7 +157,8 @@ public class ShowHistoryGUI {
 				String withdrawalType = withdrawMoney.get(i).withdrawType;
 				float amount = withdrawMoney.get(i).withdrawAmount;
 				String reason = withdrawMoney.get(i).transactionReason;
-				history.add(new HistoryData("Withdawal", withdrawalType, "", amount, reason));
+				String date = withdrawMoney.get(i).date;
+				history.add(new HistoryData("Withdawal", withdrawalType, "", amount, reason, date));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
