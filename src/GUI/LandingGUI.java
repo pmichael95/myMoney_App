@@ -13,20 +13,21 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.DatabaseConnectionSource;
-import models.WithdrawMoneyModel;
+//import models.WithdrawMoneyModel;
 import views.DepositMoneyView;
 import views.WithdrawMoneyView.WithdrawMoneyViewData;
 import controllers.*;
 import java.util.Optional;
 import java.io.IOException;
 import java.sql.SQLException;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.fail;
 
-import java.sql.SQLException;
-import java.util.List;
+//import java.sql.SQLException;
+import java.util.Date;
+//import java.util.List;
 
-import com.j256.ormlite.dao.Dao;
+//import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 
 /**
@@ -150,25 +151,24 @@ public class LandingGUI {
 	 */
 	@FXML
 	protected void withdrawButtonAction(ActionEvent event) throws SQLException {
-		WithdrawMoneyViewData userInput = new WithdrawMoneyViewData();
+		WithdrawMoneyViewData input = new WithdrawMoneyViewData();
 		try 
 		{
 			this.errorMessage.setText("");
-			userInput.amount = Float.parseFloat(this.inputAmount.getText());
-			userInput.type   = "Pay";
-			userInput.transactionReason = this.transactionReason.getText();
-			
-			withdrawMoney.update(userInput);
-			displayBalance.updateBalance("withdraw", userInput.amount);
+			input.amount = Float.parseFloat(this.inputAmount.getText());
+			input.type   = "Pay";
+			input.transactionReason = this.transactionReason.getText();
+			input.date = new Date();
+			withdrawMoney.update(input);
+			displayBalance.updateBalance("withdraw", input.amount);
 			this.inputAmount.setText("");
+			this.transactionReason.setText("");
 		}
 		catch(Exception e) 
 		{
 			this.errorMessage.setText("Value entered must be a number!");
 			this.inputAmount.setText("");
 		}
-		
-		
 	}
 	
 	@FXML
@@ -180,9 +180,11 @@ public class LandingGUI {
 			input.amount = Float.parseFloat(this.inputAmount.getText());
 			input.type = "Bill";	
 			input.transactionReason = this.transactionReason.getText();
+			input.date = new Date();
 			depositMoney.update(input);		
 			displayBalance.updateBalance("deposit", input.amount);	
 			inputAmount.setText("");
+			this.transactionReason.setText("");
 		}
 		catch(Exception e) 
 		{
@@ -198,7 +200,7 @@ public class LandingGUI {
 			Parent root = FXMLLoader.load(getClass().getResource("../ShowHistory_GUI.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("Transaction History");
-			stage.setScene(new Scene(root, 900, 700));
+			stage.setScene(new Scene(root, 950, 700));
 			stage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
