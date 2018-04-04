@@ -9,23 +9,32 @@ import java.util.Date;
  * This will update the system GUI with the new information following a Withdraw event 
  * 
  * @author Jason Kalec
- * @modifiedBy Johnny Mak
+ * @modifiedBy Johnny Mak, Ramez Nahas
  * @created 2/6/2018
- * @updated 2/11/2018
+ * @updated 04/04/2018
  * 
  */
 
 public class WithdrawMoneyView extends View {
 //	private Scanner keyboard;
 
-	
+
 	public static class WithdrawMoneyViewData {
 		//Data to be passed to controller
-		
+
 		public float amount;
 		public String type;
 		public String transactionReason;
 		public Date date;
+		
+		public WithdrawMoneyViewData() {}
+
+		public WithdrawMoneyViewData(float amount, String type, String transactionReason, Date date) {
+			this.amount = amount;
+			this.type = type;
+			this.transactionReason = transactionReason;
+			this.date = date;
+		}
 	}
 	
 	/**
@@ -34,6 +43,8 @@ public class WithdrawMoneyView extends View {
 	public WithdrawMoneyView() {
 //		keyboard = new Scanner(System.in);
 	}
+	
+	
 /*	
 	public void WithdrawEvent() {
 		// You wouldn't have this in your implementation

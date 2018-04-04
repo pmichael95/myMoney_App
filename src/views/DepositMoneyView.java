@@ -15,9 +15,9 @@ import java.util.Date;
  * The DepositMoney view for when we deposit into the deposit_money table.
  * 
  * @author Sabrina D'Mello
- * @modifiedBy Johnny Mak, Philip Michael
+ * @modifiedBy Johnny Mak, Philip Michael, Ramez Nahas
  * @created 2/1/2018
- * @updated 3/12/2018
+ * @updated 04/04/2018
  *
  */
 public class DepositMoneyView extends View {
@@ -29,9 +29,17 @@ public class DepositMoneyView extends View {
 	{
 		public float amount;
 		public String type;
-//		public String account;
 		public String transactionReason;
 		public Date date;
+		
+		public DepositMoneyViewData() {}
+		
+		public DepositMoneyViewData(float amount, String type, String transactionReason, Date date) {
+			this.amount = amount;
+			this.type = type;
+			this.transactionReason = transactionReason;
+			this.date = date;
+		}
 	}
 	
 	//Constructor creating a scanner for the users input
