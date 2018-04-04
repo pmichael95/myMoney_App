@@ -23,6 +23,7 @@ public class WithdrawMoneyView extends View {
 		
 		public float amount;
 		public String type;
+		public String transactionReason;
 	}
 	
 	/**
@@ -41,16 +42,17 @@ public class WithdrawMoneyView extends View {
 		System.out.println("Please Enter Withdraw Type: ");
 		String withdrawType = keyboard.next();
 		// Fire an event
-		OnWithdrawEvent(withdrawAmount, withdrawType);
+		//OnWithdrawEvent(withdrawAmount, withdrawType);
 	}
 	
-	private void OnWithdrawEvent(float withdrawAmount, String withdrawType) {
+	private void OnWithdrawEvent(float withdrawAmount, String withdrawType, String reason) {
 		// Create a new data container holding state about our view currently
 		WithdrawMoneyViewData data = new WithdrawMoneyViewData();
 		// get the input data from the textfields or anything other ui data
 		// and add it to the data container
 		data.amount = withdrawAmount;
 		data.type   = withdrawType;
+		data.transactionReason = reason;
 		// once the data container has all the necessary data for the controller to handle
 		// notify the observer of the data change
 		notifyObservers(data);

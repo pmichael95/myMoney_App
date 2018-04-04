@@ -42,6 +42,9 @@ public class DepositMoneyModel {
 	// add_type: the deposit type (Income, Loan, Gift, etc.)
 	@DatabaseField 
 	public String add_type;
+	
+	@DatabaseField
+	public String transactionReason;
 
 	
 	/**

@@ -29,6 +29,7 @@ public class DepositMoneyView extends View {
 		public float amount;
 		public String type;
 		public String account;
+		public String transactionReason;
 	}
 	
 	//Constructor creating a scanner for the users input
@@ -53,11 +54,12 @@ public class DepositMoneyView extends View {
 	}
 	
 	//Will notify the observer on amount change
-	public void onDepositEvent(float amt, String tp)
+	public void onDepositEvent(float amt, String tp, String reason)
 	{
 		DepositMoneyViewData dataView = new DepositMoneyViewData();
 		dataView.amount = amt;
 		dataView.type   = tp;
+		dataView.transactionReason = reason;
 		notifyObservers(dataView);
 	}
 	

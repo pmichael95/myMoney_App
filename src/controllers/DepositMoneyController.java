@@ -43,6 +43,8 @@ public class DepositMoneyController implements Controller{
 		//data.account = model.account;
 		data.type = model.add_type;
 		
+		data.transactionReason = model.transactionReason;
+		
 		// Tell the view to update its ui using the data we just built
 		view.updateUI(data);
 		
@@ -86,6 +88,8 @@ public class DepositMoneyController implements Controller{
 		model.add_amount = viewData.amount;
 		//model.account  = viewData.account;
 		model.add_type   = viewData.type;
+		
+		model.transactionReason = viewData.transactionReason;
 		
 		
 		

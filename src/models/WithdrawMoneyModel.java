@@ -36,6 +36,9 @@ public class WithdrawMoneyModel {
 	 @DatabaseField
 	public String withdrawType;
 	 
+	 @DatabaseField 
+	 public String transactionReason;
+	 
 	 /**
 	 * Function that returns DAO (Database Access Object 
 	 */

@@ -65,12 +65,16 @@ public class LandingGUI {
 	private Button deposit;
 	@FXML
 	private Button showHistory;
-	@FXML
-	private Button recurringPayment;
+	//@FXML
+	//private Button recurringPayment;
 	@FXML
 	private Button clearAccount;
 	@FXML
 	private TextField inputAmount;
+	@FXML
+	private TextField transactionReason;
+	@FXML
+	private Text errorMessage;
 	
 	/**
 	 * Initialize is called after every element/handler was fetched.
@@ -147,27 +151,44 @@ public class LandingGUI {
 	@FXML
 	protected void withdrawButtonAction(ActionEvent event) throws SQLException {
 		WithdrawMoneyViewData userInput = new WithdrawMoneyViewData();
-		userInput.amount = Float.parseFloat(this.inputAmount.getText());
-		userInput.type   = "Bill";
-		withdrawMoney.update(userInput);
-		displayBalance.updateBalance("withdraw", userInput.amount);
-		this.inputAmount.setText("");
+		try 
+		{
+			this.errorMessage.setText("");
+			userInput.amount = Float.parseFloat(this.inputAmount.getText());
+			userInput.type   = "Pay";
+			userInput.transactionReason = this.transactionReason.getText();
+			
+			withdrawMoney.update(userInput);
+			displayBalance.updateBalance("withdraw", userInput.amount);
+			this.inputAmount.setText("");
+		}
+		catch(Exception e) 
+		{
+			this.errorMessage.setText("Value entered must be a number!");
+			this.inputAmount.setText("");
+		}
+		
+		
 	}
 	
 	@FXML
 	protected void depositButtonAction(ActionEvent event) throws SQLException {
 		DepositMoneyView.DepositMoneyViewData input = new DepositMoneyView.DepositMoneyViewData();
-		
-		input.amount = Float.parseFloat(this.inputAmount.getText());
-		
-		input.type = "Pay";
-		
-		depositMoney.update(input);
-		
-		displayBalance.updateBalance("deposit", input.amount);
-		
-		inputAmount.setText("");
-
+		try 
+		{
+			this.errorMessage.setText("");
+			input.amount = Float.parseFloat(this.inputAmount.getText());
+			input.type = "Bill";	
+			input.transactionReason = this.transactionReason.getText();
+			depositMoney.update(input);		
+			displayBalance.updateBalance("deposit", input.amount);	
+			inputAmount.setText("");
+		}
+		catch(Exception e) 
+		{
+			this.errorMessage.setText("Value entered must be a number!");
+			this.inputAmount.setText("");
+		}
 	}
 	
 	@FXML
@@ -177,7 +198,7 @@ public class LandingGUI {
 			Parent root = FXMLLoader.load(getClass().getResource("../ShowHistory_GUI.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("Transaction History");
-			stage.setScene(new Scene(root, 600, 700));
+			stage.setScene(new Scene(root, 900, 700));
 			stage.show();
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -73,6 +73,7 @@ public class WithdrawMoneyController implements Controller {
 		// Set the view data's with the new updated information from our model
 		data.amount = model.withdrawAmount;
 		data.type   = model.withdrawType;
+		data.transactionReason = model.transactionReason;
 		// Tell the view to update its ui using the data we just built
 		view.updateUI(data);
 	}
@@ -100,6 +101,7 @@ public class WithdrawMoneyController implements Controller {
 		// Update the model's data from the view's data
 		model.withdrawAmount = viewData.amount;
 		model.withdrawType   = viewData.type;
+		model.transactionReason = viewData.transactionReason;
 		
 		try {
 			// Tell the dao to create a new table row, which is a withdraw transaction record
