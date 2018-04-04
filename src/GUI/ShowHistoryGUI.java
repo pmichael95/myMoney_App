@@ -18,6 +18,7 @@ import models.WithdrawMoneyModel;
  * 
  * @author Ramez Nahas
  * @created 13/03/2018
+ * @modified 04/04/2018
  *
  */
 public class ShowHistoryGUI {
@@ -29,6 +30,7 @@ public class ShowHistoryGUI {
 	 * Inner class representing the data to be displayed by the table.
 	 * @author Ramez Nahas
 	 * @created 13/03/2018
+	 * @modified 04/04/2018
 	 */
 	public static class HistoryData {
 		//private Date date;
@@ -70,10 +72,10 @@ public class ShowHistoryGUI {
 		public void setAmount(float amount) {
 			this.amount = amount;
 		}
-		public String getReason() {
+		public String getTransactionReason() {
 			return transactionReason;
 		}
-		public void setReason(String reason) {
+		public void setTransactionReason(String reason) {
 			this.transactionReason = reason;
 		}
 	}
@@ -132,7 +134,7 @@ public class ShowHistoryGUI {
 				String depositType = depositMoney.get(i).add_type;
 				float amount = depositMoney.get(i).add_amount;
 				String reason = depositMoney.get(i).transactionReason;
-				history.add(new HistoryData("Deposit", "", depositType, amount, "raawdwa"));
+				history.add(new HistoryData("Deposit", "", depositType, amount, reason));
 				System.out.println(reason);
 			}
 
@@ -142,7 +144,7 @@ public class ShowHistoryGUI {
 				String withdrawalType = withdrawMoney.get(i).withdrawType;
 				float amount = withdrawMoney.get(i).withdrawAmount;
 				String reason = withdrawMoney.get(i).transactionReason;
-				history.add(new HistoryData("Withdawal", withdrawalType, "", amount, "raawdwa"));
+				history.add(new HistoryData("Withdawal", withdrawalType, "", amount, reason));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
