@@ -1,14 +1,6 @@
 package views;
 
 import java.util.Date;
-//import java.util.Scanner;
-//
-//import javafx.event.ActionEvent;
-//import javafx.fxml.FXML;
-//import javafx.scene.control.Button;
-//import javafx.scene.text.Text;
-//import views.ExampleView.ExampleViewData;
-//import GUI.LandingGUI;
 
 /**
  * 
@@ -17,7 +9,7 @@ import java.util.Date;
  * @author Sabrina D'Mello
  * @modifiedBy Johnny Mak, Philip Michael, Ramez Nahas
  * @created 2/1/2018
- * @updated 04/04/2018
+ * @updated 04/05/2018
  *
  */
 public class DepositMoneyView extends View {

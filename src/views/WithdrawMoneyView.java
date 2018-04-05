@@ -1,8 +1,6 @@
 package views;
 
 import java.util.Date;
-//import java.util.Scanner;
-//import GUI.LandingGUI;
 
 /**
  * 
@@ -11,7 +9,7 @@ import java.util.Date;
  * @author Jason Kalec
  * @modifiedBy Johnny Mak, Ramez Nahas
  * @created 2/6/2018
- * @updated 04/04/2018
+ * @updated 04/05/2018
  * 
  */
 
