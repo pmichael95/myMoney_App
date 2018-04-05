@@ -21,7 +21,6 @@ import java.util.Optional;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
-
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 
 /**
@@ -30,7 +29,7 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
  * @author Philip Michael
  * @modifiedBy Tobi Decary-Larocque, Ramez Nahas
  * @created 3/5/2018
- * @lastUpdated 04/04/2018 
+ * @lastUpdated 04/05/2018 
  */
 
 public class LandingGUI {
@@ -223,7 +222,9 @@ public class LandingGUI {
 			Parent root = FXMLLoader.load(getClass().getResource("../ShowHistory_GUI.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("Transaction History");
-			stage.setScene(new Scene(root, 950, 700));
+			stage.setScene(new Scene(root, 1000.0, 700.0));
+			stage.setMinWidth(1000.0);
+			stage.setMinHeight(700.0);
 			stage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
