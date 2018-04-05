@@ -20,12 +20,13 @@
             <Color blue="0.949" green="0.792" red="0.624" fx:id="x1" />
           </fill>
         </Rectangle>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="$x1" height="68.0" layoutX="496.0" layoutY="24.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="130.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="$x1" height="155.0" layoutX="496.0" layoutY="24.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="130.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="$x1" height="155.0" layoutX="14.0" layoutY="23.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="120.0" />
         <Button fx:id="withdraw" layoutX="17.0" layoutY="70.0" mnemonicParsing="false" onAction="#withdrawButtonAction" text="Withdraw Amount" />
         <Button fx:id="deposit" layoutX="17.0" layoutY="108.0" mnemonicParsing="false" onAction="#depositButtonAction" prefHeight="25.0" prefWidth="114.0" text="Deposit Amount" />
         <Button fx:id="showHistory" layoutX="17.0" layoutY="146.0" mnemonicParsing="false" onAction="#showHistoryButtonAction" prefHeight="25.0" prefWidth="114.0" text="Show History" />
         <Button fx:id="clearAccount" layoutX="499.0" layoutY="58.0" mnemonicParsing="false" onAction="#clearAccountButtonAction" prefHeight="25.0" prefWidth="125.0" text="Clear Account" />
+        <Button fx:id="exportButton" layoutX="499.0" layoutY="108.0" mnemonicParsing="false" onAction="#exportHistoryButtonAction" prefHeight="25.0" prefWidth="125.0" text="Export History" />
         <Text layoutX="169.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Balance:">
           <font>
             <Font name="Arial" size="16.0" fx:id="x3" />

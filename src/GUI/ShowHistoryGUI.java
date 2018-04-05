@@ -149,7 +149,6 @@ public class ShowHistoryGUI {
 				String reason = depositMoney.get(i).transactionReason;
 				String date = depositMoney.get(i).date;
 				history.add(new HistoryData("Deposit", "", depositType, amount, reason, date));
-				System.out.println(reason);
 			}
 
 			// Get all the data from the withdraw money table and add it to history.

@@ -15,13 +15,20 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.DatabaseConnectionSource;
+import models.DepositMoneyModel;
+import models.WithdrawMoneyModel;
 import views.DepositMoneyView.DepositMoneyViewData;
 import views.WithdrawMoneyView.WithdrawMoneyViewData;
 import controllers.*;
 import java.util.Optional;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
+import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 
 /**
@@ -65,6 +72,8 @@ public class LandingGUI {
 	private Button showHistory;
 	@FXML
 	private Button clearAccount;
+	@FXML
+	private Button exportButton;
 	@FXML
 	private AnchorPane transactionScene;
 	@FXML
@@ -263,6 +272,52 @@ public class LandingGUI {
 			clear = new ClearAccountController(); //the controller automatically calls the delete function
 			displayBalance.initModel();
 			UpdateBalance("0.00");
+		}
+	}
+	
+	@FXML
+	protected void exportHistoryButtonAction(ActionEvent event) {
+		Dao<DepositMoneyModel, Integer> depositMoneyDao = DepositMoneyModel.getDao();
+		Dao<WithdrawMoneyModel, Integer> withdrawMoneyDao = WithdrawMoneyModel.getDao();
+		
+		StringBuffer history = new StringBuffer("DATE, TRANSACTION TYPE, DESCRIPTION, AMOUNT, TYPE OF WITHDRAWAL, TYPE OF DEPOSIT\r\n");
+
+		try {
+			// Get all the data from the deposit money table and add it to history.
+			List<DepositMoneyModel> depositMoney = depositMoneyDao.queryForAll();
+			for (int i = 0; i < depositMoney.size(); i++) {
+				String depositType = depositMoney.get(i).add_type;
+				float amount = depositMoney.get(i).add_amount;
+				String reason = depositMoney.get(i).transactionReason;
+				String date = depositMoney.get(i).date;
+				history.append(date + ", ");
+				history.append("Deposit, ");
+				history.append(reason + ", ");
+				history.append(amount + ", ,");
+				history.append(depositType + "\r\n");
+			}
+
+			// Get all the data from the withdraw money table and add it to history.
+			List<WithdrawMoneyModel> withdrawMoney = withdrawMoneyDao.queryForAll();
+			for (int i = 0; i < withdrawMoney.size(); i++) {
+				String withdrawalType = withdrawMoney.get(i).withdrawType;
+				float amount = withdrawMoney.get(i).withdrawAmount;
+				String reason = withdrawMoney.get(i).transactionReason;
+				String date = withdrawMoney.get(i).date;
+				history.append(date + ", ");
+				history.append("Withdrawal, ");
+				history.append(reason + ", ");
+				history.append(amount + ", ");
+				history.append(withdrawalType + ", ,\r\n");
+			}
+			File transactionHistory = new File("Transaction_History.csv");
+			PrintWriter pw = new PrintWriter(transactionHistory);
+			pw.print(history);
+			pw.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
 	}
 }

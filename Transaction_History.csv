@@ -1,0 +1,7 @@
+DATE, TRANSACTION TYPE, DESCRIPTION, AMOUNT, TYPE OF WITHDRAWAL, TYPE OF DEPOSIT
+05/04/2018 13:14:09, Deposit, Cheque from tenant, 500.0, ,Cheque
+05/04/2018 13:14:27, Deposit, Kijiji sale, 250.0, ,Cash
+05/04/2018 13:20:21, Deposit, Weekly Salary, 400.0, ,Direct Deposit
+05/04/2018 13:15:27, Withdrawal, Took out cash for bday gift, 50.0, ATM, ,
+05/04/2018 13:15:53, Withdrawal, Paid back money owed to friend, 100.0, Interac, ,
+05/04/2018 13:22:43, Withdrawal, Food delivery, 20.0, Credit Card Payment, ,
