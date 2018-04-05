@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.DatabaseConnectionSource;
@@ -73,6 +74,8 @@ public class LandingGUI {
 	@FXML
 	private TextField transactionType;
 	@FXML
+	private Text title;
+	@FXML
 	private Text transactionTitle;
 	@FXML
 	private Text errorMessage;
@@ -122,23 +125,37 @@ public class LandingGUI {
 	/**
 	 * HELPER FUNCTIONS
 	 */
+	
 	/**
 	 * Updates the displayed balance on the main GUI screen.
 	 * @param balance(float type) to update on the balance
 	 */
-	public void UpdateBalance(float balance) {
-		this.balance.setText("$" + balance);
-	}
-
-	/**
-	 * HELPER FUNCTIONS
-	 */
+//	public void UpdateBalance(float balance) {
+//		this.balance.setText("$" + balance);
+//	}
+	
 	/**
 	 * Updates the displayed balance on the main GUI screen.
 	 * @param balance(String type) to update on the balance
 	 */
 	public void UpdateBalance(String balance) {
+		displayBalanceAction(balance);
 		this.balance.setText("$" + balance);
+	}
+	
+	/**
+	 * Changes text color of balance depending on its value.
+	 * @param balance(String type) to update on the balance
+	 */
+	private void displayBalanceAction(String balance) {
+		Double bal = Double.parseDouble(balance);
+		if (bal == 0) {
+			this.balance.setFill(Color.BLACK);
+		} else if (bal > 0) {
+			this.balance.setFill(Color.GREEN);
+		} else {
+			this.balance.setFill(Color.RED);
+		}
 	}
 	
 	/**
@@ -169,6 +186,7 @@ public class LandingGUI {
 	protected void withdrawButtonAction(ActionEvent event) throws SQLException {
 		isDeposit = false;
 		clearTransactionScene();
+		title.setVisible(false);
 		transactionTitle.setText("WITHDRAWAL");
 		transactionType.setPromptText("Type of Withdrawal");
 		transactionScene.setVisible(true);
@@ -178,6 +196,7 @@ public class LandingGUI {
 	protected void depositButtonAction(ActionEvent event) throws SQLException {
 		isDeposit = true;
 		clearTransactionScene();
+		title.setVisible(false);
 		transactionTitle.setText("DEPOSIT");
 		transactionType.setPromptText("Type of Deposit");
 		transactionScene.setVisible(true);
@@ -202,6 +221,7 @@ public class LandingGUI {
 				displayBalance.updateBalance("withdraw", input.amount);
 			}
 			transactionScene.setVisible(false);
+			title.setVisible(true);
 		}
 		catch(Exception e) 
 		{
@@ -213,6 +233,7 @@ public class LandingGUI {
 	@FXML
 	protected void cancelButtonAction(ActionEvent event) {
 		transactionScene.setVisible(false);
+		title.setVisible(true);
 	}
 
 	@FXML
@@ -243,10 +264,5 @@ public class LandingGUI {
 			displayBalance.initModel();
 			UpdateBalance("0.00");
 		}
-	}
-
-	@FXML
-	protected void recurringPaymentButtonAction(ActionEvent event) {
-		System.out.println("Called Recurring Payment Button Event");
 	}
 }
