@@ -20,9 +20,9 @@
       <children>
         <TableView fx:id="table" prefWidth="686.0">
           <columns>
-            <TableColumn id="date" minWidth="200.0" prefWidth="200.0" text="DATE" fx:id="date" />
+            <TableColumn id="date" minWidth="150.0" prefWidth="150.0" text="DATE" fx:id="date" />
             <TableColumn id="transactionType" minWidth="150.0" prefWidth="150.0" text="TRANSACTION TYPE" fx:id="transactionType" />
-            <TableColumn id="transactionReason" minWidth="150.0" prefWidth="150.0" text="DESCRIPTION" fx:id="transactionReason" />
+            <TableColumn id="transactionReason" minWidth="250.0" prefWidth="250.0" text="DESCRIPTION" fx:id="transactionReason" />
             <TableColumn id="amount" minWidth="150.0" prefWidth="150.0" text="AMOUNT" fx:id="amount" />
             <TableColumn id="withdrawalType" minWidth="150.0" prefWidth="150.0" text="TYPE OF WITHDRAWAL" fx:id="withdrawalType" />
             <TableColumn id="depositType" minWidth="150.0" prefWidth="150.0" text="TYPE OF DEPOSIT" fx:id="depositType" />
