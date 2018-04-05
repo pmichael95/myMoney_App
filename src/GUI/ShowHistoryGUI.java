@@ -86,7 +86,6 @@ public class ShowHistoryGUI {
 			this.date = date;
 		}
 	}
-	
 
 	/**
 	 * GUI ELEMENTS.
@@ -125,10 +124,13 @@ public class ShowHistoryGUI {
 		amount.setCellValueFactory(new PropertyValueFactory<HistoryData, Float>("amount"));
 		transactionReason.setCellValueFactory(new PropertyValueFactory<HistoryData, String>("transactionReason"));
 		date.setCellValueFactory(new PropertyValueFactory<HistoryData, String>("date"));
-		
+		// let sorting of date elements be from newest to oldest.
+		date.setSortType(TableColumn.SortType.DESCENDING);
+		// allow columns to be equally resized when table scene is resized.
+		table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 		// Add data to the table.
 		table.setItems(history);
-		// Show history sorted by date of transaction.
+		// Table sorted by date of transaction (newest first).
 		table.getSortOrder().add(date);
 	}
 
