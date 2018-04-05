@@ -11,14 +11,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.DepositMoneyModel;
 import models.WithdrawMoneyModel;
-//import views.ShowHistoryView.ShowHistoryViewData;
 
 /**
  * The Show History GUI which displays a table containing the transaction history.
  * 
  * @author Ramez Nahas
  * @created 13/03/2018
- * @modified 04/04/2018
+ * @modified 04/05/2018
  *
  */
 public class ShowHistoryGUI {
