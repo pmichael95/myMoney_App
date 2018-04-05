@@ -1,23 +1,20 @@
 package controllers;
 
 import java.sql.SQLException;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import com.j256.ormlite.dao.Dao;
-
-
 import models.WithdrawMoneyModel;
 import views.WithdrawMoneyView;
-import models.DatabaseConnectionSource;
-
 
 /**
  * 
  * The controller for withdraw which will handle changes to the model as well as updating the view
  *
  * @author Jason Kalec
- * @modifiedBy Johnny Mak, Shunyu Wang
+ * @modifiedBy Johnny Mak, Shunyu Wang, Ramez Nahas
  * @created 2/6/2018
- * @updated 2/11/2018
+ * @updated 04/05/2018
  */
 public class WithdrawMoneyController implements Controller {
 	
@@ -101,7 +98,8 @@ public class WithdrawMoneyController implements Controller {
 		model.withdrawAmount = viewData.amount;
 		model.withdrawType   = viewData.type;
 		model.transactionReason = viewData.transactionReason;
-		model.date = viewData.date.toString();
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
+		model.date = dateFormat.format(viewData.date);
 		
 		try {
 			// Tell the dao to create a new table row, which is a withdraw transaction record

@@ -1,9 +1,9 @@
 package controllers;
 
 import java.sql.SQLException;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import com.j256.ormlite.dao.Dao;
-
 import models.DepositMoneyModel;
 import views.DepositMoneyView;
 
@@ -12,9 +12,9 @@ import views.DepositMoneyView;
  * The controller to deposit money into the account.
  * 
  * @author Sabrina D'Mello
- * @modifiedBy Johnny Mak, Philip Michael, Shunyu Wang
+ * @modifiedBy Johnny Mak, Philip Michael, Shunyu Wang, Ramez Nahas
  * @created 2/1/2018
- * @updated 3/5/2018
+ * @updated 04/05/2018
  *
  */
 public class DepositMoneyController implements Controller{
@@ -85,11 +85,10 @@ public class DepositMoneyController implements Controller{
 		
 		// Update the model's data from the view's data
 		model.add_amount = viewData.amount;
-		//model.account  = viewData.account;
 		model.add_type   = viewData.type;
-		
 		model.transactionReason = viewData.transactionReason;
-		model.date = viewData.date.toString();
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		model.date = dateFormat.format(viewData.date);
 		
 		try 
 		{
