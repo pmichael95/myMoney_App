@@ -1,81 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <!-- fx:controller needs to be edited to where the controller for the button event handlers are found -->
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.161" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LandingGUI">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.162" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LandingGUI">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9fcaf2" height="68.0" layoutX="152.0" layoutY="221.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="337.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9fcaf2" height="97.0" layoutX="468.0" layoutY="23.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="158.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9fcaf2" height="155.0" layoutX="14.0" layoutY="23.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="120.0" />
-            <Button id="withdraw" fx:id="withdraw" layoutX="17.0" layoutY="70.0" mnemonicParsing="false" onAction="#withdrawButtonAction" text="Withdraw Amount" />
-            <Button id="deposit" fx:id="deposit" layoutX="17.0" layoutY="108.0" mnemonicParsing="false" onAction="#depositButtonAction" prefHeight="25.0" prefWidth="114.0" text="Deposit Amount" />
-            <Button id="recurringPayment" fx:id="recurringPayment" layoutX="472.0" layoutY="58.0" mnemonicParsing="false" onAction="#recurringPaymentButtonAction" prefWidth="151.0" text="Setup Recurring Payment" />
-            <Button id="clearAccount" fx:id="clearAccount" layoutX="472.0" layoutY="88.0" mnemonicParsing="false" onAction="#clearAccountButtonAction" prefHeight="25.0" prefWidth="151.0" text="Clear Account" />
-            <Button id="showHistory" fx:id="showHistory" layoutX="17.0" layoutY="146.0" mnemonicParsing="false" onAction="#showHistoryButtonAction" prefHeight="25.0" prefWidth="114.0" text="Show History" />
-            <Text layoutX="169.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Balance:">
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="68.0" layoutX="152.0" layoutY="221.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="337.0">
+          <fill>
+            <Color blue="0.949" green="0.792" red="0.624" fx:id="x1" />
+          </fill>
+        </Rectangle>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="$x1" height="155.0" layoutX="496.0" layoutY="24.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="130.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="$x1" height="155.0" layoutX="14.0" layoutY="23.0" opacity="0.1" stroke="BLACK" strokeType="INSIDE" width="120.0" />
+        <Button fx:id="withdraw" layoutX="17.0" layoutY="70.0" mnemonicParsing="false" onAction="#withdrawButtonAction" text="Withdraw Amount" />
+        <Button fx:id="deposit" layoutX="17.0" layoutY="108.0" mnemonicParsing="false" onAction="#depositButtonAction" prefHeight="25.0" prefWidth="114.0" text="Deposit Amount" />
+        <Button fx:id="showHistory" layoutX="17.0" layoutY="146.0" mnemonicParsing="false" onAction="#showHistoryButtonAction" prefHeight="25.0" prefWidth="114.0" text="Show History" />
+        <Button fx:id="clearAccount" layoutX="499.0" layoutY="58.0" mnemonicParsing="false" onAction="#clearAccountButtonAction" prefHeight="25.0" prefWidth="125.0" text="Clear Account" />
+        <Button fx:id="exportButton" layoutX="499.0" layoutY="108.0" mnemonicParsing="false" onAction="#exportHistoryButtonAction" prefHeight="25.0" prefWidth="125.0" text="Export History" />
+        <Text layoutX="169.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Balance:">
+          <font>
+            <Font name="Arial" size="16.0" fx:id="x3" />
+          </font>
+        </Text>
+        <Text fx:id="balance" layoutX="331.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$000000.00">
+          <font>
+            <Font name="Arial" size="22.0" />
+          </font>
+        </Text>
+        <Text layoutX="28.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basic Options">
+          <font>
+            <Font name="Arial" size="15.0" fx:id="x2" />
+          </font>
+        </Text>
+        <Text font="$x2" layoutX="500.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Advanced Options" />
+            <Text fx:id="title" fill="#469fc6" layoutX="191.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MyMONEY" textAlignment="CENTER" wrappingWidth="250.0">
                <font>
-                  <Font name="Arial" size="16.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
-            <Text id="balance" fx:id="balance" layoutX="331.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$000000.00">
-               <font>
-                  <Font name="Arial" size="22.0" />
-               </font>
-            </Text>
-            <Text layoutX="28.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Basic Options">
-               <font>
-                  <Font name="Arial" size="15.0" />
-               </font>
-            </Text>
-            <Text layoutX="486.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Advanced Options">
-               <font>
-                  <Font name="Arial" size="15.0" />
-               </font>
-            </Text>
-            <TextField id="inputAmount" fx:id="inputAmount" layoutX="229.0" layoutY="108.0" promptText="Enter amount..." />
+            <AnchorPane fx:id="transactionScene" layoutX="139.0" layoutY="8.0" prefHeight="200.0" prefWidth="353.0">
+               <children>
+                  <TextField fx:id="inputAmount" layoutX="34.0" layoutY="63.0" prefHeight="25.0" prefWidth="130.0" promptText="Amount" />
+                  <TextField fx:id="transactionType" layoutX="187.0" layoutY="63.0" prefHeight="25.0" prefWidth="130.0" />
+                  <TextField fx:id="transactionReason" layoutX="37.0" layoutY="115.0" prefHeight="45.0" prefWidth="280.0" promptText="(optional) Transaction Description" />
+                  <Text fx:id="transactionTitle" fill="#469fc6" layoutX="52.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="250.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Text>
+                  <Text fx:id="errorMessage" fill="#ff0d0d" layoutX="52.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="250.0" />
+                  <Button fx:id="doneButton" layoutX="110.0" layoutY="167.0" mnemonicParsing="false" onAction="#doneButtonAction" text="Done" />
+                  <Button fx:id="cancelButton" layoutX="180.0" layoutY="167.0" mnemonicParsing="false" onAction="#cancelButtonAction" text="Cancel" />
+               </children></AnchorPane>
       </children>
     </AnchorPane>
   </children>

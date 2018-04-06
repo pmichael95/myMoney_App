@@ -10,22 +10,24 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import models.DatabaseConnectionSource;
+import models.DepositMoneyModel;
 import models.WithdrawMoneyModel;
-import views.DepositMoneyView;
+import views.DepositMoneyView.DepositMoneyViewData;
 import views.WithdrawMoneyView.WithdrawMoneyViewData;
 import controllers.*;
 import java.util.Optional;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
-import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
-
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 
@@ -33,16 +35,16 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
  * The default landing GUI where the buttons (which would open other windows) can be found as well as the balance.
  * 
  * @author Philip Michael
- * @modifiedBy Tobi Decary-Larocque
+ * @modifiedBy Tobi Decary-Larocque, Ramez Nahas
  * @created 3/5/2018
- * @lastUpdated 3/12/2018 
+ * @lastUpdated 04/05/2018 
  */
 
 public class LandingGUI {
-	
+
 	// Static GUI referencing to 'this' for use elsewhere
 	public static LandingGUI _GUI;
-	
+
 	// To get confirmation from user
 	Alert alert = new Alert(AlertType.CONFIRMATION);
 	/**
@@ -52,7 +54,10 @@ public class LandingGUI {
 	private DepositMoneyController depositMoney;
 	private ClearAccountController clear;
 	private WithdrawMoneyController withdrawMoney;
-  
+	
+	// to keep track of current transaction type
+	private boolean isDeposit;
+
 	/**
 	 * GUI ELEMENTS
 	 */
@@ -66,12 +71,28 @@ public class LandingGUI {
 	@FXML
 	private Button showHistory;
 	@FXML
-	private Button recurringPayment;
-	@FXML
 	private Button clearAccount;
 	@FXML
+	private Button exportButton;
+	@FXML
+	private AnchorPane transactionScene;
+	@FXML
 	private TextField inputAmount;
-	
+	@FXML
+	private TextField transactionReason;
+	@FXML
+	private TextField transactionType;
+	@FXML
+	private Text title;
+	@FXML
+	private Text transactionTitle;
+	@FXML
+	private Text errorMessage;
+	@FXML
+	private Button doneButton;
+	@FXML
+	private Button cancelButton;
+
 	/**
 	 * Initialize is called after every element/handler was fetched.
 	 * The order is: Constructor > Tie the members/handlers > initialize
@@ -80,16 +101,18 @@ public class LandingGUI {
 	public void initialize() {
 		// Get a connection to our database before we start any ui
 		JdbcConnectionSource source = DatabaseConnectionSource.getConnection();
-		
+
 		// Creates the static GUI object referencing to the current GUI shown on screen.
 		// This is used in the views.
 		if(_GUI == null) {
 			_GUI = this;
 		}
-		
+
 		if (source != null) {
-			displayBalance = new DisplayBalanceController();
+			transactionScene.setVisible(false);
 			
+			displayBalance = new DisplayBalanceController();
+
 			//load initial balance
 			try {
 				displayBalance.initialBalance();
@@ -100,42 +123,66 @@ public class LandingGUI {
 			withdrawMoney = new WithdrawMoneyController();
 
 			depositMoney = new DepositMoneyController();
-			
+
 			// Once we are done, close the connection to the database 
 			DatabaseConnectionSource.closeConncetion();
 		} else {
 			System.out.println("Could not make a connection to the database");
 		}
 	}
-	
+
 	/**
 	 * HELPER FUNCTIONS
 	 */
+	
 	/**
 	 * Updates the displayed balance on the main GUI screen.
 	 * @param balance(float type) to update on the balance
 	 */
-	public void UpdateBalance(float balance) {
-		this.balance.setText("$" + balance);
-	}
+//	public void UpdateBalance(float balance) {
+//		this.balance.setText("$" + balance);
+//	}
 	
-	/**
-	 * HELPER FUNCTIONS
-	 */
 	/**
 	 * Updates the displayed balance on the main GUI screen.
 	 * @param balance(String type) to update on the balance
 	 */
 	public void UpdateBalance(String balance) {
+		displayBalanceAction(balance);
 		this.balance.setText("$" + balance);
 	}
+	
+	/**
+	 * Changes text color of balance depending on its value.
+	 * @param balance(String type) to update on the balance
+	 */
+	private void displayBalanceAction(String balance) {
+		Double bal = Double.parseDouble(balance);
+		if (bal == 0) {
+			this.balance.setFill(Color.BLACK);
+		} else if (bal > 0) {
+			this.balance.setFill(Color.GREEN);
+		} else {
+			this.balance.setFill(Color.RED);
+		}
+	}
+	
+	/**
+	 * Clears the transaction scene of any previous values/data.
+	 */
+	private void clearTransactionScene() {
+		inputAmount.clear();
+		transactionReason.clear();
+		transactionType.clear();
+		errorMessage.setText("");
+	}
+	
 	/**
 	 * HANDLER FUNCTIONS
 	 */
 	// -- These handler functions are tied to the onAction="#[namehere]" of the buttons in the GUI.
 	// In them, use the controllers respectively to initiate the functionality of each.
-	
-	
+
 	/**
 	 * For withdraw, we'd need to use the Withdraw controller to initiate the withdrawal.
 	 * For consistency's sake, we will need to also update the amount in display_balance table.
@@ -146,30 +193,58 @@ public class LandingGUI {
 	 */
 	@FXML
 	protected void withdrawButtonAction(ActionEvent event) throws SQLException {
-		WithdrawMoneyViewData userInput = new WithdrawMoneyViewData();
-		userInput.amount = Float.parseFloat(this.inputAmount.getText());
-		userInput.type   = "Bill";
-		withdrawMoney.update(userInput);
-		displayBalance.updateBalance("withdraw", userInput.amount);
-		this.inputAmount.setText("");
+		isDeposit = false;
+		clearTransactionScene();
+		title.setVisible(false);
+		transactionTitle.setText("WITHDRAWAL");
+		transactionType.setPromptText("Type of Withdrawal");
+		transactionScene.setVisible(true);
+	}
+
+	@FXML
+	protected void depositButtonAction(ActionEvent event) throws SQLException {
+		isDeposit = true;
+		clearTransactionScene();
+		title.setVisible(false);
+		transactionTitle.setText("DEPOSIT");
+		transactionType.setPromptText("Type of Deposit");
+		transactionScene.setVisible(true);
 	}
 	
 	@FXML
-	protected void depositButtonAction(ActionEvent event) throws SQLException {
-		DepositMoneyView.DepositMoneyViewData input = new DepositMoneyView.DepositMoneyViewData();
-		
-		input.amount = Float.parseFloat(this.inputAmount.getText());
-		
-		input.type = "Pay";
-		
-		depositMoney.update(input);
-		
-		displayBalance.updateBalance("deposit", input.amount);
-		
-		inputAmount.setText("");
-
+	protected void doneButtonAction(ActionEvent event) {
+		try 
+		{
+			float amount = Float.parseFloat(inputAmount.getText());
+			String transactionReason = this.transactionReason.getText();
+			String transactionType = this.transactionType.getText();
+			Date date = new Date();
+			
+			if (isDeposit) {
+				DepositMoneyViewData input = new DepositMoneyViewData(amount, transactionType, transactionReason, date);
+				depositMoney.update(input);
+				displayBalance.updateBalance("deposit", input.amount);
+			} else {
+				WithdrawMoneyViewData input = new WithdrawMoneyViewData(amount, transactionType, transactionReason, date);
+				withdrawMoney.update(input);
+				displayBalance.updateBalance("withdraw", input.amount);
+			}
+			transactionScene.setVisible(false);
+			title.setVisible(true);
+		}
+		catch(Exception e) 
+		{
+			errorMessage.setText("Value entered must be a number!");
+			inputAmount.clear();
+		} 
 	}
 	
+	@FXML
+	protected void cancelButtonAction(ActionEvent event) {
+		transactionScene.setVisible(false);
+		title.setVisible(true);
+	}
+
 	@FXML
 	protected void showHistoryButtonAction(ActionEvent event) {
 		// Load and open the new stage.
@@ -177,13 +252,15 @@ public class LandingGUI {
 			Parent root = FXMLLoader.load(getClass().getResource("../ShowHistory_GUI.fxml"));
 			Stage stage = new Stage();
 			stage.setTitle("Transaction History");
-			stage.setScene(new Scene(root, 600, 700));
+			stage.setScene(new Scene(root, 1000.0, 700.0));
+			stage.setMinWidth(1000.0);
+			stage.setMinHeight(700.0);
 			stage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
 	protected void clearAccountButtonAction(ActionEvent event) {
 		alert.setTitle("Clear Account - Confirmation");
@@ -199,7 +276,48 @@ public class LandingGUI {
 	}
 	
 	@FXML
-	protected void recurringPaymentButtonAction(ActionEvent event) {
-		System.out.println("Called Recurring Payment Button Event");
+	protected void exportHistoryButtonAction(ActionEvent event) {
+		Dao<DepositMoneyModel, Integer> depositMoneyDao = DepositMoneyModel.getDao();
+		Dao<WithdrawMoneyModel, Integer> withdrawMoneyDao = WithdrawMoneyModel.getDao();
+		
+		StringBuffer history = new StringBuffer("DATE, TRANSACTION TYPE, DESCRIPTION, AMOUNT, TYPE OF WITHDRAWAL, TYPE OF DEPOSIT\r\n");
+
+		try {
+			// Get all the data from the deposit money table and add it to history.
+			List<DepositMoneyModel> depositMoney = depositMoneyDao.queryForAll();
+			for (int i = 0; i < depositMoney.size(); i++) {
+				String depositType = depositMoney.get(i).add_type;
+				float amount = depositMoney.get(i).add_amount;
+				String reason = depositMoney.get(i).transactionReason;
+				String date = depositMoney.get(i).date;
+				history.append(date + ", ");
+				history.append("Deposit, ");
+				history.append(reason + ", ");
+				history.append(amount + ", ,");
+				history.append(depositType + "\r\n");
+			}
+
+			// Get all the data from the withdraw money table and add it to history.
+			List<WithdrawMoneyModel> withdrawMoney = withdrawMoneyDao.queryForAll();
+			for (int i = 0; i < withdrawMoney.size(); i++) {
+				String withdrawalType = withdrawMoney.get(i).withdrawType;
+				float amount = withdrawMoney.get(i).withdrawAmount;
+				String reason = withdrawMoney.get(i).transactionReason;
+				String date = withdrawMoney.get(i).date;
+				history.append(date + ", ");
+				history.append("Withdrawal, ");
+				history.append(reason + ", ");
+				history.append(amount + ", ");
+				history.append(withdrawalType + ", ,\r\n");
+			}
+			File transactionHistory = new File("Transaction_History.csv");
+			PrintWriter pw = new PrintWriter(transactionHistory);
+			pw.print(history);
+			pw.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 }

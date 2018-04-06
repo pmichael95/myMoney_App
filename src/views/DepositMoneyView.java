@@ -1,34 +1,37 @@
 package views;
 
-import java.util.Scanner;
-
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.text.Text;
-import views.ExampleView.ExampleViewData;
-import GUI.LandingGUI;
+import java.util.Date;
 
 /**
  * 
  * The DepositMoney view for when we deposit into the deposit_money table.
  * 
  * @author Sabrina D'Mello
- * @modifiedBy Johnny Mak, Philip Michael
+ * @modifiedBy Johnny Mak, Philip Michael, Ramez Nahas
  * @created 2/1/2018
- * @updated 3/12/2018
+ * @updated 04/05/2018
  *
  */
 public class DepositMoneyView extends View {
 
-	private Scanner keyboard; //for the scanner
+//	private Scanner keyboard; //for the scanner
 	
 	//Nested Data Class	
 	public static class DepositMoneyViewData 
 	{
 		public float amount;
 		public String type;
-		public String account;
+		public String transactionReason;
+		public Date date;
+		
+		public DepositMoneyViewData() {}
+		
+		public DepositMoneyViewData(float amount, String type, String transactionReason, Date date) {
+			this.amount = amount;
+			this.type = type;
+			this.transactionReason = transactionReason;
+			this.date = date;
+		}
 	}
 	
 	//Constructor creating a scanner for the users input
@@ -36,15 +39,15 @@ public class DepositMoneyView extends View {
 	{
 		// keyboard = new Scanner(System.in);
 	}
-	
+/*	
 	//Method will allow the user to enter the amount will to deposit
 	public void DepositEvent()
 	{
-		/* System.out.println("\nHow much money would you like to deposit in this account?");
+		System.out.println("\nHow much money would you like to deposit in this account?");
 		float user_amount = keyboard.nextFloat();
 		
 		System.out.println("\nWhat is the type of deposit?");
-		String user_type = keyboard.next(); */
+		String user_type = keyboard.next(); 
 		
 		//ToDo how does DepositEvent get data
 		
@@ -53,14 +56,15 @@ public class DepositMoneyView extends View {
 	}
 	
 	//Will notify the observer on amount change
-	public void onDepositEvent(float amt, String tp)
+	public void onDepositEvent(float amt, String tp, String reason)
 	{
 		DepositMoneyViewData dataView = new DepositMoneyViewData();
 		dataView.amount = amt;
 		dataView.type   = tp;
+		dataView.transactionReason = reason;
 		notifyObservers(dataView);
 	}
-	
+*/
 	
 	/**
 	 * Update this view with the new data 
