@@ -1,16 +1,7 @@
 package controllers;
 
-import java.sql.SQLException;
-
-import com.j256.ormlite.dao.Dao;
-
-
-import models.ExampleModel;
 import views.ClearAccountView;
-import views.ExampleView;
 import models.ClearAccountModel;
-import models.DatabaseConnectionSource;
-
 
 /**
  * 

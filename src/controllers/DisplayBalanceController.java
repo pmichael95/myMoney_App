@@ -25,10 +25,13 @@ import views.DisplayBalanceView;
 
 public class DisplayBalanceController implements Controller{
 	
-	private DisplayBalanceView view;
-	private DisplayBalanceModel model;
-	private Dao<DisplayBalanceModel, Integer> dao;
+	public static final String ACCOUNT_TYPE = "Chequing";
+	public static final String DEPOSIT 		= "deposit";
+	public static final String WITHDRAW 	= "withdraw";
 	
+	public DisplayBalanceView view;
+	public DisplayBalanceModel model;
+	private Dao<DisplayBalanceModel, Integer> dao;
 
 	/**
 	 * Inits the controller's attached view
@@ -56,7 +59,7 @@ public class DisplayBalanceController implements Controller{
 		dao = DisplayBalanceModel.getDao();
 		model = new DisplayBalanceModel();
 		
-		model.account = "Chequing";
+		model.account = ACCOUNT_TYPE;
 	}
 	
 
@@ -124,11 +127,11 @@ public class DisplayBalanceController implements Controller{
 	 */
 	public void updateBalance(String type, float amount) throws SQLException {
 
-		if (type.toLowerCase().equals("withdraw") )
+		if (type.toLowerCase().equals(WITHDRAW) )
 		{	
 			amount *= -1;
 		}
-		else if (type.toLowerCase().equals("deposit"))
+		else if (type.toLowerCase().equals(DEPOSIT))
 		{
 			//do nothing
 		}
