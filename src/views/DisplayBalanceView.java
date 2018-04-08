@@ -65,8 +65,10 @@ public class DisplayBalanceView extends View {
 		if(formattedAccountBalance.equals("-0.00")) {
 			formattedAccountBalance = "0.00";
 		}
+		System.out.print("test:"+LandingGUI._GUI);
+		System.out.print("test:"+formattedAccountBalance);
 		
-		LandingGUI._GUI.UpdateBalance(formattedAccountBalance);
+		//LandingGUI._GUI.UpdateBalance(formattedAccountBalance);
 		System.out.println("Your balance of " + viewData.account + " is " + formattedAccountBalance);
 	}
 

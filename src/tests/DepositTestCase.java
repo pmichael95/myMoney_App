@@ -1,6 +1,7 @@
 package tests;
 import static org.junit.Assert.*;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -31,6 +32,10 @@ public class DepositTestCase {
 		DepositMoneyViewData userInput = new DepositMoneyViewData();
 		userInput.amount = 100;
 		userInput.type   = "Pay";
+		userInput.transactionReason= "test reason";
+		Date today = new Date(0);
+		userInput.date = today;
+		
 		DepositMoneyController contr = new DepositMoneyController();
 		contr.updateModel(userInput);
 		Dao<DepositMoneyModel, Integer> dao = DepositMoneyModel.getDao();

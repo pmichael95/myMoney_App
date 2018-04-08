@@ -2,16 +2,14 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
 import org.junit.Test;
 
 import com.j256.ormlite.dao.Dao;
-
-import controllers.DepositMoneyController;
 import controllers.WithdrawMoneyController;
-import junit.framework.Assert;
 import models.WithdrawMoneyModel;
 import views.WithdrawMoneyView.WithdrawMoneyViewData;
 
@@ -33,6 +31,10 @@ public class WithdrawMoneyTest {
 		WithdrawMoneyViewData userInput = new WithdrawMoneyViewData ();
 		userInput.amount = 50;
 		userInput.type   = "Bill";
+		userInput.transactionReason= "test reason";
+		Date today = new Date(0);
+		userInput.date = today;
+		
 		WithdrawMoneyController contr = new WithdrawMoneyController();
 		contr.updateModel(userInput);
 		Dao<WithdrawMoneyModel, Integer> dao = WithdrawMoneyModel.getDao();
@@ -58,9 +60,4 @@ public class WithdrawMoneyTest {
 			fail("Deposit Failed");
 		}	
 	}
-	
-	
-	// You can have as many tests here
-	// ....
-
 }
