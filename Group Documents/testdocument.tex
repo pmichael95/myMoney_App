@@ -81,14 +81,16 @@ Indicate which qualities (from requirements) were tested and which qualities wer
 
 \noindent
 {\bf Purpose}\\
-State the purpose of the test.
-Indicate which requirement and which aspect of that requirement is being tested.
+If the amount provided by the user is valid (a positive number), the “deposit money” functionality should add the amount indicated by the user to the account (database) and increment the “Current Balance” field by the amount indicated.  If the user provided an invalid amount, such as a string or a negative number, the system should display an error message and not update the account (database) and “Current Balance”.  The purpose of the Deposit Test Case is the following: verify that the deposit money functionality works as described above.
 
 \noindent
-{\bf Input Specification}\\
-State the context for the test in terms of system state.
-State the input test data. You may need to mention operations invoked as well as data for the operation.
-You can cross-reference to actual file data specified in an appendix.
+{\bf Input Specification (see Figure 1 and Figure 2)}\\
+
+
+
+
+
+
 
 \noindent
 {\bf Expected Output}\\
@@ -97,20 +99,31 @@ You can cross-reference to actual file data specified in an appendix.
 
 \noindent
 {\bf Traces to Use Cases}\\
-State which requirements (at the level of use case and scenario) are tested by this test case.
+The Deposit Money use case and the Display Balance use case are tested with this test case. The requirements being tested:
+\begin{itemize}
+  \item The user should be able to deposit money into the selected account.
+  \item The system should display error messages when the user tries to perform an invalid operation.
+  \item The user interface should be updated appropriately.
+  \item The account information should be updated appropriately.
+\end{itemize}
 
 \subsubsection{Withdraw Test Case} \label{tc:2}
 
 \noindent
 {\bf Purpose}\\
-State the purpose of the test.
-Indicate which requirement and which aspect of that requirement is being tested.
+If the amount provided by the user is valid (a number), the “withdraw money” functionality should deduct the amount indicated by the user from the account and decreases the “Current Balance” field by the amount indicated. If the user provided an invalid amount, such as a string or a negative number, the system should display an error message and not update the account and “Current Balance” will not be updated. “Type of Withdraw” and “Transaction Description” fields are optional and could take any string, including the empty string as input. The purpose of the Withdraw Test Case is the following: verify that the withdraw money functionality works as described above.
+
 
 \noindent
 {\bf Input Specification}\\
-State the context for the test in terms of system state.
-State the input test data. You may need to mention operations invoked as well as data for the operation.
-You can cross-reference to actual file data specified in an appendix.
+
+
+
+
+
+
+
+
 
 \noindent
 {\bf Expected Output}\\
@@ -119,51 +132,251 @@ You can cross-reference to actual file data specified in an appendix.
 
 \noindent
 {\bf Traces to Use Cases}\\
-State which requirements (at the level of use case and scenario) are tested by this test case.
+The Withdraw Money use case and the Display Balance use case are tested with this test case. The requirements being tested:
+\begin{itemize}
+  \item The user should be able to withdraw money from the selected account.
+  \item The system should display error messages when the user tries to perform an invalid operation.
+  \item The user interface should be updated appropriately.
+  \item The account information should be updated appropriately.
+\end{itemize}
 
 \subsection{Subsystem Level Test Cases}
 
-{\it
-All test cases for testing at the subsystem level.
-}
+\subsection{Unit Test Cases}
 
-{\it
-One subsection per subsystem
-}
+\subsubsection{Unit Test for Deposit Money Use Case}
 
-\subsubsection{Subsystem X}
+{\bf UpdateModel(DepositMoneyViewData data)}\\
+Test will be conducted on the UpdateModel method in the DepositMoneyController class. The parameter DepositMoneyViewData is a class and contains the following fields:
+\begin{itemize}
+  \item The amount to be deposited - float amount
+  \item The type of transaction - String type
+  \item The description of the transaction - String transactionReason
+  \item The date of transaction - Date date
+\end{itemize}
+When the UpdateModel is called, taking DepositMoneyViewData as a parameter, it creates a new entry (row) in the database table “deposit\_money” (new entries are always added at the top of the database table). Therefore, the last transaction is always at the top of the table.
 
-\subsection{Unit Test cases}
+\subsubsection{Unit Test for Deposit Money Use Case}
 
-{\it
-All test cases for testing at the unit level.
-}
+{\bf UpdateModel(DepositMoneyViewData data)}\\
+Tests will be conducted on UpdateModel method in WithdrawMoneyController Class. Unlike UpdateView, we could only conduct a few unit tests on it since it is a black box and coders can’t not sense whether the model data is updated on the database. So, we have to manually input a series of test data, and verifies whether the real results we read on database are aligned with expected updates. The parameter WithdrawMoneyViewData is a class that contains four field as follows:
+\begin{itemize}
+  \item The amount to be withdrawn – float amount
+  \item The type of transaction – String type
+  \item The Description of Transaction – String transactionReason
+  \item The date of transaction – Date date
+\end{itemize}
+When we call UpdateModel taking WithdrawMoneyViewData, it will create a new table row as the first table row, then we read from the first table row and test whether it is the same as the inputs.
 
-{\it
-One subsection per unit
-}
 
-\subsubsection{Unit X}
+
+
+
+
+
+
+
+
 
 \section{Test Results}
 
-{\it
-List the tests, indicating which passed and which did not pass.
-List requirements indicating the percentage of tests that passed for that requirement.
-}
+In this section we will be outlining the test results for both of our main test cases while providing in depth information regarding regular, special, and boundary cases. 
+
+\subsection{Deposit Money Test}
+
+\subsubsection{Expected Output (when “Done” button is clicked, and tests are implemented in order)}
+
+Regular Cases
+\begin{itemize}
+  \item Value 100: Works as expected.\\
+Account: 100.00 Current Balance: 100.00
+  \item Value 200.78: Works as expected.\\
+Account: 300.78 Current Balance: 300.78
+\end{itemize}
+
+Special Cases
+\begin{itemize}
+  \item Value -50: Does not work as expected. Subtracts 50 from the account and from the “Current Balance” field.\\
+No error message is displayed.
+  \item Value “Hello”: Works as expected. An error message appears.\\
+Error: Value entered must be a positive number.
+  \item Value: 3.2222: Works as expected.\\
+Account: 304.0022 Current Balance: 304.00
+  \item Value -30.55: Subtracts 30.55 from the account and from the “Current Balance” field.\\
+No error message is displayed.
+\end{itemize}
+
+\subsubsection{“Type of Deposit” input text field}
+
+Boundary Cases
+\begin{itemize}
+  \item Pass nothing (leave the field empty). Works as expected. The deposit concludes with default reason.
+\end{itemize}
+
+Regular Cases
+\begin{itemize}
+  \item Pass a string  “Cash Entry”. Works as expected and provides deposit reason.
+  \item Pass a string containing a number  “Money Transfer \#3”. Works as expected and provides deposit reason.
+\end{itemize}
+
+\subsubsection{“(optional) Transaction Description” input text field}
+
+Boundary Cases
+\begin{itemize}
+  \item Pass nothing (leave the field empty). Works as expected with no description.
+\end{itemize}
+
+Regular Cases
+\begin{itemize}
+  \item Pass a string “Money found in couch”. Works as expected and provides description.
+  \item Pass a string containing a number “Sold Xbox 360”. Works as expected and provides description.
+\end{itemize}
+
+\subsubsection{“Done” button}
+
+All tests above satisfy this case as they require the use of the Done button. Please refer to sections 1 and 2.
+	
+\subsubsection{“Cancel” button}
+
+Regular Cases
+\begin{itemize}
+  \item Transaction is not recorded. That is:
+  \begin{itemize}
+    \item Account (database) does not contain a record corresponding to the input. Works as expected.
+    \item “Current Balance field” is unchanged. Works as expected.
+  \end{itemize}
+\end{itemize}
+
+\subsection{Withdraw Money Test}
+
+\subsubsection{Expected Output (when “Done” button is clicked, and tests are implemented in order)}
+
+Boundary Cases
+\begin{itemize}
+  \item Passing a 0 or a 0.00: Works as expected, no actual change is done to the balance.
+\end{itemize}
+
+Regular Cases
+\begin{itemize}
+  \item Value of 100: Works as expected, withdrawal is performed.
+  \item Value of 200.78: Works as expected. Withdrawal is performed.
+\end{itemize}
+
+Special Cases
+\begin{itemize}
+  \item Value of -50: Does not work as expected.  It adds 50 to the account and to the “Current Balance” field. No error message is shown.
+  \item Value “Hello”: Works as expected. An error message is shown.
+  \item Value 3.2222: Works as expected by being rounded to the nearest hundredth when performing the withdrawal. 
+\end{itemize}
+
+\subsubsection{Expected Output (when “Show History” is clicked).}
+
+Boundary Cases
+\begin{itemize}
+  \item “” is under the “TYPE OF WITHDRAW”: Works as expected. It is left blank.
+\end{itemize}
+
+Regular Cases
+\begin{itemize}
+  \item “bill” is under the “TYPE OF WITHDRAW”: Works as expected. Bill is shown as the type of the withdrawal.
+  \item “check” is under the “TYPE OF WITHDRAW”: Works as expected. Check is shown as the type of the withdrawal.
+\end{itemize}
+
+\subsubsection{(optional) “Transaction Description” input text field.}
+
+Boundary Cases
+\begin{itemize}
+  \item “” is under the “DESCRIPTION”: Works as expected. It is left blank.
+\end{itemize}
+
+Regular Cases
+\begin{itemize}
+  \item  “Pay electricity bill of June” is under the “DESCRIPTION”: Works as expected. Shows this as the description for the withdrawal.
+  \item  “Pay off the debt owed to Jack” is under the “DESCRIPTION”: Works as expected. Shows this as the description for the withdrawal.
+\end{itemize}
+
+\subsubsection{“Done” button}
+
+Expected output is relative to the outlined uses in the above cases. They all require the use of the “Done” button, therefore this button is tested through those same tests.
+	
+\subsubsection{“Cancel” button}
+
+Regular Cases
+\begin{itemize}
+  \item Transaction is not recorded. That is:
+  \begin{itemize}
+    \item Account (database) does not contain a record corresponding to input data: Works as expected.
+    \item “Current Balance” field is unchanged: Works as expected. No changes occur.
+  \end{itemize}
+\end{itemize}
 
 \section{References}
+We obtained a test document sample that we used as a reference: Montrealopoly, Master Test Plan, from: https://users.encs.concordia.ca/~paquet/wiki/images/3/35/Phase3final.pdf
 
 \appendix
 
 \section{Description of Input Files}
 
-\subsubsection{Mymoneyappdb.db}
-Description
+\subsection{Mymoneyappdb.db}
+
+\subsubsection{File Description}
+Database file used for SQLite. Contains all the database information locally, such as the different tables and their contents. It contains the following four Tables:
+\begin{itemize}
+  \item Withdraw\_Money
+  \item Deposit\_money
+  \item Display\_Balance
+  \item sqlite\_sequence
+\end{itemize}
+
+\subsubsection{Input Description}
+The application will read from this file every time it is run to get all the Database information and display them on the GUI.
+
+\subsection{Transaction\_History.csv}
+
+\subsubsection{File Description}
+Excel file used to keep a history of all transactions executed within the application, as well as all the information relating to those transactions. It contains the following six columns:
+\begin{itemize}
+  \item Date
+  \item Transaction Type
+  \item Description
+  \item Amount
+  \item Type of Withdrawal
+  \item Type of Deposit
+\end{itemize}
+
+\subsubsection{Output Description}
+The application will read from this file every time it tries to access the history of all transactions to be able to display them on the GUI.
 
 \section{Description of Output Files}
 
-\subsubsection{Transaction\_History.csv}
-Description
+\subsection{Mymoneyappdb.db}
+
+\subsubsection{File Description}
+Database file used for SQLite. Contains all the database information locally, such as the different tables and their contents. It contains the following four Tables:
+\begin{itemize}
+  \item Withdraw\_Money
+  \item Deposit\_money
+  \item Display\_Balance
+  \item sqlite\_sequence
+\end{itemize}
+
+\subsubsection{Output Description}
+Everytime a new withdraw or deposit action happens, the application will write to this file to add new entries under their respective tables.  
+
+\subsection{Transaction\_History.csv}
+
+\subsubsection{File Description}
+Everytime a new withdraw or deposit action happens, the application will write to this file to add new entries under their respective tables.  
+\begin{itemize}
+  \item Date
+  \item Transaction Type
+  \item Description
+  \item Amount
+  \item Type of Withdrawal
+  \item Type of Deposit
+\end{itemize}
+
+\subsubsection{Output Description}
+Everytime a new withdraw or deposit action happens, the application will write to this file to add new rows containing all the information of the transaction.
 
 \end{document}
