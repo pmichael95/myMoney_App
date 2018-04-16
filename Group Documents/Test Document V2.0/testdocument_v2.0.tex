@@ -1,0 +1,713 @@
+\documentclass[12pt]{article}
+
+\pagestyle{empty}
+\setcounter{secnumdepth}{2}
+
+\topmargin=0cm
+\oddsidemargin=0cm
+\textheight=22.0cm
+\textwidth=16cm
+\parindent=0cm
+\parskip=0.15cm
+\topskip=0truecm
+\raggedbottom
+\abovedisplayskip=3mm
+\belowdisplayskip=3mm
+\abovedisplayshortskip=0mm
+\belowdisplayshortskip=2mm
+\normalbaselineskip=12pt
+\normalbaselines
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{pdflscape}
+
+\setcounter{secnumdepth}{3}
+\pagenumbering{arabic}
+\pagestyle{plain}
+
+\begin{document}
+
+\vspace*{0.5in}
+\centerline{\bf\Large Test Document}
+
+\vspace*{0.5in}
+\centerline{\bf\Large Team PB-PI}
+
+\vspace*{0.5in}
+\centerline{\bf\Large April 8, 2018}
+
+\vspace*{1.5in}
+\begin{table}[htbp]
+\caption{Team}
+\begin{center}
+\begin{tabular}{|r | c|}
+\hline
+Name & ID Number \\
+\hline\hline
+Alissa Bellerose & 27377320 \\
+Sabrina D'Mello & 27739486 \\
+Melanie Damilig & 40032420 \\
+Tobi Decary-Larocque & 27407645 \\
+Zain Farookhi & 26390684 \\
+Giulia Gaudio & 27191766 \\
+Jason Kalec & 40009464 \\
+Damian Kazior & 40016168 \\
+Johnny Mak & 40002140 \\
+Philip Michael & 40004861 \\
+Ramez Nicolas Nahas & 26718108 \\
+Steven Tucci & 40006014 \\
+Shunyu Wang & 40043915 \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\clearpage
+\tableofcontents
+\clearpage
+
+\section{Introduction}
+
+This document contains the overall test plan for the myMoney application. The myMoney application is a tool for young adults and students to keep track of their spending and help with their budgeting. This test plan describes the different tests performed to ensure a working program and explains the reasoning for the tests.\\
+
+The purpose of this document is to provide assurance and show the reliability of the software. The test plan therefore includes:
+
+\begin{itemize}
+  \item An overall view of the different tests performed
+  \item A description of the tests
+  \item References to the use cases and requirements satisfied by testing
+\end{itemize}
+
+Testing the program's different functionalities involves different types of tests. Unit, integration and user interface testing were performed for the purpose of this document. This was managed via black-box, white-box and boundary testing.
+
+\section{Test Plan}
+
+For the deposit and withdraw use cases, different unit tests were performed (including boundary tests) to ensure functionality. The different test cases were designed to test each part of each use case. This includes the format of what the user inputs, as well as ensuring that the database is updated or not, according to whether the transaction is legal or not.\\
+
+In regards to our requirements document, the test plan references the deposit and withdrawal use cases specifically. The tests for each of these use cases are integral to the proper functionality of the application and are therefore an important part of the testing sequence. The balance display use case does not have any functional testing to ensure that it works correctly, but any modification to the user's balance should be reflected through the appropriate view. Similarly, the use cases for the ``Show History'' functionality as well as "Export History" do not rely on any user input except for a button click, so testing was only performed to make sure the output files are correct.\\
+
+There were no tests performed to check if the application is portable to all operating systems described in the non-functional requirements, since the application is not being exported as a stand-alone app. It will function within the Eclipse environment for the time being.
+
+\subsection{System Level Test Cases}
+
+\subsubsection{[TC-1] [Withdraw Money]} \label{tc:1}
+%Table 2
+\begin{table}[H]
+\caption{ TC-1.1 : “Testing the Amount input”}
+\begin{center}
+\begin{tabular}{|p{5	cm}|p{12cm}|}
+\hline
+\bf Test Case Number & 
+TC-1.1 \\
+\hline
+\bf Description & 
+The user enters the amount to withdraw in the “Amount” input text field.\\
+\hline
+\bf Input & 
+\begin{enumerate}
+  \item Click Withdraw Money button
+  \item Enter the amount as a positive number in Amount input text field environment.
+  \item Click Done button
+\end{enumerate} \\
+\hline
+\bf Expected Output & 
+\begin{enumerate}
+  \item The system records the number from input as “Amount” in a row of transaction history table.
+  \item New balance will be updated after deducting the input number from the current Account Balance.
+\end{enumerate} \\
+\hline
+\bf Expected Post-Condition & 
+Account balance will be presented as a negative value with two decimal places if it belows 0. Error message is displayed if the input is not valid, 
+and Current Balance and database will not be updated.\\
+\hline
+\bf Execution History & 
+[04/14/2018|Shunyu Wang] Executed test successfully.\\
+\hline
+\bf Trace to Use Case & 
+UC-1\\
+\hline
+
+\end{tabular}
+\end{center}
+\end{table}
+
+%Table 3
+\begin{table}[H]
+\caption{TC-1.2 : “Testing the type of withdraw input”}
+\begin{center}
+\begin{tabular}{|p{5 cm}|p{12cm}|}
+\hline
+\bf Test Case Number & 
+TC-1.2 \\
+\hline
+\bf Description & 
+Takes the type of withdraw defined by the user.\\
+\hline
+\bf Input & 
+\begin{enumerate}
+  \item Click Withdraw Money button
+  \item Enter any positive number in Amount input text field.
+  \item Enter any type of withdraw defined by the user, such as “Bill”, “Check”, or empty string
+  \item Click Done button
+\end{enumerate} \\
+\hline
+\bf Expected Output & 
+\begin{enumerate}
+  \item The system records the number from input as “Amount” and the type of withdraw as “Type of Withdraw” in a row of transaction history table.
+  \item New balance will be updated after deducting the input number from the current Account Balance.
+\end{enumerate} \\
+\hline
+\bf Expected Post-Condition & 
+The same string will be taken from input as the output for Type of Withdraw in transaction history table. Empty string is allowed.\\
+\hline
+\bf Execution History & 
+[04/14/2018|Shunyu Wang] Executed test successfully.\\
+\hline
+\bf Trace to Use Case & 
+UC-1\\
+\hline
+
+\end{tabular}
+\end{center}
+\end{table}
+
+%Table 4
+\begin{table}[H]
+\caption{TC-1.3 : “Testing the transaction description input”}
+\begin{center}
+\begin{tabular}{|p{5 cm}|p{12cm}|}
+\hline
+\bf Test Case Number & 
+TC-1.3 \\
+\hline
+\bf Description & 
+Take any user-defined descriptions, such as purposes for transactions and other special notes.\\
+\hline
+\bf Input & 
+\begin{enumerate}
+  \item Click Withdraw Money button
+  \item Enter any positive number in Amount input text field
+  \item Enter any user-defined description in Transaction Description text field, such as “Pay electricity bill of June”, “ Pay off the debt owed to Jack
+”, or empty string
+  \item Click Done button
+\end{enumerate} \\
+\hline
+\bf Expected Output & 
+\begin{enumerate}
+  \item The system records the number from input as “Amount” and the user-defined description as “Transaction Description” in a row of transaction history table.
+  \item New balance will be updated after deducting the input number from the current Account Balance.
+\end{enumerate} \\
+\hline
+\bf Expected Post-Condition & 
+The same string will be taken from input as the output for Transaction Description in transaction history table. Empty string is allowed.\\
+\hline
+\bf Execution History & 
+[04/14/2018|Shunyu Wang] Executed test successfully.\\
+\hline
+\bf Trace to Use Case & 
+UC-1\\
+\hline
+
+\end{tabular}
+\end{center}
+\end{table}
+
+
+%Table 5
+\begin{table}[H]
+\caption{TC-1.4 : “Testing the Done UI Button”}
+\begin{center}
+\begin{tabular}{|p{5 cm}|p{12cm}|}
+\hline
+\bf Test Case Number & 
+TC-1.4 \\
+\hline
+\bf Description & 
+When clicked, the UI and the database are updated according to the values entered by the user. In some cases, error messages are displayed.\\
+\hline
+\bf Input & 
+\begin{enumerate}
+  \item Click Withdraw Money button
+  \item Refer to TC-1.1, TC-1.2, and TC-1.3, input testing data appropriately
+  \item Click Done button
+\end{enumerate} \\
+\hline
+\bf Expected Output & 
+\begin{enumerate}
+  \item The system records the number from input as “Amount”, the type of withdraw as “Type of Withdraw”, and the user-defined description as “Transaction Description” in a row of transaction history table.
+  \item New balance will be updated after deducting the input number from the current Account Balance.
+\end{enumerate} \\
+\hline
+\bf Expected Post-Condition & 
+Account balance will be presented as a negative value with two decimal places if it falls belows 0. All testing data should be recorded together  in database as a row transaction history, which can be examined by clicking Show History\\
+\hline
+\bf Execution History & 
+[04/14/2018|Shunyu Wang] Executed test successfully.\\
+\hline
+\bf Trace to Use Case & 
+UC-1\\
+\hline
+
+\end{tabular}
+\end{center}
+\end{table}
+
+
+%Table 6
+\begin{table}[H]
+\caption{TC-1.5 : “Testing the Cancel UI Button”}
+\begin{center}
+\begin{tabular}{|p{5 cm}|p{12cm}|}
+\hline
+\bf Test Case Number & 
+TC-1.5 \\
+\hline
+\bf Description & 
+When clicked, the transaction is canceled: the Account Balance and database are not updated.\\
+\hline
+\bf Input & 
+\begin{enumerate}
+  \item Click Withdraw Money button
+  \item Input any testing data into text fields
+  \item Click Cancel button
+\end{enumerate} \\
+\hline
+\bf Expected Output & 
+\begin{enumerate}
+  \item Data are cleared and all input text fields are collapsed.
+\end{enumerate} \\
+\hline
+\bf Expected Post-Condition & 
+The system state doesn’t change, meaning Current Balance is not changed and no change in database.\\
+\hline
+\bf Execution History & 
+[04/14/2018|Shunyu Wang] Executed test successfully.\\
+\hline
+\bf Trace to Use Case & 
+UC-1\\
+\hline
+
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsubsection{[TC-2] [Deposit Money]} \label{tc:2}
+
+%Table 7
+\begin{table}[H]
+\caption{TC-2.1 : “ Testing the amount input”}
+\begin{center}
+\begin{tabular}{|p{5	cm}|p{12cm}|}
+\hline
+\bf Test Case Number & 
+TC-2.1 \\
+\hline
+\bf Description & 
+The user enters the amount to deposit in the “Amount” input text field.\\
+\hline
+\bf Input & 
+\begin{enumerate}
+  \item Click Deposit Money button
+  \item Enter the amount as a positive number in Amount input text field.
+  \item Click Done button
+\end{enumerate} \\
+\hline
+\bf Expected Output & 
+\begin{enumerate}
+  \item The system records the number from input as “Amount” in a row of transaction history table.
+  \item New balance will be updated after adding the input number to the current Account Balance.
+\end{enumerate} \\
+\hline
+\bf Expected Post-Condition & 
+Account balance will be presented as a positive value with two decimal places. Error message is displayed if the input is not valid, and Current Balance and database will not be updated.\\
+\hline
+\bf Execution History & 
+[04/14/2018|Shunyu Wang] Executed test successfully.\\
+\hline
+\bf Trace to Use Case & 
+UC-2\\
+\hline
+
+\end{tabular}
+\end{center}
+\end{table}
+
+
+%Table 8
+\begin{table}[H]
+\caption{TC-2.2 : “Testing the type of deposit”}
+\begin{center}
+\begin{tabular}{|p{5	cm}|p{12cm}|}
+\hline
+\bf Test Case Number & 
+TC-2.2 \\
+\hline
+\bf Description & 
+Takes the type of deposit defined by the user.\\
+\hline
+\bf Input & 
+\begin{enumerate}
+  \item Click Deposit Money button
+  \item Enter the amount as a positive number in Amount input text field.
+  \item Enter any type of deposit defined by the user, such as “Direct Deposit”, “Cash”, or empty string
+  \item Click Done button
+\end{enumerate} \\
+\hline
+\bf Expected Output & 
+\begin{enumerate}
+  \item The system records the number from input as “Amount” and the type of deposit as “Type of Deposit” in a row of transaction history table.
+  \item New balance will be updated after adding the input number to the current Account Balance.
+\end{enumerate} \\
+\hline
+\bf Expected Post-Condition & 
+The same string will be taken from input as the output for Type of Deposit in transaction history table. Empty string is allowed.\\
+\hline
+\bf Execution History & 
+[04/14/2018|Shunyu Wang] Executed test successfully.\\
+\hline
+\bf Trace to Use Case & 
+UC-2\\
+\hline
+
+\end{tabular}
+\end{center}
+\end{table}
+
+
+%Table 9
+\begin{table}[H]
+\caption{TC-2.3 : “Testing the transaction description input”}
+\begin{center}
+\begin{tabular}{|p{5	cm}|p{12cm}|}
+\hline
+\bf Test Case Number & 
+TC-2.3 \\
+\hline
+\bf Description & 
+Take any user-defined descriptions, such as purposes for transactions and other special notes.\\
+\hline
+\bf Input & 
+\begin{enumerate}
+  \item Click Deposit Money button
+  \item Enter the amount as a positive number in Amount input text field.
+  \item Enter any user-defined description in Transaction Description text field, such as “Bi-weekly pay”, “Receive the bonus for working overtime”, or empty string.
+  \item Click Done button
+\end{enumerate} \\
+\hline
+\bf Expected Output & 
+\begin{enumerate}
+  \item The system records the number from input as “Amount” and the user-defined description as “Transaction Description” in a row of transaction history table
+  \item New balance will be updated after adding the input number to the current Account Balance
+\end{enumerate} \\
+\hline
+\bf Expected Post-Condition & 
+The same string will be taken from input as the output for Transaction Description in transaction history table. Empty string is allowed.\\
+\hline
+\bf Execution History & 
+[04/14/2018|Shunyu Wang] Executed test successfully.\\
+\hline
+\bf Trace to Use Case & 
+UC-2\\
+\hline
+
+\end{tabular}
+\end{center}
+\end{table}
+
+
+%Table 10
+\begin{table}[H]
+\caption{TC-2.4 : “Testing the Done UI Button”}
+\begin{center}
+\begin{tabular}{|p{5	cm}|p{12cm}|}
+\hline
+\bf Test Case Number & 
+TC-2.4 \\
+\hline
+\bf Description & 
+When clicked, the UI and the database are updated according to the values entered by the user. In some cases, error messages are displayed.\\
+\hline
+\bf Input & 
+\begin{enumerate}
+  \item Click Deposit Money button
+  \item Refer to TC-2.1, TC-2.2, and TC-2.3, input testing data appropriately. string.
+  \item Click Done button
+\end{enumerate} \\
+\hline
+\bf Expected Output & 
+\begin{enumerate}
+  \item The system records the number from input as “Amount”, the type of deposit as “Type of Deposit”, and the user-defined description as “Transaction Description” in a row of transaction history table.
+  \item New balance will be updated after adding the input number to current Account Balance.
+\end{enumerate} \\
+\hline
+\bf Expected Post-Condition & 
+Account balance will be presented as a negative value with two decimal places if it falls belows 0. All testing data should be recorded together  in database as a row transaction history, which can be examined by clicking Show History\\
+\hline
+\bf Execution History & 
+[04/14/2018|Shunyu Wang] Executed test successfully.\\
+\hline
+\bf Trace to Use Case & 
+UC-2\\
+\hline
+
+\end{tabular}
+\end{center}
+\end{table}
+
+
+%Table 11
+\begin{table}[H]
+\caption{TC-2.5 : “Testing the Cancel UI Button”}
+\begin{center}
+\begin{tabular}{|p{5cm}|p{12cm}|}
+\hline
+\bf Test Case Number & 
+TC-2.5 \\
+\hline
+\bf Description & 
+When clicked, the transaction is canceled: the UI and database are not updated.\\
+\hline
+\bf Input & 
+\begin{enumerate}
+  \item Click Deposit Money button
+  \item Input any testing data into text fields
+  \item Click Cancel button
+\end{enumerate} \\
+\hline
+\bf Expected Output & 
+\begin{enumerate}
+  \item All data are cleared and all input text fields are collapsed.
+\end{enumerate} \\
+\hline
+\bf Expected Post-Condition & 
+The system state doesn’t change, meaning Current Balance is not changed and no change in database\\
+\hline
+\bf Execution History & 
+[04/14/2018|Shunyu Wang] Executed test successfully.\\
+\hline
+\bf Trace to Use Case & 
+UC-2\\
+\hline
+
+\end{tabular}
+\end{center}
+\end{table}
+
+
+\section{Test Results}
+
+In this section we will be outlining the test results for both of our main test cases while providing in depth information regarding regular, special, and boundary cases. 
+
+\subsection{Deposit Money Test}
+
+\subsubsection{Expected Output (when ``Done'' button is clicked, and tests are implemented in order)}
+
+Regular Cases
+\begin{itemize}
+  \item Value 100: Works as expected.\\
+Account: 100.00 Current Balance: 100.00
+  \item Value 200.78: Works as expected.\\
+Account: 300.78 Current Balance: 300.78
+\end{itemize}
+
+Special Cases
+\begin{itemize}
+  \item Value -50: Does not work as expected. Subtracts 50 from the account and from the ``Current Balance'' field.\\
+No error message is displayed.
+  \item Value ``Hello'': Works as expected. An error message appears.\\
+Error: Value entered must be a positive number.
+  \item Value: 3.2222: Works as expected.\\
+Account: 304.0022 Current Balance: 304.00
+  \item Value -30.55: Subtracts 30.55 from the account and from the ``Current Balance'' field.\\
+No error message is displayed.
+\end{itemize}
+
+\subsubsection{``Type of Deposit'' input text field}
+
+Boundary Cases
+\begin{itemize}
+  \item Pass nothing (leave the field empty). Works as expected. The deposit concludes with default reason.
+\end{itemize}
+
+Regular Cases
+\begin{itemize}
+  \item Pass a string  ``Cash Entry''. Works as expected and provides deposit reason.
+  \item Pass a string containing a number  ``Money Transfer \#3''. Works as expected and provides deposit reason.
+\end{itemize}
+
+\subsubsection{``(optional) Transaction Description'' input text field}
+
+Boundary Cases
+\begin{itemize}
+  \item Pass nothing (leave the field empty). Works as expected with no description.
+\end{itemize}
+
+Regular Cases
+\begin{itemize}
+  \item Pass a string ``Money found in couch''. Works as expected and provides description.
+  \item Pass a string containing a number ``Sold Xbox 360''. Works as expected and provides description.
+\end{itemize}
+
+\subsubsection{``Done'' button}
+
+All tests above satisfy this case as they require the use of the Done button. Please refer to sections 1 and 2.
+	
+\subsubsection{``Cancel'' button}
+
+Regular Cases
+\begin{itemize}
+  \item Transaction is not recorded. That is:
+  \begin{itemize}
+    \item Account (database) does not contain a record corresponding to the input. Works as expected.
+    \item ``Current Balance field'' is unchanged. Works as expected.
+  \end{itemize}
+\end{itemize}
+
+\subsection{Withdraw Money Test}
+
+\subsubsection{Expected Output (when ``Done'' button is clicked, and tests are implemented in order)}
+
+Boundary Cases
+\begin{itemize}
+  \item Passing a 0 or a 0.00: Works as expected, no actual change is done to the balance.
+\end{itemize}
+
+Regular Cases
+\begin{itemize}
+  \item Value of 100: Works as expected, withdrawal is performed.
+  \item Value of 200.78: Works as expected. Withdrawal is performed.
+\end{itemize}
+
+Special Cases
+\begin{itemize}
+  \item Value of -50: Does not work as expected.  It adds 50 to the account and to the ``Current Balance'' field. No error message is shown.
+  \item Value ``Hello'': Works as expected. An error message is shown.
+  \item Value 3.2222: Works as expected by being rounded to the nearest hundredth when performing the withdrawal. 
+\end{itemize}
+
+\subsubsection{Expected Output (when ``Show History'' is clicked).}
+
+Boundary Cases
+\begin{itemize}
+  \item ``'' is under the ``TYPE OF WITHDRAW'': Works as expected. It is left blank.
+\end{itemize}
+
+Regular Cases
+\begin{itemize}
+  \item ``bill'' is under the ``TYPE OF WITHDRAW'': Works as expected. Bill is shown as the type of the withdrawal.
+  \item ``check'' is under the ``TYPE OF WITHDRAW'': Works as expected. Check is shown as the type of the withdrawal.
+\end{itemize}
+
+\subsubsection{(optional) ``Transaction Description'' input text field.}
+
+Boundary Cases
+\begin{itemize}
+  \item ``'' is under the ``DESCRIPTION'': Works as expected. It is left blank.
+\end{itemize}
+
+Regular Cases
+\begin{itemize}
+  \item  ``Pay electricity bill of June'' is under the ``DESCRIPTION'': Works as expected. Shows this as the description for the withdrawal.
+  \item  ``Pay off the debt owed to Jack'' is under the ``DESCRIPTION'': Works as expected. Shows this as the description for the withdrawal.
+\end{itemize}
+
+\subsubsection{``Done'' button}
+
+Expected output is relative to the outlined uses in the above cases. They all require the use of the ``Done'' button, therefore this button is tested through those same tests.
+	
+\subsubsection{``Cancel'' button}
+
+Regular Cases
+\begin{itemize}
+  \item Transaction is not recorded. That is:
+  \begin{itemize}
+    \item Account (database) does not contain a record corresponding to input data: Works as expected.
+    \item ``Current Balance'' field is unchanged: Works as expected. No changes occur.
+  \end{itemize}
+\end{itemize}
+
+\section{References}
+We obtained a test document sample that we used as a reference: Montrealopoly, Master Test Plan, from: https://users.encs.concordia.ca/~paquet/wiki/images/3/35/Phase3final.pdf
+
+\appendix
+
+\section{Description of Input Files}
+
+\subsection{Mymoneyappdb.db}
+
+\subsubsection{File Description}
+Database file used for SQLite. Contains all the database information locally, such as the different tables and their contents. It contains the following four Tables:
+\begin{itemize}
+  \item Withdraw\_Money
+  \item Deposit\_money
+  \item Display\_Balance
+  \item sqlite\_sequence
+\end{itemize}
+
+\subsubsection{Input Description}
+The application will read from this file every time it is run to get all the Database information and display them on the GUI.
+
+\subsection{Transaction\_History.csv}
+
+\subsubsection{File Description}
+Excel file used to keep a history of all transactions executed within the application, as well as all the information relating to those transactions. It contains the following six columns:
+\begin{itemize}
+  \item Date
+  \item Transaction Type
+  \item Description
+  \item Amount
+  \item Type of Withdrawal
+  \item Type of Deposit
+\end{itemize}
+
+\subsubsection{Output Description}
+The application will read from this file every time it tries to access the history of all transactions to be able to display them on the GUI.
+
+\section{Description of Output Files}
+
+\subsection{Mymoneyappdb.db}
+
+\subsubsection{File Description}
+Database file used for SQLite. Contains all the database information locally, such as the different tables and their contents. It contains the following four Tables:
+\begin{itemize}
+  \item Withdraw\_Money
+  \item Deposit\_money
+  \item Display\_Balance
+  \item sqlite\_sequence
+\end{itemize}
+
+\subsubsection{Output Description}
+Everytime a new withdraw or deposit action happens, the application will write to this file to add new entries under their respective tables.  
+
+\subsection{Transaction\_History.csv}
+
+\subsubsection{File Description}
+Everytime a new withdraw or deposit action happens, the application will write to this file to add new entries under their respective tables.  
+\begin{itemize}
+  \item Date
+  \item Transaction Type
+  \item Description
+  \item Amount
+  \item Type of Withdrawal
+  \item Type of Deposit
+\end{itemize}
+
+\subsubsection{Output Description}
+Everytime a new withdraw or deposit action happens, the application will write to this file to add new rows containing all the information of the transaction.
+
+\clearpage 
+\section{Figures}
+
+\begin{figure}[H]
+%  \includegraphics[width=\linewidth]{open_app.png}
+  \caption{The user opens myMoney App.}
+\end{figure}
+
+\begin{figure}[H]
+%  \includegraphics[width=\linewidth]{deposit_click.png}
+  \caption{The fields mentioned in the Deposit Test Case section are shown above.}
+\end{figure}
+
+\end{document}
