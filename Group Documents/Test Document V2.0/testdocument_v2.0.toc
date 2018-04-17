@@ -1,21 +1,22 @@
-\contentsline {section}{\numberline {1}Introduction}{3}
-\contentsline {section}{\numberline {2}Test Plan}{3}
-\contentsline {subsection}{\numberline {2.1}Use Cases in the myMoney application}{4}
-\contentsline {subsection}{\numberline {2.2}System Level Test Cases}{5}
-\contentsline {subsubsection}{\numberline {2.2.1}[TC-1] [Withdraw Money]}{5}
-\contentsline {subsubsection}{\numberline {2.2.2}[TC-2] [Deposit Money]}{10}
-\contentsline {subsubsection}{\numberline {2.2.3}[TC-3] [Display Balance]}{15}
-\contentsline {subsubsection}{\numberline {2.2.4}[TC-4] [Clear Account]}{16}
-\contentsline {subsubsection}{\numberline {2.2.5}[TC-5] [Show History]}{17}
-\contentsline {subsubsection}{\numberline {2.2.6}[TC-6] [Sort Table]}{18}
-\contentsline {subsubsection}{\numberline {2.2.7}[TC-7] [Export History]}{24}
-\contentsline {section}{\numberline {3}Unit Test Cases}{25}
-\contentsline {subsection}{\numberline {3.1}Display Balance Unit Testing}{25}
-\contentsline {subsection}{\numberline {3.2}Data Unit Testing}{28}
-\contentsline {section}{\numberline {4}Test Results}{29}
-\contentsline {subsection}{\numberline {4.1}Deposit Money Test}{29}
-\contentsline {subsection}{\numberline {4.2}Withdraw Money Test}{31}
-\contentsline {section}{\numberline {5}References}{32}
-\contentsline {section}{\numberline {A}Description of Input Files}{33}
-\contentsline {section}{\numberline {B}Description of Output Files}{34}
-\contentsline {section}{\numberline {C}Figures}{35}
+\contentsline {section}{\numberline {1}Introduction}{4}
+\contentsline {section}{\numberline {2}Test Plan}{4}
+\contentsline {subsection}{\numberline {2.1}Use Cases in the myMoney application}{5}
+\contentsline {subsection}{\numberline {2.2}System Level Test Cases}{6}
+\contentsline {subsubsection}{\numberline {2.2.1}[TC-1] [Withdraw Money]}{6}
+\contentsline {paragraph}{...}{6}
+\contentsline {subsubsection}{\numberline {2.2.2}[TC-2] [Deposit Money]}{11}
+\contentsline {subsubsection}{\numberline {2.2.3}[TC-3] [Display Balance]}{16}
+\contentsline {subsubsection}{\numberline {2.2.4}[TC-4] [Clear Account]}{17}
+\contentsline {subsubsection}{\numberline {2.2.5}[TC-5] [Show History]}{18}
+\contentsline {subsubsection}{\numberline {2.2.6}[TC-6] [Sort Table]}{19}
+\contentsline {subsubsection}{\numberline {2.2.7}[TC-7] [Export History]}{25}
+\contentsline {section}{\numberline {3}Unit Test Cases}{26}
+\contentsline {subsection}{\numberline {3.1}Display Balance Unit Testing}{26}
+\contentsline {subsection}{\numberline {3.2}Data Unit Testing}{29}
+\contentsline {section}{\numberline {4}Test Results}{30}
+\contentsline {subsection}{\numberline {4.1}Deposit Money Test}{30}
+\contentsline {subsection}{\numberline {4.2}Withdraw Money Test}{32}
+\contentsline {section}{\numberline {5}References}{33}
+\contentsline {section}{\numberline {A}Description of Input Files}{34}
+\contentsline {section}{\numberline {B}Description of Output Files}{35}
+\contentsline {section}{\numberline {C}Figures}{36}
