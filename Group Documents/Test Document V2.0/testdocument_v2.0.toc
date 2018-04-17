@@ -3,7 +3,6 @@
 \contentsline {subsection}{\numberline {2.1}Use Cases in the myMoney application}{5}
 \contentsline {subsection}{\numberline {2.2}System Level Test Cases}{6}
 \contentsline {subsubsection}{\numberline {2.2.1}[TC-1] [Withdraw Money]}{6}
-\contentsline {paragraph}{...}{6}
 \contentsline {subsubsection}{\numberline {2.2.2}[TC-2] [Deposit Money]}{11}
 \contentsline {subsubsection}{\numberline {2.2.3}[TC-3] [Display Balance]}{16}
 \contentsline {subsubsection}{\numberline {2.2.4}[TC-4] [Clear Account]}{17}

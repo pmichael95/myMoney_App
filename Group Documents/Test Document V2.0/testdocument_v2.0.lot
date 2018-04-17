@@ -5,7 +5,7 @@
 \contentsline {table}{\numberline {5}{\ignorespaces TC-1.3 : “Testing the transaction description input”}}{8}
 \contentsline {table}{\numberline {6}{\ignorespaces TC-1.4 : “Testing the Done UI Button”}}{9}
 \contentsline {table}{\numberline {7}{\ignorespaces TC-1.5 : “Testing the Cancel UI Button”}}{10}
-\contentsline {table}{\numberline {8}{\ignorespaces TC-2.1 : “ Testing the amount input”}}{11}
+\contentsline {table}{\numberline {8}{\ignorespaces TC-2.1 : “Testing the Input Amount”}}{11}
 \contentsline {table}{\numberline {9}{\ignorespaces TC-2.2 : “Testing the type of deposit”}}{12}
 \contentsline {table}{\numberline {10}{\ignorespaces TC-2.3 : “Testing the transaction description input”}}{13}
 \contentsline {table}{\numberline {11}{\ignorespaces TC-2.4 : “Testing the Done UI Button”}}{14}
@@ -26,4 +26,4 @@
 \contentsline {table}{\numberline {26}{\ignorespaces “CreateDummyDeposit()”}}{29}
 \contentsline {table}{\numberline {27}{\ignorespaces “CreateDummyWithdrawal()”}}{30}
 \contentsline {table}{\numberline {28}{\ignorespaces Input Files}}{34}
-\contentsline {table}{\numberline {29}{\ignorespaces Input Files}}{35}
+\contentsline {table}{\numberline {29}{\ignorespaces Output Files}}{35}

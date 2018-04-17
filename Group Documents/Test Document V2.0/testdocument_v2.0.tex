@@ -1,7 +1,6 @@
 \documentclass[12pt]{article}
 
 \pagestyle{empty}
-\setcounter{secnumdepth}{2}
 
 \topmargin=0cm
 \oddsidemargin=0cm
@@ -21,9 +20,15 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{titlesec}
+\usepackage{etoolbox}
+
+\makeatletter
+\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
+\patchcmd{\ttlh@hang}{\noindent}{}{}{}
+\makeatother
 \usepackage{pdflscape}
 
-\setcounter{secnumdepth}{3}
+\setcounter{secnumdepth}{4}
 \pagenumbering{arabic}
 \pagestyle{plain}
 
@@ -128,7 +133,6 @@ There were no tests performed to check if the application is portable to all ope
 \subsection{System Level Test Cases}
 
 \subsubsection{[TC-1] [Withdraw Money]} \label{tc:1}
-\paragraph{...}
 %Table 2
 \begin{table}[H]
 
@@ -334,7 +338,7 @@ UC-1\\
 
 %Table 7
 \begin{table}[H]
-\caption{TC-2.1 : “ Testing the amount input”}
+\caption{TC-2.1 : “Testing the Input Amount”}
 \begin{center}
 \begin{tabular}{|p{5.5	cm}|p{11cm}|}
 \hline
@@ -879,7 +883,7 @@ UC-2\\
   \bf Execution History & 
   \begin{enumerate}
   \item (04/15/2018) Sabrina D’Mello: Executed test successfully.
-  \item (04/6/201) Damian Kazior Executed test successfully.
+  \item (04/6/2018) Damian Kazior Executed test successfully.
   \end{enumerate}
   \\\hline
 \end{tabular}
@@ -911,7 +915,7 @@ UC-2\\
   \bf Execution History & 
   \begin{enumerate}
   \item (04/15/2018) Sabrina D’Mello: Executed test successfully.
-  \item (04/6/201) Damian Kazior Executed test successfully.
+  \item (04/6/2018) Damian Kazior Executed test successfully.
   \end{enumerate}
   \\\hline
 \end{tabular}
@@ -943,7 +947,7 @@ UC-2\\
   \bf Execution History & 
   \begin{enumerate}
   \item (04/15/2018) Sabrina D’Mello: Executed test successfully.
-  \item (04/6/201) Damian Kazior Executed test successfully.
+  \item (04/6/2018) Damian Kazior Executed test successfully.
   \end{enumerate}
   \\\hline
 \end{tabular}
@@ -978,7 +982,7 @@ This unit test case was to ensure that the database fields in the deposit money 
   \bf Execution History & 
   \begin{enumerate}
   \item (04/15/2018) Sabrina D’Mello: Executed test successfully.
-  \item (04/6/201) Damian Kazior Executed test successfully.
+  \item (04/6/2018) Damian Kazior Executed test successfully.
   \end{enumerate}
   \\\hline
 \end{tabular}
@@ -1010,7 +1014,7 @@ This unit test case was to ensure that the database fields in the withdraw money
   \bf Execution History & 
   \begin{enumerate}
   \item (04/15/2018) Sabrina D’Mello: Executed test successfully.
-  \item (04/6/201) Damian Kazior Executed test successfully.
+  \item (04/6/2018) Damian Kazior Executed test successfully.
   \end{enumerate}
   \\\hline
 \end{tabular}
@@ -1162,7 +1166,7 @@ We obtained a test document sample that we used as a reference: Montrealopoly, M
 \begin{table}[H]
 \caption{Input Files}
 \begin{center}
-\begin{tabular}{|c|c|p{3cm}|p{2cm}}
+\begin{tabular}{|c|c|p{4.5cm}|p{4cm}|}
 \hline
   \bf File Name & \bf File Extension & \bf File Description & \bf Input Description \\\hline
 	\bf mymoneyappdb &
@@ -1176,7 +1180,7 @@ We obtained a test document sample that we used as a reference: Montrealopoly, M
 \end{itemize}
 		& The application will read from this file every time it is run to get all the Database information and display them on the GUI. \\
 		\hline
-		Transaction\_History	&
+		\bf Transaction\_History	&
 		.csv 	&
 		Excel file used to keep a history of all transactions executed within the application, as well as all the information relating to those transactions. It contains the following six columns:
 		\begin{itemize} 
@@ -1187,7 +1191,7 @@ We obtained a test document sample that we used as a reference: Montrealopoly, M
 		\item Type of Withdrawal
 		\item Type of Deposit
 		\end{itemize}
-	& The application will read from this file every time it tries to access the history of all transactions to be able to display them on the GUI.
+	& The application will read from this file every time it tries to access the history of all transactions to be able to display them on the GUI.\\\hline
 \end{tabular}
 \end{center}
 \end{table}
@@ -1196,9 +1200,9 @@ We obtained a test document sample that we used as a reference: Montrealopoly, M
 
 %Table 29
 \begin{table}[H]
-\caption{Input Files}
+\caption{Output Files}
 \begin{center}
-\begin{tabular}{|c|c|p{3cm}|p{2cm}}
+\begin{tabular}{|c|c|p{4.5cm}|p{4cm}|}
 \hline
   \bf File Name & \bf File Extension & \bf File Description & \bf Input Description \\\hline
 	\bf mymoneyappdb &
@@ -1212,7 +1216,7 @@ Database file used for SQLite. Contains all the database information locally, su
 \end{itemize}
 		& Everytime a new withdraw or deposit action happens, the application will write to this file to add new entries under their respective tables.   \\
 		\hline
-		Transaction\_History	&
+		\bf Transaction\_History	&
 		.csv 	&
 Excel file used to keep a history of all transactions executed within the application, as well as all the information relating to those transactions. It contains the following six columns:
 		\begin{itemize} 
@@ -1223,7 +1227,7 @@ Excel file used to keep a history of all transactions executed within the applic
 		\item Type of Withdrawal
 		\item Type of Deposit
 		\end{itemize}
-	& Everytime a new withdraw or deposit action happens, the application will write to this file to add new rows containing all the information of the transaction.
+	& Everytime a new withdraw or deposit action happens, the application will write to this file to add new rows containing all the information of the transaction.\\\hline
 \end{tabular}
 \end{center}
 \end{table}
