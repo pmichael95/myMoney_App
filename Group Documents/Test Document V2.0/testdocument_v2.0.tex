@@ -123,9 +123,6 @@ There were no tests performed to check if the application is portable to all ope
   \end{center}
 \end{table}
 
-
-\section{Test Cases}
-
 \subsection{System Level Test Cases}
 
 \subsubsection{[TC-1] [Withdraw Money]} \label{tc:1}
@@ -849,13 +846,180 @@ UC-2\\
 \end{center}
 \end{table}
 
+\section{Unit Test Cases}
+
+\subsection{Display Balance Unit Testing} \label{ut:1}
+
+%Table 21
+\begin{table}[H]
+\caption{“initialBalanceTest()”}
+\begin{center}
+\begin{tabular}{|p{5.5cm}|p{11cm}|}
+  \hline
+  \bf Test Case Number & UT-1\\\hline
+  \bf Description & 
+  This unit test case is used to ensure that when the myMoney application is initially opened that it will display the current historical balance on the account.\\\hline
+  \bf Input &
+  \begin{enumerate}
+  \item .......
+  \end{enumerate}
+  \\\hline
+  \bf Expected Output &
+  \begin{enumerate}
+  \item Test was executed successfully
+  \end{enumerate}
+  \\\hline
+  \bf Expected Post-Condition & 
+  ..............
+  \\\hline   
+  \bf Execution History & 
+  \begin{enumerate}
+  \item (04/15/2018) Sabrina D’Mello: Executed test successfully.
+  \item (04/6/201) Damian Kazior Executed test successfully.
+  \end{enumerate}
+  \\\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+%Table 22
+\begin{table}[H]
+\caption{“updateBalanceTest()”}
+\begin{center}
+\begin{tabular}{|p{5.5cm}|p{11cm}|}
+  \hline
+  \bf Test Case Number & UT-2\\\hline
+  \bf Description & 
+  This unit test case is used to ensure that the system updates the balance positively or negatively, depending on the transaction type.\\\hline
+  \bf Input &
+  \begin{enumerate}
+  \item .......
+  \end{enumerate}
+  \\\hline
+  \bf Expected Output &
+  \begin{enumerate}
+  \item Test was executed successfully
+  \end{enumerate}
+  \\\hline
+  \bf Expected Post-Condition & 
+  ..............
+  \\\hline   
+  \bf Execution History & 
+  \begin{enumerate}
+  \item (04/15/2018) Sabrina D’Mello: Executed test successfully.
+  \item (04/6/201) Damian Kazior Executed test successfully.
+  \end{enumerate}
+  \\\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+%Table 23
+\begin{table}[H]
+\caption{“updateModelTest()”}
+\begin{center}
+\begin{tabular}{|p{5.5cm}|p{11cm}|}
+  \hline
+  \bf Test Case Number & UT-3\\\hline
+  \bf Description & 
+  This unit test case was created to ensure that the model  updates once a change has been made to the view.\\\hline
+  \bf Input &
+  \begin{enumerate}
+  \item .......
+  \end{enumerate}
+  \\\hline
+  \bf Expected Output &
+  \begin{enumerate}
+  \item Test was executed successfully
+  \end{enumerate}
+  \\\hline
+  \bf Expected Post-Condition & 
+  ..............
+  \\\hline   
+  \bf Execution History & 
+  \begin{enumerate}
+  \item (04/15/2018) Sabrina D’Mello: Executed test successfully.
+  \item (04/6/201) Damian Kazior Executed test successfully.
+  \end{enumerate}
+  \\\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+\subsection{Data Unit Testing} \label{ut:2}
+
+%Table 24
+\begin{table}[H]
+\caption{“CreateDummyDeposit()”}
+\begin{center}
+\begin{tabular}{|p{5.5cm}|p{11cm}|}
+  \hline
+  \bf Test Case Number & UT-4\\\hline
+  \bf Description & 
+This unit test case was to ensure that the database fields in the deposit money model is being set and the amount is being added it correctly.\\\hline
+  \bf Input &
+  \begin{enumerate}
+  \item .......
+  \end{enumerate}
+  \\\hline
+  \bf Expected Output &
+  \begin{enumerate}
+  \item Test was executed successfully
+  \end{enumerate}
+  \\\hline
+  \bf Expected Post-Condition & 
+  ..............
+  \\\hline   
+  \bf Execution History & 
+  \begin{enumerate}
+  \item (04/15/2018) Sabrina D’Mello: Executed test successfully.
+  \item (04/6/201) Damian Kazior Executed test successfully.
+  \end{enumerate}
+  \\\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+%Table 25
+\begin{table}[H]
+\caption{“CreateDummyWithdrawal()”}
+\begin{center}
+\begin{tabular}{|p{5.5cm}|p{11cm}|}
+  \hline
+  \bf Test Case Number & UT-5	\\\hline
+  \bf Description & 
+This unit test case was to ensure that the database fields in the withdraw money model is being set and the amount is being deducted correctly.\\\hline
+  \bf Input &
+  \begin{enumerate}
+  \item .......
+  \end{enumerate}
+  \\\hline
+  \bf Expected Output &
+  \begin{enumerate}
+  \item Test was executed successfully
+  \end{enumerate}
+  \\\hline
+  \bf Expected Post-Condition & 
+  ..............
+  \\\hline   
+  \bf Execution History & 
+  \begin{enumerate}
+  \item (04/15/2018) Sabrina D’Mello: Executed test successfully.
+  \item (04/6/201) Damian Kazior Executed test successfully.
+  \end{enumerate}
+  \\\hline
+\end{tabular}
+\end{center}
+\end{table}
+
 \section{Test Results}
 
 In this section we will be outlining the test results for both of our main test cases while providing in depth information regarding regular, special, and boundary cases. 
 
 \subsection{Deposit Money Test}
 
-\subsubsection{Expected Output (when ``Done'' button is clicked, and tests are implemented in order)}
+1. Expected Output (when ``Done'' button is clicked, and tests are implemented in order\\
 
 Regular Cases
 \begin{itemize}
@@ -877,7 +1041,7 @@ Account: 304.0022 Current Balance: 304.00
 No error message is displayed.
 \end{itemize}
 
-\subsubsection{``Type of Deposit'' input text field}
+2. Type of Deposit'' input text field\\
 
 Boundary Cases
 \begin{itemize}
@@ -890,7 +1054,7 @@ Regular Cases
   \item Pass a string containing a number  ``Money Transfer \#3''. Works as expected and provides deposit reason.
 \end{itemize}
 
-\subsubsection{``(optional) Transaction Description'' input text field}
+3. ``(optional) Transaction Description" input text field \\
 
 Boundary Cases
 \begin{itemize}
@@ -903,11 +1067,11 @@ Regular Cases
   \item Pass a string containing a number ``Sold Xbox 360''. Works as expected and provides description.
 \end{itemize}
 
-\subsubsection{``Done'' button}
+4. ``Done" button\\
 
-All tests above satisfy this case as they require the use of the Done button. Please refer to sections 1 and 2.
+All tests above satisfy this case as they require the use of the Done button. Please refer to sections 1 and 2.\\
 	
-\subsubsection{``Cancel'' button}
+5. ``Cancel" button\\
 
 Regular Cases
 \begin{itemize}
@@ -920,59 +1084,59 @@ Regular Cases
 
 \subsection{Withdraw Money Test}
 
-\subsubsection{Expected Output (when ``Done'' button is clicked, and tests are implemented in order)}
+1. Expected Output (when ``Done'' button is clicked, and tests are implemented in order)\\
 
-Boundary Cases
+Boundary Cases:
 \begin{itemize}
   \item Passing a 0 or a 0.00: Works as expected, no actual change is done to the balance.
 \end{itemize}
 
-Regular Cases
+Regular Cases:
 \begin{itemize}
   \item Value of 100: Works as expected, withdrawal is performed.
   \item Value of 200.78: Works as expected. Withdrawal is performed.
 \end{itemize}
 
-Special Cases
+Special Cases:
 \begin{itemize}
   \item Value of -50: Does not work as expected.  It adds 50 to the account and to the ``Current Balance'' field. No error message is shown.
   \item Value ``Hello'': Works as expected. An error message is shown.
   \item Value 3.2222: Works as expected by being rounded to the nearest hundredth when performing the withdrawal. 
 \end{itemize}
 
-\subsubsection{Expected Output (when ``Show History'' is clicked).}
+2. Expected Output (when ``Show History'' is clicked).\\
 
-Boundary Cases
+Boundary Cases:
 \begin{itemize}
   \item ``'' is under the ``TYPE OF WITHDRAW'': Works as expected. It is left blank.
 \end{itemize}
 
-Regular Cases
+Regular Cases:
 \begin{itemize}
   \item ``bill'' is under the ``TYPE OF WITHDRAW'': Works as expected. Bill is shown as the type of the withdrawal.
   \item ``check'' is under the ``TYPE OF WITHDRAW'': Works as expected. Check is shown as the type of the withdrawal.
 \end{itemize}
 
-\subsubsection{(optional) ``Transaction Description'' input text field.}
+3. (optional) ``Transaction Description'' input text field\\
 
-Boundary Cases
+Boundary Cases:
 \begin{itemize}
   \item ``'' is under the ``DESCRIPTION'': Works as expected. It is left blank.
 \end{itemize}
 
-Regular Cases
+Regular Cases:
 \begin{itemize}
   \item  ``Pay electricity bill of June'' is under the ``DESCRIPTION'': Works as expected. Shows this as the description for the withdrawal.
   \item  ``Pay off the debt owed to Jack'' is under the ``DESCRIPTION'': Works as expected. Shows this as the description for the withdrawal.
 \end{itemize}
 
-\subsubsection{``Done'' button}
+4. ``Done'' button\\
 
-Expected output is relative to the outlined uses in the above cases. They all require the use of the ``Done'' button, therefore this button is tested through those same tests.
+Expected output is relative to the outlined uses in the above cases. They all require the use of the ``Done'' button, therefore this button is tested through those same tests.\\
 	
-\subsubsection{``Cancel'' button}
+5. ``Cancel'' button\\
 
-Regular Cases
+Regular Cases:
 \begin{itemize}
   \item Transaction is not recorded. That is:
   \begin{itemize}
@@ -988,78 +1152,89 @@ We obtained a test document sample that we used as a reference: Montrealopoly, M
 
 \section{Description of Input Files}
 
-\subsection{Mymoneyappdb.db}
+%TABLEs REQUIRE FIXING !!!!!
 
-\subsubsection{File Description}
-Database file used for SQLite. Contains all the database information locally, such as the different tables and their contents. It contains the following four Tables:
-\begin{itemize}
-  \item Withdraw\_Money
-  \item Deposit\_money
-  \item Display\_Balance
-  \item sqlite\_sequence
+%Table 28
+\begin{table}[H]
+\caption{Input Files}
+\begin{center}
+\begin{tabular}{|c|c|p{3cm}|p{2cm}}
+\hline
+  \bf File Name & \bf File Extension & \bf File Description & \bf Input Description \\\hline
+	\bf mymoneyappdb &
+		.db &
+		Database file used for SQLite. Contains all the database information locally, such as the different tables and their contents. It contains the following four Tables: 
+\begin{itemize} 
+	\item Withdraw\_Money
+	\item Deposit\_money
+	\item Display\_Balance
+	\item sqlite\_sequence
 \end{itemize}
-
-\subsubsection{Input Description}
-The application will read from this file every time it is run to get all the Database information and display them on the GUI.
-
-\subsection{Transaction\_History.csv}
-
-\subsubsection{File Description}
-Excel file used to keep a history of all transactions executed within the application, as well as all the information relating to those transactions. It contains the following six columns:
-\begin{itemize}
-  \item Date
-  \item Transaction Type
-  \item Description
-  \item Amount
-  \item Type of Withdrawal
-  \item Type of Deposit
-\end{itemize}
-
-\subsubsection{Output Description}
-The application will read from this file every time it tries to access the history of all transactions to be able to display them on the GUI.
+		& The application will read from this file every time it is run to get all the Database information and display them on the GUI. \\
+		\hline
+		Transaction\_History	&
+		.csv 	&
+		Excel file used to keep a history of all transactions executed within the application, as well as all the information relating to those transactions. It contains the following six columns:
+		\begin{itemize} 
+		\item Date
+		\item Transaction Type
+		\item Description
+		\item Amount
+		\item Type of Withdrawal
+		\item Type of Deposit
+		\end{itemize}
+	& The application will read from this file every time it tries to access the history of all transactions to be able to display them on the GUI.
+\end{tabular}
+\end{center}
+\end{table}
 
 \section{Description of Output Files}
 
-\subsection{Mymoneyappdb.db}
-
-\subsubsection{File Description}
-Database file used for SQLite. Contains all the database information locally, such as the different tables and their contents. It contains the following four Tables:
-\begin{itemize}
-  \item Withdraw\_Money
-  \item Deposit\_money
-  \item Display\_Balance
-  \item sqlite\_sequence
+%Table 29
+\begin{table}[H]
+\caption{Input Files}
+\begin{center}
+\begin{tabular}{|c|c|p{3cm}|p{2cm}}
+\hline
+  \bf File Name & \bf File Extension & \bf File Description & \bf Input Description \\\hline
+	\bf mymoneyappdb &
+		.db &
+Database file used for SQLite. Contains all the database information locally, such as the different tables and their contents. It contains the following four Tables: 
+\begin{itemize} 
+	\item Withdraw\_Money
+	\item Deposit\_money
+	\item Display\_Balance
+	\item sqlite\_sequence
 \end{itemize}
+		& Everytime a new withdraw or deposit action happens, the application will write to this file to add new entries under their respective tables.   \\
+		\hline
+		Transaction\_History	&
+		.csv 	&
+Excel file used to keep a history of all transactions executed within the application, as well as all the information relating to those transactions. It contains the following six columns:
+		\begin{itemize} 
+		\item Date
+		\item Transaction Type
+		\item Description
+		\item Amount
+		\item Type of Withdrawal
+		\item Type of Deposit
+		\end{itemize}
+	& Everytime a new withdraw or deposit action happens, the application will write to this file to add new rows containing all the information of the transaction.
+\end{tabular}
+\end{center}
+\end{table}
 
-\subsubsection{Output Description}
-Everytime a new withdraw or deposit action happens, the application will write to this file to add new entries under their respective tables.  
-
-\subsection{Transaction\_History.csv}
-
-\subsubsection{File Description}
-Everytime a new withdraw or deposit action happens, the application will write to this file to add new entries under their respective tables.  
-\begin{itemize}
-  \item Date
-  \item Transaction Type
-  \item Description
-  \item Amount
-  \item Type of Withdrawal
-  \item Type of Deposit
-\end{itemize}
-
-\subsubsection{Output Description}
-Everytime a new withdraw or deposit action happens, the application will write to this file to add new rows containing all the information of the transaction.
 
 \clearpage 
 \section{Figures}
 
 \begin{figure}[H]
-%  \includegraphics[width=\linewidth]{open_app.png}
+  \includegraphics[width=\linewidth]{open_app.png}
   \caption{The user opens myMoney App.}
 \end{figure}
 
 \begin{figure}[H]
-%  \includegraphics[width=\linewidth]{deposit_click.png}
+  \includegraphics[width=\linewidth]{deposit_click.png}
   \caption{The fields mentioned in the Deposit Test Case section are shown above.}
 \end{figure}
 
